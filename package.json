@@ -4,12 +4,14 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "sync": "node scripts/sync.js"
+    "sync": "node scripts/sync.js",
+    "prepare": "husky"
   },
   "keywords": [],
   "packageManager": "pnpm@10.10.0",
-  "dependencies": {
+  "devDependencies": {
     "gunzip-maybe": "^1.4.2",
+    "husky": "^9.1.7",
     "npm-registry-fetch": "^18.0.2",
     "tar-fs": "^3.0.9",
     "yaml": "^2.8.0"
