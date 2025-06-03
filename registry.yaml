@@ -1,0 +1,2 @@
+node:
+  from: 'npm:@types/node'

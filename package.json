@@ -1,0 +1,17 @@
+{
+  "private": true,
+  "name": "types-with-exceptions",
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "sync": "node scripts/sync.js"
+  },
+  "keywords": [],
+  "packageManager": "pnpm@10.10.0",
+  "dependencies": {
+    "gunzip-maybe": "^1.4.2",
+    "npm-registry-fetch": "^18.0.2",
+    "tar-fs": "^3.0.9",
+    "yaml": "^2.8.0"
+  }
+}
