@@ -52,8 +52,43 @@ async function clean() {
 }
 
 async function diff() {
-  for (const [name, _meta] of Object.entries(registryYamlParsed)) {
-    const cacheDir = path.join('.cache', name);
+  for (const [name, meta] of Object.entries(registryYamlParsed)) {
+    let cacheDir, packageName;
+    if (
+      typeof meta === 'object' &&
+      meta?.copy && typeof meta.copy === 'object'
+    ) {
+      const dir = path.join('.cache', meta.from.substring('npm:'.length));
+      const dest = path.join('.cache', name);
+
+      for (const [destPath, src] of Object.entries(meta.copy)) {
+        const srcPath = path.join(dir, src);
+        const destFullPath = path.join(dest, destPath);
+        if (!fs.existsSync(path.dirname(destFullPath))) {
+          await fsPromises.mkdir(path.dirname(destFullPath), { recursive: true });
+        }
+        await fsPromises.cp(srcPath, destFullPath);
+      }
+
+      const requiredFiles = [
+        ...fs.globSync('package.json', { cwd: dir }),
+        ...fs.globSync('README*', { cwd: dir }),
+        ...fs.globSync('NOTICE*', { cwd: dir }),
+        ...fs.globSync('LICEN[SC]E*', { cwd: dir }),
+      ];
+      for (const filename of requiredFiles) {
+        await fsPromises.cp(
+          path.join(dir, filename),
+          path.join(dest, filename),
+        );
+      }
+      packageName = meta.from.substring('npm:'.length);
+      cacheDir = dest;
+    } else {
+      packageName = meta.substring('npm:'.length);
+      cacheDir = path.join('.cache', packageName);
+    }
+
     const typeDir = path.join('types', name);
     const patchFile = path.join('patches', `${name}.patch`);
     if (!fs.existsSync(cacheDir)) {
@@ -132,7 +167,7 @@ async function sync() {
           if (!fs.existsSync(path.dirname(destFullPath))) {
             await fsPromises.mkdir(path.dirname(destFullPath), { recursive: true });
           }
-          await fsPromises.cp(srcPath, destFullPath, { recursive: true });
+          await fsPromises.cp(srcPath, destFullPath);
         }
 
         const requiredFiles = [
@@ -145,7 +180,6 @@ async function sync() {
           await fsPromises.cp(
             path.join(dir, filename),
             path.join(dest, filename),
-            { recursive: true }
           );
         }
       } else {
@@ -168,7 +202,7 @@ async function npm(name, packageName) {
 
   const cacheDir = '.cache';
   const tarballDir  = path.join(cacheDir, '.tarballs');
-  const extractDir = path.join(cacheDir, name);
+  const extractDir = path.join(cacheDir, packageName);
 
   if (!fs.existsSync(cacheDir)) {
     fs.mkdirSync(cacheDir, { recursive: true });
