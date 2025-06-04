@@ -1,6 +1,6 @@
 diff -ruN .cache/@types/node/globals.d.ts types/node/globals.d.ts
 --- .cache/@types/node/globals.d.ts	2025-05-30 18:40:02.000000000 +0000
-+++ types/node/globals.d.ts	2025-06-04 22:46:57.098833855 +0000
++++ types/node/globals.d.ts	2025-06-04 23:25:06.099254984 +0000
 @@ -313,6 +313,16 @@
      // #region fetch
      interface RequestInit extends _RequestInit {}
