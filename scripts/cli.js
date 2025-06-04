@@ -1,5 +1,4 @@
 import path from 'node:path';
-import timers from 'node:timers/promises';
 import fs from 'node:fs';
 import fsPromises from 'node:fs/promises';
 import { spawn } from 'node:child_process';
@@ -137,7 +136,7 @@ async function sync() {
       const dest = path.join('types', name);
 
       const patchFile = path.join('patches', `${name}.patch`);
-      if (!fs.existsSync(patchFile)) {
+      if (!fs.existsSync(patchFile) && fs.existsSync(dest)) {
         await diff();
       }
 
