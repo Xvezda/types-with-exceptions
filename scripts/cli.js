@@ -1,4 +1,5 @@
 import path from 'node:path';
+import timers from 'node:timers/promises';
 import fs from 'node:fs';
 import fsPromises from 'node:fs/promises';
 import { spawn } from 'node:child_process';
@@ -96,7 +97,7 @@ async function diff() {
       return;
     }
     const diffProcess = spawn('diff', ['-ruN', cacheDir, typeDir], {
-      stdio: ['pipe', 'pipe', process.stderr],
+      stdio: ['pipe', 'pipe', 'inherit'],
     });
 
     let output = '';
@@ -136,24 +137,10 @@ async function sync() {
       const dest = path.join('types', name);
 
       const patchFile = path.join('patches', `${name}.patch`);
-      if (fs.existsSync(patchFile)) {
-        const stream = fs.createReadStream(patchFile);
-
-        const patchProcess = spawn('patch', ['-d', dir], {
-          stdio: ['pipe', process.stdout, process.stderr],
-        });
-        stream.pipe(patchProcess.stdin);
-
-        await new Promise((resolve, reject) => {
-          patchProcess.on('close', (code) => {
-            if (code !== 0) {
-              reject(new Error(`Patch process exited with code ${code}`));
-            } else {
-              resolve();
-            }
-          });
-        });
+      if (!fs.existsSync(patchFile)) {
+        await diff();
       }
+
       await fsPromises.rm(dest, { recursive: true, force: true });
       await fsPromises.mkdir(dest, { recursive: true });
 
@@ -185,6 +172,24 @@ async function sync() {
       } else {
         await fsPromises.cp(dir, dest, { recursive: true });
       }
+
+      const stream = fs.createReadStream(patchFile);
+
+      const patchProcess = spawn('patch', ['-d', dest], {
+        stdio: ['pipe', 'inherit', 'inherit'],
+      });
+
+      stream.pipe(patchProcess.stdin);
+
+      await new Promise((resolve, reject) => {
+        patchProcess.on('close', (code) => {
+          if (code !== 0) {
+            reject(new Error(`Patch process exited with code ${code}`));
+          } else {
+            resolve();
+          }
+        });
+      });
     }
   }
 }
