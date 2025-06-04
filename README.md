@@ -27,10 +27,21 @@ Follow the steps below.
 ### `/registry.yaml`
 
 ```yaml
+# Simplified
 node: 'npm:@types/node'
 # ^1   ^2  ^3
 
 # 1: The top-level key is used as the package name. For instance, `node` becomes `@types-with-exceptions/node`
 # 2: Specifies where to fetch the package from. (Currently, only npm is supported.)
 # 3: Package name
+
+
+# Advanced
+lib-es5:
+  from: 'npm:typescript'
+  copy:
+    'index.d.ts': 'lib/lib.es5.d.ts'
+# You can copy files individually from the package using:
+# <destination file path>: <source file path>
+# And to comply with the license, README, LICENSE, etc. are copied by default without needing to specify them separately.
 ```
