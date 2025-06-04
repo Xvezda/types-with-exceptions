@@ -68,8 +68,12 @@ async function diff() {
 
 async function sync() {
   for (const [name, meta] of Object.entries(registryYamlParsed)) {
-    if (meta?.from.startsWith('npm:')) {
-      const dir = await npm(name, meta.from.substring('npm:'.length));
+    const from = typeof meta === 'string'
+      ? meta
+      : meta.from;
+
+    if (from?.startsWith('npm:')) {
+      const dir = await npm(name, from.substring('npm:'.length));
       const dest = path.join('types', name);
 
       await fsPromises.rm(dest, { recursive: true, force: true });

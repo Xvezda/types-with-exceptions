@@ -1,2 +1,1 @@
-node:
-  from: 'npm:@types/node'
+node: 'npm:@types/node'
