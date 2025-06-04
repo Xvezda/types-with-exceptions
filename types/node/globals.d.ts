@@ -318,7 +318,7 @@ declare global {
      */
     function fetch(
         input: string | URL | globalThis.Request,
-        init: { signal: AbortSignal } & Partial<RequestInit>,
+        init: { signal: AbortSignal } & RequestInit,
     ): Promise<Response>;
     /**
      * https://nodejs.org/docs/latest/api/globals.html#fetch
