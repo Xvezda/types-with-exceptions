@@ -44,25 +44,33 @@ async function diff() {
       console.error(`Cache directory for ${name} does not exist.`);
       return;
     }
-    const stream = fs.createWriteStream(patchFile, { flags: 'w', encoding: 'utf8' });
-
     const diffProcess = spawn('diff', ['-ruN', cacheDir, typeDir], {
       stdio: ['pipe', 'pipe', process.stderr],
     });
 
-    diffProcess.stdout.pipe(stream);
+    let output = '';
+    diffProcess.stdout.on('data', (data) => {
+      output += data.toString();
+    });
 
     await new Promise((resolve, reject) => {
       diffProcess.on('close', (code) => {
         if (code !== 0 && code !== 1) {
           reject(new Error(`Diff process exited with code ${code}`));
+        } else if (code === 1) {
+          fs.writeFile(patchFile, output, (err) => {
+            if (err) {
+              reject(new Error(`Failed to write patch file: ${err.message}`));
+            } else {
+              console.log(`Patch file created: ${patchFile}`);
+              resolve();
+            }
+          });
         } else {
           resolve();
         }
       });
     });
-
-    stream.end();
   }
 }
 
@@ -76,14 +84,12 @@ async function sync() {
       const dir = await npm(name, from.substring('npm:'.length));
       const dest = path.join('types', name);
 
-      await fsPromises.rm(dest, { recursive: true, force: true });
-      await fsPromises.cp(dir, dest, { recursive: true });
-
       const patchFile = path.join('patches', `${name}.patch`);
       if (fs.existsSync(patchFile)) {
-        const patchProcess = spawn('patch', [], {
+        const patchProcess = spawn('patch', ['-d', dir], {
           stdio: ['pipe', process.stdout, process.stderr],
         });
+
         const stream = fs.createReadStream(patchFile);
         stream.pipe(patchProcess.stdin);
 
@@ -97,6 +103,8 @@ async function sync() {
           });
         });
       }
+      await fsPromises.rm(dest, { recursive: true, force: true });
+      await fsPromises.cp(dir, dest, { recursive: true });
     }
   }
 }
