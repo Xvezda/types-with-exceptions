@@ -102,11 +102,11 @@ async function sync() {
 
       const patchFile = path.join('patches', `${name}.patch`);
       if (fs.existsSync(patchFile)) {
+        const stream = fs.createReadStream(patchFile);
+
         const patchProcess = spawn('patch', ['-d', dir], {
           stdio: ['pipe', process.stdout, process.stderr],
         });
-
-        const stream = fs.createReadStream(patchFile);
         stream.pipe(patchProcess.stdin);
 
         await new Promise((resolve, reject) => {
@@ -145,17 +145,19 @@ async function npm(name, packageName) {
   }
 
   const tarballUrl = new URL(latestInfo.dist.tarball);
-  const response = await fetch(tarballUrl);
   const tarballName = path.basename(tarballUrl.pathname);
+  if (!fs.existsSync(path.join(tarballDir, tarballName))) {
+    const response = await fetch(tarballUrl);
 
-  if (!fs.existsSync(tarballDir)) {
-    fs.mkdirSync(tarballDir, { recursive: true });
+    if (!fs.existsSync(tarballDir)) {
+      fs.mkdirSync(tarballDir, { recursive: true });
+    }
+
+    fs.writeFileSync(
+      path.join(tarballDir, tarballName),
+      Buffer.from(await response.arrayBuffer())
+    );
   }
-
-  fs.writeFileSync(
-    path.join(tarballDir, tarballName),
-    Buffer.from(await response.arrayBuffer())
-  );
 
   if (!fs.existsSync(extractDir)) {
     fs.mkdirSync(extractDir, { recursive: true });
@@ -170,11 +172,11 @@ async function npm(name, packageName) {
     .pipe(tar.extract(extractDir, {
       ignore(name) {
         return (
-          !name.endsWith('.d.ts') &&
-          /^LICEN[CS]E/i.test(path.basename(name)) &&
-          /^README/i.test(path.basename(name)) &&
-          /^NOTICE/i.test(path.basename(name)) &&
-          path.basename(name) === 'package.json'
+          !path.basename(name).endsWith('.d.ts') &&
+          !/LICEN[CS]E/i.test(path.basename(name)) &&
+          !/README/i.test(path.basename(name)) &&
+          !/NOTICE/i.test(path.basename(name)) &&
+          path.basename(name) !== 'package.json'
         );
       },
       map(header) {
