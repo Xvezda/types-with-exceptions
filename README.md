@@ -13,12 +13,12 @@ Click [New issue](https://github.com/Xvezda/types-with-exceptions/issues/new), t
 Follow the steps below.
 
 1. Fork repository
-2. Check if the package you want to modify exists in the `types` directory.
-   a. If it does not exist, add the desired package to the `registry.yaml` file.
-   b. Run `pnpm run sync` to apply the changes.
-3. Modify the relevant `*.d.ts` file(s) in the `types` directory and commit.
-4. (Optional) Add tests in the `tests` directory. Refer to [rule-tester](https://typescript-eslint.io/packages/rule-tester).
-5. [Create a PR](https://github.com/Xvezda/types-with-exceptions/compare).
+1. Check if the package you want to modify exists in the `types` directory.
+   1. If it does not exist, add the desired package to the `registry.yaml` file.
+   1. Run `pnpm run sync` to apply the changes.
+1. Modify the relevant `*.d.ts` file(s) in the `types` directory and commit.
+1. (Optional) Add tests in the `tests` directory. Refer to [rule-tester](https://typescript-eslint.io/packages/rule-tester).
+1. [Create a PR](https://github.com/Xvezda/types-with-exceptions/compare).
 
 ## `/registry.yaml`
 
