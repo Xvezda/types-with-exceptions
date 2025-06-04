@@ -1,1 +1,6 @@
 node: 'npm:@types/node'
+
+lib-es5:
+  from: 'npm:typescript'
+  copy:
+    'index.d.ts': 'lib/lib.es5.d.ts'

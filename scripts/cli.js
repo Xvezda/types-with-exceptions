@@ -120,7 +120,37 @@ async function sync() {
         });
       }
       await fsPromises.rm(dest, { recursive: true, force: true });
-      await fsPromises.cp(dir, dest, { recursive: true });
+      await fsPromises.mkdir(dest, { recursive: true });
+
+      if (
+        typeof meta === 'object' &&
+        meta?.copy && typeof meta.copy === 'object'
+      ) {
+        for (const [destPath, src] of Object.entries(meta.copy)) {
+          const srcPath = path.join(dir, src);
+          const destFullPath = path.join(dest, destPath);
+          if (!fs.existsSync(path.dirname(destFullPath))) {
+            await fsPromises.mkdir(path.dirname(destFullPath), { recursive: true });
+          }
+          await fsPromises.cp(srcPath, destFullPath, { recursive: true });
+        }
+
+        const requiredFiles = [
+          ...fs.globSync('package.json', { cwd: dir }),
+          ...fs.globSync('README*', { cwd: dir }),
+          ...fs.globSync('NOTICE*', { cwd: dir }),
+          ...fs.globSync('LICEN[SC]E*', { cwd: dir }),
+        ];
+        for (const filename of requiredFiles) {
+          await fsPromises.cp(
+            path.join(dir, filename),
+            path.join(dest, filename),
+            { recursive: true }
+          );
+        }
+      } else {
+        await fsPromises.cp(dir, dest, { recursive: true });
+      }
     }
   }
 }
@@ -141,7 +171,7 @@ async function npm(name, packageName) {
   const extractDir = path.join(cacheDir, name);
 
   if (!fs.existsSync(cacheDir)) {
-    fs.mkdirSync(cacheDir);
+    fs.mkdirSync(cacheDir, { recursive: true });
   }
 
   const tarballUrl = new URL(latestInfo.dist.tarball);
