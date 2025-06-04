@@ -4,16 +4,25 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "sync": "node scripts/sync.js",
-    "prepare": "husky"
+    "prepare": "husky",
+    "sync": "node scripts/cli.js sync",
+    "diff": "node scripts/cli.js diff",
+    "test": "vitest"
   },
   "keywords": [],
   "packageManager": "pnpm@10.10.0",
   "devDependencies": {
+    "@typescript-eslint/rule-tester": "^8.33.1",
+    "@typescript-eslint/type-utils": "^8.33.1",
+    "commander": "^14.0.0",
+    "eslint": "^9.28.0",
+    "eslint-plugin-explicit-exceptions": "^0.9.1",
     "gunzip-maybe": "^1.4.2",
     "husky": "^9.1.7",
     "npm-registry-fetch": "^18.0.2",
     "tar-fs": "^3.0.9",
+    "typescript": "^5.8.3",
+    "vitest": "^3.2.1",
     "yaml": "^2.8.0"
   }
 }

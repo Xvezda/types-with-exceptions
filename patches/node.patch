@@ -1,0 +1,20 @@
+diff -ruN .cache/node/globals.d.ts types/node/globals.d.ts
+--- .cache/node/globals.d.ts	2025-05-31 03:40:02
++++ types/node/globals.d.ts	2025-06-04 07:51:37
+@@ -313,6 +313,16 @@
+     // #region fetch
+     interface RequestInit extends _RequestInit {}
+ 
++    /**
++     * @throws {Promise<DOMException>} AbortError if the request is aborted.
++     */
++    function fetch(
++        input: string | URL | globalThis.Request,
++        init: { signal: AbortSignal } & Partial<RequestInit>,
++    ): Promise<Response>;
++    /**
++     * https://nodejs.org/docs/latest/api/globals.html#fetch
++     */
+     function fetch(
+         input: string | URL | globalThis.Request,
+         init?: RequestInit,
