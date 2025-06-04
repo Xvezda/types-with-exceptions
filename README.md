@@ -2,7 +2,11 @@
 
 This project is designed to enable the JSDoc `@throws` type-checking and documentation-enforcement rules provided by [eslint-plugin-explicit-exceptions](https://github.com/Xvezda/eslint-plugin-explicit-exceptions) to be used with frequently used functions and libraries.
 
-### Contributing
+## Usage
+
+WIP
+
+## Contributing
 
 You can either open an issue to request work or create a PR with your changes.
 
@@ -20,7 +24,7 @@ Follow the steps below.
 1. (Optional) Add tests in the `tests` directory. Refer to [rule-tester](https://typescript-eslint.io/packages/rule-tester).
 1. [Create a PR](https://github.com/Xvezda/types-with-exceptions/compare).
 
-## `/registry.yaml`
+### `/registry.yaml`
 
 ```yaml
 node: 'npm:@types/node'
