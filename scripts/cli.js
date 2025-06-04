@@ -1,0 +1,165 @@
+import path from 'node:path';
+import fs from 'node:fs';
+import fsPromises from 'node:fs/promises';
+import { spawn } from 'node:child_process';
+import { parse } from 'yaml';
+import npmFetch from 'npm-registry-fetch';
+import tar from 'tar-fs';
+import gunzip from 'gunzip-maybe';
+import { program, Argument } from 'commander';
+
+const projectRoot =
+  path.resolve(path.join(import.meta.dirname), '..');
+
+process.chdir(projectRoot);
+
+const registryYaml = fs.readFileSync('registry.yaml', 'utf8');
+
+const registryYamlParsed = parse(registryYaml);
+
+program
+  .addArgument(
+    new Argument('<command>', 'command to run')
+      .choices(['sync', 'diff'])
+  )
+  .action((command) => {
+    switch (command) {
+      case 'sync':
+        sync();
+        break;
+      case 'diff':
+        diff();
+        break;
+    }
+  });
+
+program.parse(process.argv);
+
+async function diff() {
+  for (const [name, _meta] of Object.entries(registryYamlParsed)) {
+    const cacheDir = path.join('.cache', name);
+    const typeDir = path.join('types', name);
+    const patchFile = path.join('patches', `${name}.patch`);
+    if (!fs.existsSync(cacheDir)) {
+      console.error(`Cache directory for ${name} does not exist.`);
+      return;
+    }
+    const stream = fs.createWriteStream(patchFile, { flags: 'w', encoding: 'utf8' });
+
+    const diffProcess = spawn('diff', ['-ruN', cacheDir, typeDir], {
+      stdio: ['pipe', 'pipe', process.stderr],
+    });
+
+    diffProcess.stdout.pipe(stream);
+
+    await new Promise((resolve, reject) => {
+      diffProcess.on('close', (code) => {
+        if (code !== 0 && code !== 1) {
+          reject(new Error(`Diff process exited with code ${code}`));
+        } else {
+          resolve();
+        }
+      });
+    });
+
+    stream.end();
+  }
+}
+
+async function sync() {
+  for (const [name, meta] of Object.entries(registryYamlParsed)) {
+    if (meta?.from.startsWith('npm:')) {
+      const dir = await npm(name, meta.from.substring('npm:'.length));
+      const dest = path.join('types', name);
+
+      await fsPromises.rm(dest, { recursive: true, force: true });
+      await fsPromises.cp(dir, dest, { recursive: true });
+
+      const patchFile = path.join('patches', `${name}.patch`);
+      if (fs.existsSync(patchFile)) {
+        const patchProcess = spawn('patch', [], {
+          stdio: ['pipe', process.stdout, process.stderr],
+        });
+        const stream = fs.createReadStream(patchFile);
+        stream.pipe(patchProcess.stdin);
+
+        await new Promise((resolve, reject) => {
+          patchProcess.on('close', (code) => {
+            if (code !== 0) {
+              reject(new Error(`Patch process exited with code ${code}`));
+            } else {
+              resolve();
+            }
+          });
+        });
+      }
+    }
+  }
+}
+
+/**
+ * @param {string} name
+ * @param {string} packageName
+ * @return {Promise<string>} The directory where the package is extracted.
+ */
+async function npm(name, packageName) {
+  const registry = await npmFetch.json(`/${packageName}`);
+  const latestVersion = registry['dist-tags']['latest'];
+
+  const latestInfo = registry.versions[latestVersion];
+
+  const cacheDir = '.cache';
+  const tarballDir  = path.join(cacheDir, '.tarballs');
+  const extractDir = path.join(cacheDir, name);
+
+  if (!fs.existsSync(cacheDir)) {
+    fs.mkdirSync(cacheDir);
+  }
+
+  const tarballUrl = new URL(latestInfo.dist.tarball);
+  const response = await fetch(tarballUrl);
+  const tarballName = path.basename(tarballUrl.pathname);
+
+  if (!fs.existsSync(tarballDir)) {
+    fs.mkdirSync(tarballDir, { recursive: true });
+  }
+
+  fs.writeFileSync(
+    path.join(tarballDir, tarballName),
+    Buffer.from(await response.arrayBuffer())
+  );
+
+  if (!fs.existsSync(extractDir)) {
+    fs.mkdirSync(extractDir, { recursive: true });
+  }
+
+  const prefixDir = registry.name.includes('/')
+    ? registry.name.split('/').pop()
+    : 'package';
+
+  const stream = fs.createReadStream(path.join(tarballDir, tarballName))
+    .pipe(gunzip())
+    .pipe(tar.extract(extractDir, {
+      ignore(name) {
+        return (
+          !name.endsWith('.d.ts') &&
+          /^LICEN[CS]E/i.test(path.basename(name)) &&
+          /^README/i.test(path.basename(name)) &&
+          /^NOTICE/i.test(path.basename(name)) &&
+          path.basename(name) === 'package.json'
+        );
+      },
+      map(header) {
+        if (header.name.startsWith(`${prefixDir}/`)) {
+          header.name =
+            header.name.substring(`${prefixDir}/`.length);
+        }
+        return header;
+      },
+    }));
+
+  return new Promise((resolve, reject) => {
+    stream.on('finish', () => resolve(extractDir));
+    stream.on('error', reject);
+  });
+}
