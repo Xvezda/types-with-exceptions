@@ -7,6 +7,7 @@
     "prepare": "husky",
     "sync": "node scripts/cli.js sync",
     "diff": "node scripts/cli.js diff",
+    "clean": "node scripts/cli.js clean",
     "test": "vitest"
   },
   "keywords": [],

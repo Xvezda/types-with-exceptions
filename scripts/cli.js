@@ -20,7 +20,7 @@ const registryYamlParsed = parse(registryYaml);
 program
   .addArgument(
     new Argument('<command>', 'command to run')
-      .choices(['sync', 'diff'])
+      .choices(['sync', 'diff', 'clean', 'help'])
   )
   .action((command) => {
     switch (command) {
@@ -30,10 +30,26 @@ program
       case 'diff':
         diff();
         break;
+      case 'clean':
+        clean();
+        break;
+      case 'help':
+      default:
+        program.help();
     }
   });
 
 program.parse(process.argv);
+
+async function clean() {
+  fs.rm('.cache', { recursive: true, force: true }, (err) => {
+    if (err) {
+      console.error(`Failed to clean cache: ${err.message}`);
+    } else {
+      console.log('Cache cleaned successfully.');
+    }
+  });
+}
 
 async function diff() {
   for (const [name, _meta] of Object.entries(registryYamlParsed)) {
