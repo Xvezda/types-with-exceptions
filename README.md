@@ -14,7 +14,7 @@ Follow the steps below.
 
 1. Fork repository
 1. Check if the package you want to modify exists in the `types` directory.
-   1. If it does not exist, add the desired package to the `registry.yaml` file.
+   1. If it does not exist, add the desired package to the [`registry.yaml` file](https://github.com/Xvezda/types-with-exceptions?tab=readme-ov-file#registryyaml).
    1. Run `pnpm run sync` to apply the changes.
 1. Modify the relevant `*.d.ts` file(s) in the `types` directory and commit.
 1. (Optional) Add tests in the `tests` directory. Refer to [rule-tester](https://typescript-eslint.io/packages/rule-tester).
