@@ -14,6 +14,9 @@ importers:
       '@typescript-eslint/type-utils':
         specifier: ^8.33.1
         version: 8.33.1(eslint@9.28.0)(typescript@5.8.3)
+      '@typescript/lib-es5':
+        specifier: file:./types/lib-es5
+        version: '@types-with-exceptions/lib-es5@file:types/lib-es5'
       commander:
         specifier: ^14.0.0
         version: 14.0.0
@@ -393,6 +396,11 @@ packages:
     resolution: {integrity: sha512-Wq2zpapRYLfi4aKxf2Xff0tN+7slj2d4R87WEzqw7ZLsVvO5zwYCIuEGSZYiK41+GlwUo1HiR+GdkLEJnCKTCw==}
     cpu: [x64]
     os: [win32]
+
+  '@types-with-exceptions/lib-es5@file:types/lib-es5':
+    resolution: {directory: types/lib-es5, type: directory}
+    engines: {node: '>=14.17'}
+    hasBin: true
 
   '@types/chai@5.2.2':
     resolution: {integrity: sha512-8kB30R7Hwqf40JPiKhVzodJs2Qc1ZJ5zuT3uzw5Hq/dhNCl3G3l83jfpdI1e20BP348+fV7VIL/+FxaXkqBmWg==}
@@ -1657,6 +1665,8 @@ snapshots:
 
   '@rollup/rollup-win32-x64-msvc@4.41.1':
     optional: true
+
+  '@types-with-exceptions/lib-es5@file:types/lib-es5': {}
 
   '@types/chai@5.2.2':
     dependencies:

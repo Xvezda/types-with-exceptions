@@ -13,6 +13,7 @@
   "keywords": [],
   "packageManager": "pnpm@10.10.0",
   "devDependencies": {
+    "@typescript/lib-es5": "file:./types/lib-es5",
     "@typescript-eslint/rule-tester": "^8.33.1",
     "@typescript-eslint/type-utils": "^8.33.1",
     "commander": "^14.0.0",

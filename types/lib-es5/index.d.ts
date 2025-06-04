@@ -1158,6 +1158,7 @@ interface JSON {
      * @param text A valid JSON string.
      * @param reviver A function that transforms the results. This function is called for each member of the object.
      * If a member contains nested objects, the nested objects are transformed before the parent object is.
+     * @throws {SyntaxError} If the input text is not valid JSON.
      */
     parse(text: string, reviver?: (this: any, key: string, value: any) => any): any;
     /**
