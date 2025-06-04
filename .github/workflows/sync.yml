@@ -1,0 +1,35 @@
+name: Sync
+
+on:
+  push:
+    branches: [ "master" ]
+  schedule:
+    # https://crontab.guru/#0_*/6_*_*_*
+    - cron: '0 */6 * * *'
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+    - uses: pnpm/action-setup@v4
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: 22
+        cache: 'pnpm'
+    - run: pnpm install --frozen-lockfile
+    - run: pnpm run --if-present build
+    - name: Synchronize
+      run: |
+        pnpm run sync
+        if ! git diff --exit-code --quiet && pnpm test --run; then
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add .
+          git commit -m '🤖 Sync types'
+          git push
+        else
+          echo repository is up to date
+        fi
