@@ -15,7 +15,6 @@ const ruleTester = new RuleTester({
 
 ruleTester.run(
   'no-undocumented-throws',
-  // @ts-expect-error - incompatible
   plugin.rules['no-undocumented-throws'],
   {
     valid: [],
