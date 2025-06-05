@@ -17,7 +17,15 @@ ruleTester.run(
   'no-undocumented-throws',
   plugin.rules['no-undocumented-throws'],
   {
-    valid: [],
+    valid: [
+      {
+        code: `
+          function foo(): any {
+            return JSON.parse("{}");
+          }
+        `,
+      },
+    ],
     invalid: [
       {
         code: `
