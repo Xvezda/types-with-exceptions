@@ -1,8 +1,8 @@
 {
-    "name": "@types/node",
+    "name": "@types-with-exceptions/node",
     "version": "22.15.29",
-    "description": "TypeScript definitions for node",
-    "homepage": "https://github.com/DefinitelyTyped/DefinitelyTyped/tree/master/types/node",
+    "description": "TypeScript definitions with exceptions for node",
+    "homepage": "https://github.com/Xvezda/types-with-exceptions/tree/main/types/node",
     "license": "MIT",
     "contributors": [
         {
@@ -199,6 +199,11 @@
             "name": "René",
             "githubUsername": "Renegade334",
             "url": "https://github.com/Renegade334"
+        },
+        {
+            "name": "Xvezda",
+            "githubUsername": "Xvezda",
+            "url": "https://github.com/Xvezda"
         }
     ],
     "main": "",
@@ -212,7 +217,7 @@
     },
     "repository": {
         "type": "git",
-        "url": "https://github.com/DefinitelyTyped/DefinitelyTyped.git",
+        "url": "https://github.com/Xvezda/types-with-exceptions.git",
         "directory": "types/node"
     },
     "scripts": {},
