@@ -39,6 +39,5 @@
         "@types/node": "latest",
         "@types/source-map-support": "^0.5.10",
         "@types/which": "^3.0.4"
-    },
-    "packageManager": "npm@8.19.4"
+    }
 }
