@@ -1,6 +1,6 @@
 diff -ruN .cache/lib-es5/index.d.ts types/lib-es5/index.d.ts
---- .cache/lib-es5/index.d.ts	2025-06-05 06:08:29.936580937 +0000
-+++ types/lib-es5/index.d.ts	2025-06-05 06:08:29.399583410 +0000
+--- .cache/lib-es5/index.d.ts	2025-06-05 08:15:41.015059958 +0000
++++ types/lib-es5/index.d.ts	2025-06-05 08:15:40.494062312 +0000
 @@ -1158,6 +1158,7 @@
       * @param text A valid JSON string.
       * @param reviver A function that transforms the results. This function is called for each member of the object.
@@ -10,8 +10,8 @@ diff -ruN .cache/lib-es5/index.d.ts types/lib-es5/index.d.ts
      parse(text: string, reviver?: (this: any, key: string, value: any) => any): any;
      /**
 diff -ruN .cache/lib-es5/package.json types/lib-es5/package.json
---- .cache/lib-es5/package.json	2025-06-05 06:08:29.941580914 +0000
-+++ types/lib-es5/package.json	2025-06-05 06:08:29.399583410 +0000
+--- .cache/lib-es5/package.json	2025-06-05 08:15:41.021059927 +0000
++++ types/lib-es5/package.json	2025-06-05 08:15:40.494062312 +0000
 @@ -1,5 +1,5 @@
  {
 -    "name": "typescript",
