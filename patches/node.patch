@@ -1,6 +1,6 @@
 diff -ruN .cache/node/globals.d.ts types/node/globals.d.ts
---- .cache/node/globals.d.ts	2025-06-05 17:21:46.640812392 +0000
-+++ types/node/globals.d.ts	2025-06-05 17:21:45.530797310 +0000
+--- .cache/node/globals.d.ts	2025-06-05 19:39:36.842217362 +0000
++++ types/node/globals.d.ts	2025-06-05 19:39:35.752203890 +0000
 @@ -313,6 +313,16 @@
      // #region fetch
      interface RequestInit extends _RequestInit {}
@@ -18,16 +18,116 @@ diff -ruN .cache/node/globals.d.ts types/node/globals.d.ts
      function fetch(
          input: string | URL | globalThis.Request,
          init?: RequestInit,
+diff -ruN .cache/node/http2.d.ts types/node/http2.d.ts
+--- .cache/node/http2.d.ts	2025-06-05 19:39:36.846217411 +0000
++++ types/node/http2.d.ts	2025-06-05 19:39:35.756203940 +0000
+@@ -1223,66 +1223,14 @@
+     }
+     // Http2Server
+     export interface SessionOptions {
+-        /**
+-         * Sets the maximum dynamic table size for deflating header fields.
+-         * @default 4Kib
+-         */
+         maxDeflateDynamicTableSize?: number | undefined;
+-        /**
+-         * Sets the maximum number of settings entries per `SETTINGS` frame.
+-         * The minimum value allowed is `1`.
+-         * @default 32
+-         */
+-        maxSettings?: number | undefined;
+-        /**
+-         * Sets the maximum memory that the `Http2Session` is permitted to use.
+-         * The value is expressed in terms of number of megabytes, e.g. `1` equal 1 megabyte.
+-         * The minimum value allowed is `1`.
+-         * This is a credit based limit, existing `Http2Stream`s may cause this limit to be exceeded,
+-         * but new `Http2Stream` instances will be rejected while this limit is exceeded.
+-         * The current number of `Http2Stream` sessions, the current memory use of the header compression tables,
+-         * current data queued to be sent, and unacknowledged `PING` and `SETTINGS` frames are all counted towards the current limit.
+-         * @default 10
+-         */
+         maxSessionMemory?: number | undefined;
+-        /**
+-         * Sets the maximum number of header entries.
+-         * This is similar to `server.maxHeadersCount` or `request.maxHeadersCount` in the `node:http` module.
+-         * The minimum value is `1`.
+-         * @default 128
+-         */
+         maxHeaderListPairs?: number | undefined;
+-        /**
+-         * Sets the maximum number of outstanding, unacknowledged pings.
+-         * @default 10
+-         */
+         maxOutstandingPings?: number | undefined;
+-        /**
+-         * Sets the maximum allowed size for a serialized, compressed block of headers.
+-         * Attempts to send headers that exceed this limit will result in
+-         * a `'frameError'` event being emitted and the stream being closed and destroyed.
+-         */
+         maxSendHeaderBlockLength?: number | undefined;
+-        /**
+-         * Strategy used for determining the amount of padding to use for `HEADERS` and `DATA` frames.
+-         * @default http2.constants.PADDING_STRATEGY_NONE
+-         */
+         paddingStrategy?: number | undefined;
+-        /**
+-         * Sets the maximum number of concurrent streams for the remote peer as if a `SETTINGS` frame had been received.
+-         * Will be overridden if the remote peer sets its own value for `maxConcurrentStreams`.
+-         * @default 100
+-         */
+         peerMaxConcurrentStreams?: number | undefined;
+-        /**
+-         * The initial settings to send to the remote peer upon connection.
+-         */
+         settings?: Settings | undefined;
+-        /**
+-         * The array of integer values determines the settings types,
+-         * which are included in the `CustomSettings`-property of the received remoteSettings.
+-         * Please see the `CustomSettings`-property of the `Http2Settings` object for more information, on the allowed setting types.
+-         */
+         remoteCustomSettings?: number[] | undefined;
+         /**
+          * Specifies a timeout in milliseconds that
+@@ -1291,27 +1239,11 @@
+          * @default 100000
+          */
+         unknownProtocolTimeout?: number | undefined;
++        selectPadding?(frameLen: number, maxFrameLen: number): number;
+     }
+     export interface ClientSessionOptions extends SessionOptions {
+-        /**
+-         * Sets the maximum number of reserved push streams the client will accept at any given time.
+-         * Once the current number of currently reserved push streams exceeds reaches this limit,
+-         * new push streams sent by the server will be automatically rejected.
+-         * The minimum allowed value is 0. The maximum allowed value is 2<sup>32</sup>-1.
+-         * A negative value sets this option to the maximum allowed value.
+-         * @default 200
+-         */
+         maxReservedRemoteStreams?: number | undefined;
+-        /**
+-         * An optional callback that receives the `URL` instance passed to `connect` and the `options` object,
+-         * and returns any `Duplex` stream that is to be used as the connection for this session.
+-         */
+         createConnection?: ((authority: url.URL, option: SessionOptions) => stream.Duplex) | undefined;
+-        /**
+-         * The protocol to connect with, if not set in the `authority`.
+-         * Value may be either `'http:'` or `'https:'`.
+-         * @default 'https:'
+-         */
+         protocol?: "http:" | "https:" | undefined;
+     }
+     export interface ServerSessionOptions<
 diff -ruN .cache/node/package.json types/node/package.json
---- .cache/node/package.json	2025-06-05 17:21:46.661812677 +0000
-+++ types/node/package.json	2025-06-05 17:21:45.550797582 +0000
+--- .cache/node/package.json	2025-06-05 19:39:36.864217633 +0000
++++ types/node/package.json	2025-06-05 19:39:35.774204162 +0000
 @@ -1,8 +1,8 @@
  {
 -    "name": "@types/node",
-+    "name": "@types-with-exceptions/node",
-     "version": "22.15.29",
+-    "version": "22.15.30",
 -    "description": "TypeScript definitions for node",
 -    "homepage": "https://github.com/DefinitelyTyped/DefinitelyTyped/tree/master/types/node",
++    "name": "@types-with-exceptions/node",
++    "version": "22.15.29",
 +    "description": "TypeScript definitions with exceptions for node",
 +    "homepage": "https://github.com/Xvezda/types-with-exceptions/tree/main/types/node",
      "license": "MIT",
@@ -54,10 +154,25 @@ diff -ruN .cache/node/package.json types/node/package.json
          "directory": "types/node"
      },
      "scripts": {},
-@@ -222,4 +227,4 @@
+@@ -220,6 +225,6 @@
+         "undici-types": "~6.21.0"
+     },
      "peerDependencies": {},
-     "typesPublisherContentHash": "98b7a6aabffc6588a0865305b51b9dd48e81a270354b592630e8d37772f1f57a",
+-    "typesPublisherContentHash": "e608b189ccd6623034719d736dfcdaf6bae11f1e8fe989b19c4a6d3221277a64",
++    "typesPublisherContentHash": "98b7a6aabffc6588a0865305b51b9dd48e81a270354b592630e8d37772f1f57a",
      "typeScriptVersion": "5.1"
 -}
 \ No newline at end of file
 +}
+diff -ruN .cache/node/util.d.ts types/node/util.d.ts
+--- .cache/node/util.d.ts	2025-06-05 19:39:36.860217584 +0000
++++ types/node/util.d.ts	2025-06-05 19:39:35.769204101 +0000
+@@ -1411,7 +1411,7 @@
+      * @param content The raw contents of a `.env` file.
+      * @since v20.12.0
+      */
+-    export function parseEnv(content: string): NodeJS.Dict<string>;
++    export function parseEnv(content: string): object;
+     // https://nodejs.org/docs/latest/api/util.html#foreground-colors
+     type ForegroundColors =
+         | "black"
