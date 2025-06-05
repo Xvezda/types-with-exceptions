@@ -1,17 +1,24 @@
 diff -ruN .cache/lib-es5/index.d.ts types/lib-es5/index.d.ts
---- .cache/lib-es5/index.d.ts	2025-06-05 08:15:41.015059958 +0000
-+++ types/lib-es5/index.d.ts	2025-06-05 08:15:40.494062312 +0000
-@@ -1158,6 +1158,7 @@
-      * @param text A valid JSON string.
+--- .cache/lib-es5/index.d.ts	2025-06-05 10:36:57.255480804 +0000
++++ types/lib-es5/index.d.ts	2025-06-05 10:36:56.726481214 +0000
+@@ -1159,6 +1159,14 @@
       * @param reviver A function that transforms the results. This function is called for each member of the object.
       * If a member contains nested objects, the nested objects are transformed before the parent object is.
-+     * @throws {SyntaxError} If the input text is not valid JSON.
       */
++    parse<T extends string>(text: string extends T ? never : T, reviver?: (this: any, key: string, value: any) => any): any;
++    /**
++     * Converts a JavaScript Object Notation (JSON) string into an object.
++     * @param text A valid JSON string.
++     * @param reviver A function that transforms the results. This function is called for each member of the object.
++     * If a member contains nested objects, the nested objects are transformed before the parent object is.
++     * @throws {SyntaxError} If the input text is not valid JSON.
++     */
      parse(text: string, reviver?: (this: any, key: string, value: any) => any): any;
      /**
+      * Converts a JavaScript value to a JavaScript Object Notation (JSON) string.
 diff -ruN .cache/lib-es5/package.json types/lib-es5/package.json
---- .cache/lib-es5/package.json	2025-06-05 08:15:41.021059927 +0000
-+++ types/lib-es5/package.json	2025-06-05 08:15:40.494062312 +0000
+--- .cache/lib-es5/package.json	2025-06-05 10:36:57.260480800 +0000
++++ types/lib-es5/package.json	2025-06-05 10:36:56.726481214 +0000
 @@ -1,5 +1,5 @@
  {
 -    "name": "typescript",
