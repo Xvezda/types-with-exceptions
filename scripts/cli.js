@@ -135,18 +135,14 @@ async function sync() {
       const dir = await npm(name, from.substring('npm:'.length));
       const dest = path.join('types', name);
 
-      const patchFile = path.join('patches', `${name}.patch`);
-      if (!fs.existsSync(patchFile) && fs.existsSync(dest)) {
-        await diff();
-      }
-
-      await fsPromises.rm(dest, { recursive: true, force: true });
-      await fsPromises.mkdir(dest, { recursive: true });
-
+      let cacheDir, packageName;
       if (
         typeof meta === 'object' &&
         meta?.copy && typeof meta.copy === 'object'
       ) {
+        const dir = path.join('.cache', meta.from.substring('npm:'.length));
+        const dest = path.join('.cache', name);
+
         for (const [destPath, src] of Object.entries(meta.copy)) {
           const srcPath = path.join(dir, src);
           const destFullPath = path.join(dest, destPath);
@@ -168,13 +164,18 @@ async function sync() {
             path.join(dest, filename),
           );
         }
+        packageName = meta.from.substring('npm:'.length);
+        cacheDir = dest;
       } else {
-        await fsPromises.cp(dir, dest, { recursive: true });
+        packageName = meta.substring('npm:'.length);
+        cacheDir = path.join('.cache', packageName);
       }
-
+      const patchFile = path.join('patches', `${name}.patch`);
       const stream = fs.createReadStream(patchFile);
 
-      const patchProcess = spawn('patch', ['-d', dest], {
+      await diff();
+
+      const patchProcess = spawn('patch', ['-d', cacheDir], {
         stdio: ['pipe', 'inherit', 'inherit'],
       });
 
@@ -189,6 +190,11 @@ async function sync() {
           }
         });
       });
+
+      await fsPromises.rm(dest, { recursive: true, force: true });
+      await fsPromises.mkdir(dest, { recursive: true });
+
+      await fsPromises.cp(cacheDir, dest, { recursive: true });
     }
   }
 }
