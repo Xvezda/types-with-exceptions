@@ -23,13 +23,19 @@ jobs:
     - run: pnpm run --if-present build
     - name: Synchronize
       run: |
+        git config user.name "github-actions[bot]"
+        git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
         pnpm run sync
         pnpm run diff
+        git add patches
+        if ! git diff --cached --diff-filter=A --exit-code --quiet -- patches; then
+          git commit -m '🤖  Add new patch'
+        else
+          git reset patches
+        fi
         if ! git diff --exit-code --quiet -- types; then
           pnpm test --run
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add .
+          git add types
           git commit -m '🤖 Sync types'
           git push
         else
