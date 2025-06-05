@@ -24,8 +24,8 @@ importers:
         specifier: ^9.28.0
         version: 9.28.0
       eslint-plugin-explicit-exceptions:
-        specifier: ^0.10.0
-        version: 0.10.0(eslint@9.28.0)(typescript@5.8.3)
+        specifier: ^0.10.1
+        version: 0.10.1(eslint@9.28.0)(typescript@5.8.3)
       gunzip-maybe:
         specifier: ^1.4.2
         version: 1.4.2
@@ -400,7 +400,6 @@ packages:
   '@types-with-exceptions/lib-es5@file:types/lib-es5':
     resolution: {directory: types/lib-es5, type: directory}
     engines: {node: '>=14.17'}
-    hasBin: true
 
   '@types/chai@5.2.2':
     resolution: {integrity: sha512-8kB30R7Hwqf40JPiKhVzodJs2Qc1ZJ5zuT3uzw5Hq/dhNCl3G3l83jfpdI1e20BP348+fV7VIL/+FxaXkqBmWg==}
@@ -690,8 +689,8 @@ packages:
     resolution: {integrity: sha512-TtpcNJ3XAzx3Gq8sWRzJaVajRs0uVxA2YAkdb1jm2YkPz4G6egUFAyA3n5vtEIZefPk5Wa4UXbKuS5fKkJWdgA==}
     engines: {node: '>=10'}
 
-  eslint-plugin-explicit-exceptions@0.10.0:
-    resolution: {integrity: sha512-4d95QYuPxvbvQiVXHe9/AneCVEiWjtKr6s08TYOncXYJSoskfba8tslCIJqSerWi42IdFRUmY4UmzGsfEco+4A==}
+  eslint-plugin-explicit-exceptions@0.10.1:
+    resolution: {integrity: sha512-yUDTMmV2s4RKTixLkDmElBY7xPZkwtbeR0D+6NAz7/9iic9CD5TkP0fHKjanJ2+PDZxqCLXEuiExLUtBAkjW2Q==}
     peerDependencies:
       eslint: ^9.27.0
       typescript: ^5.8.3
@@ -2003,7 +2002,7 @@ snapshots:
 
   escape-string-regexp@4.0.0: {}
 
-  eslint-plugin-explicit-exceptions@0.10.0(eslint@9.28.0)(typescript@5.8.3):
+  eslint-plugin-explicit-exceptions@0.10.1(eslint@9.28.0)(typescript@5.8.3):
     dependencies:
       eslint: 9.28.0
       typescript: 5.8.3

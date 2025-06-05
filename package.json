@@ -18,7 +18,7 @@
     "@typescript/lib-es5": "file:./types/lib-es5",
     "commander": "^14.0.0",
     "eslint": "^9.28.0",
-    "eslint-plugin-explicit-exceptions": "^0.10.0",
+    "eslint-plugin-explicit-exceptions": "^0.10.1",
     "gunzip-maybe": "^1.4.2",
     "husky": "^9.1.7",
     "npm-registry-fetch": "^18.0.2",
