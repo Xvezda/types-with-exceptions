@@ -1,6 +1,6 @@
 diff -ruN .cache/node/globals.d.ts types/node/globals.d.ts
---- .cache/node/globals.d.ts	2025-06-05 10:39:45.953997132 +0000
-+++ types/node/globals.d.ts	2025-06-05 10:39:44.928991061 +0000
+--- .cache/node/globals.d.ts	2025-06-05 17:03:32.380505633 +0000
++++ types/node/globals.d.ts	2025-06-05 17:03:31.241504569 +0000
 @@ -313,6 +313,16 @@
      // #region fetch
      interface RequestInit extends _RequestInit {}
@@ -18,3 +18,46 @@ diff -ruN .cache/node/globals.d.ts types/node/globals.d.ts
      function fetch(
          input: string | URL | globalThis.Request,
          init?: RequestInit,
+diff -ruN .cache/node/package.json types/node/package.json
+--- .cache/node/package.json	2025-06-05 17:03:32.402505653 +0000
++++ types/node/package.json	2025-06-05 17:03:31.262504589 +0000
+@@ -1,8 +1,8 @@
+ {
+-    "name": "@types/node",
++    "name": "@types-with-exceptions/node",
+     "version": "22.15.29",
+-    "description": "TypeScript definitions for node",
+-    "homepage": "https://github.com/DefinitelyTyped/DefinitelyTyped/tree/master/types/node",
++    "description": "TypeScript definitions with exceptions for node",
++    "homepage": "https://github.com/Xvezda/types-with-exceptions/tree/main/types/node",
+     "license": "MIT",
+     "contributors": [
+         {
+@@ -199,6 +199,11 @@
+             "name": "René",
+             "githubUsername": "Renegade334",
+             "url": "https://github.com/Renegade334"
++        },
++        {
++            "name": "Xvezda",
++            "githubUsername": "Xvezda",
++            "url": "https://github.com/Xvezda"
+         }
+     ],
+     "main": "",
+@@ -212,7 +217,7 @@
+     },
+     "repository": {
+         "type": "git",
+-        "url": "https://github.com/DefinitelyTyped/DefinitelyTyped.git",
++        "url": "https://github.com/Xvezda/types-with-exceptions.git",
+         "directory": "types/node"
+     },
+     "scripts": {},
+@@ -222,4 +227,4 @@
+     "peerDependencies": {},
+     "typesPublisherContentHash": "98b7a6aabffc6588a0865305b51b9dd48e81a270354b592630e8d37772f1f57a",
+     "typeScriptVersion": "5.1"
+-}
+\ No newline at end of file
++}
