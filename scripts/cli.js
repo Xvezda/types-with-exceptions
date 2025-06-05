@@ -22,13 +22,15 @@ program
     new Argument('<command>', 'command to run')
       .choices(['sync', 'diff', 'clean', 'help'])
   )
-  .action((command) => {
+  .action(async (command) => {
     switch (command) {
       case 'sync':
         sync();
         break;
       case 'diff':
-        diff();
+        for (const [name] of Object.entries(registryYamlParsed)) {
+          await diff(name);
+        } 
         break;
       case 'clean':
         clean();
@@ -51,78 +53,42 @@ async function clean() {
   });
 }
 
-async function diff() {
-  for (const [name, meta] of Object.entries(registryYamlParsed)) {
-    let cacheDir, packageName;
-    if (
-      typeof meta === 'object' &&
-      meta?.copy && typeof meta.copy === 'object'
-    ) {
-      const dir = path.join('.cache', meta.from.substring('npm:'.length));
-      const dest = path.join('.cache', name);
+async function diff(name) {
+  const cacheDir = await setupCache(name);
 
-      for (const [destPath, src] of Object.entries(meta.copy)) {
-        const srcPath = path.join(dir, src);
-        const destFullPath = path.join(dest, destPath);
-        if (!fs.existsSync(path.dirname(destFullPath))) {
-          await fsPromises.mkdir(path.dirname(destFullPath), { recursive: true });
-        }
-        await fsPromises.cp(srcPath, destFullPath);
-      }
-
-      const requiredFiles = [
-        ...fs.globSync('package.json', { cwd: dir }),
-        ...fs.globSync('README*', { cwd: dir }),
-        ...fs.globSync('NOTICE*', { cwd: dir }),
-        ...fs.globSync('LICEN[SC]E*', { cwd: dir }),
-      ];
-      for (const filename of requiredFiles) {
-        await fsPromises.cp(
-          path.join(dir, filename),
-          path.join(dest, filename),
-        );
-      }
-      packageName = meta.from.substring('npm:'.length);
-      cacheDir = dest;
-    } else {
-      packageName = meta.substring('npm:'.length);
-      cacheDir = path.join('.cache', packageName);
-    }
-
-    const typeDir = path.join('types', name);
-    const patchFile = path.join('patches', `${name}.patch`);
-    if (!fs.existsSync(cacheDir)) {
-      console.error(`Cache directory for ${name} does not exist.`);
-      return;
-    }
-    const diffProcess = spawn('diff', ['-ruN', cacheDir, typeDir], {
-      stdio: ['pipe', 'pipe', 'inherit'],
-    });
-
-    let output = '';
-    diffProcess.stdout.on('data', (data) => {
-      output += data.toString();
-    });
-
-    await new Promise((resolve, reject) => {
-      diffProcess.on('close', (code) => {
-        if (code !== 0 && code !== 1) {
-          reject(new Error(`Diff process exited with code ${code}`));
-        } else if (code === 1) {
-          fs.writeFile(patchFile, output, (err) => {
-            if (err) {
-              reject(new Error(`Failed to write patch file: ${err.message}`));
-            } else {
-              console.log(`Patch file created: ${patchFile}`);
-              resolve();
-            }
-          });
-        } else {
-          resolve();
-        }
-      });
-    });
+  const typeDir = path.join('types', name);
+  const patchFile = path.join('patches', `${name}.patch`);
+  if (!fs.existsSync(cacheDir)) {
+    console.error(`Cache directory for ${name} does not exist.`);
+    return;
   }
+  const diffProcess = spawn('diff', ['-ruN', cacheDir, typeDir], {
+    stdio: ['pipe', 'pipe', 'inherit'],
+  });
+
+  let output = '';
+  diffProcess.stdout.on('data', (data) => {
+    output += data.toString();
+  });
+
+  await new Promise((resolve, reject) => {
+    diffProcess.on('close', (code) => {
+      if (code !== 0 && code !== 1) {
+        reject(new Error(`Diff process exited with code ${code}`));
+      } else if (code === 1) {
+        fs.writeFile(patchFile, output, (err) => {
+          if (err) {
+            reject(new Error(`Failed to write patch file: ${err.message}`));
+          } else {
+            console.log(`Patch file created: ${patchFile}`);
+            resolve();
+          }
+        });
+      } else {
+        resolve();
+      }
+    });
+  });
 }
 
 async function sync() {
@@ -131,72 +97,89 @@ async function sync() {
       ? meta
       : meta.from;
 
-    if (from?.startsWith('npm:')) {
-      const dir = await npm(name, from.substring('npm:'.length));
-      const dest = path.join('types', name);
-
-      let cacheDir, packageName;
-      if (
-        typeof meta === 'object' &&
-        meta?.copy && typeof meta.copy === 'object'
-      ) {
-        const dir = path.join('.cache', meta.from.substring('npm:'.length));
-        const dest = path.join('.cache', name);
-
-        for (const [destPath, src] of Object.entries(meta.copy)) {
-          const srcPath = path.join(dir, src);
-          const destFullPath = path.join(dest, destPath);
-          if (!fs.existsSync(path.dirname(destFullPath))) {
-            await fsPromises.mkdir(path.dirname(destFullPath), { recursive: true });
-          }
-          await fsPromises.cp(srcPath, destFullPath);
-        }
-
-        const requiredFiles = [
-          ...fs.globSync('package.json', { cwd: dir }),
-          ...fs.globSync('README*', { cwd: dir }),
-          ...fs.globSync('NOTICE*', { cwd: dir }),
-          ...fs.globSync('LICEN[SC]E*', { cwd: dir }),
-        ];
-        for (const filename of requiredFiles) {
-          await fsPromises.cp(
-            path.join(dir, filename),
-            path.join(dest, filename),
-          );
-        }
-        packageName = meta.from.substring('npm:'.length);
-        cacheDir = dest;
-      } else {
-        packageName = meta.substring('npm:'.length);
-        cacheDir = path.join('.cache', packageName);
-      }
-      const patchFile = path.join('patches', `${name}.patch`);
-      const stream = fs.createReadStream(patchFile);
-
-      await diff();
-
-      const patchProcess = spawn('patch', ['-d', cacheDir], {
-        stdio: ['pipe', 'inherit', 'inherit'],
-      });
-
-      stream.pipe(patchProcess.stdin);
-
-      await new Promise((resolve, reject) => {
-        patchProcess.on('close', (code) => {
-          if (code !== 0) {
-            reject(new Error(`Patch process exited with code ${code}`));
-          } else {
-            resolve();
-          }
-        });
-      });
-
-      await fsPromises.rm(dest, { recursive: true, force: true });
-      await fsPromises.mkdir(dest, { recursive: true });
-
-      await fsPromises.cp(cacheDir, dest, { recursive: true });
+    if (!from.startsWith('npm:')) {
+      throw new Error(`Invalid package source for ${name}: ${from}`);
     }
+
+    const packageName = from.substring('npm:'.length);
+    const _extractPath = await npm(packageName);
+
+    const cacheDir = await setupCache(name);
+
+    await diff(name);
+
+    const patchFile = path.join('patches', `${name}.patch`);
+    const stream = fs.createReadStream(patchFile);
+
+    const patchProcess = spawn('patch', ['-d', cacheDir], {
+      stdio: ['pipe', 'inherit', 'inherit'],
+    });
+
+    stream.pipe(patchProcess.stdin);
+
+    await new Promise((resolve, reject) => {
+      patchProcess.on('close', (code) => {
+        if (code !== 0) {
+          reject(new Error(`Patch process exited with code ${code}`));
+        } else {
+          resolve();
+        }
+      });
+    });
+
+    const dest = path.join('types', name);
+
+    await fsPromises.rm(dest, { recursive: true, force: true });
+    await fsPromises.mkdir(dest, { recursive: true });
+
+    await fsPromises.cp(cacheDir, dest, { recursive: true });
   }
+}
+
+async function setupCache(name) {
+  const meta = registryYamlParsed[name];
+  const cachePath = path.join('.cache', name);
+  const packageName =
+    typeof meta === 'string'
+      ? meta.substring('npm:'.length)
+      : meta.from.substring('npm:'.length);
+  const packagePath = path.join('.cache', packageName);
+
+  if (!fs.existsSync(cachePath)) {
+    await fsPromises.mkdir(cachePath);
+  }
+
+  if (typeof meta === 'string') {
+    await fsPromises.cp(packagePath, cachePath, { recursive: true });
+    return cachePath;
+  }
+
+  if (!meta.copy || typeof meta.copy !== 'object') {
+    throw new Error('Invalid metadata for package: ' + name);
+  }
+
+  for (const [dest, src] of Object.entries(meta.copy)) {
+    const srcPath = path.join(packagePath, src);
+    const destPath = path.join(cachePath, dest);
+    if (!fs.existsSync(path.dirname(destPath))) {
+      await fsPromises.mkdir(path.dirname(destPath), { recursive: true });
+    }
+    await fsPromises.cp(srcPath, destPath);
+  }
+
+  const requiredFiles = [
+    ...fs.globSync('package.json', { cwd: packagePath }),
+    ...fs.globSync('README*', { cwd: packagePath }),
+    ...fs.globSync('NOTICE*', { cwd: packagePath }),
+    ...fs.globSync('LICEN[SC]E*', { cwd: packagePath }),
+  ];
+  for (const filename of requiredFiles) {
+    await fsPromises.cp(
+      path.join(packagePath, filename),
+      path.join(cachePath, filename),
+    );
+  }
+  return cachePath;
 }
 
 /**
@@ -204,7 +187,7 @@ async function sync() {
  * @param {string} packageName
  * @return {Promise<string>} The directory where the package is extracted.
  */
-async function npm(name, packageName) {
+async function npm(packageName) {
   const registry = await npmFetch.json(`/${packageName}`);
   const latestVersion = registry['dist-tags']['latest'];
 
