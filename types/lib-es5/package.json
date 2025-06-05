@@ -13,11 +13,12 @@
         "javascript"
     ],
     "bugs": {
-        "url": "https://github.com/microsoft/TypeScript/issues"
+        "url": "https://github.com/Xvezda/types-with-exceptions/issues"
     },
     "repository": {
         "type": "git",
-        "url": "https://github.com/microsoft/TypeScript.git"
+        "url": "https://github.com/Xvezda/types-with-exceptions.git",
+        "directory": "types/lib-es5"
     },
     "main": "./index.d.ts",
     "typings": "./index.d.ts",
@@ -29,14 +30,9 @@
         "node": ">=14.17"
     },
     "files": [
-        "bin",
-        "lib",
-        "!lib/enu",
         "LICENSE.txt",
         "README.md",
-        "SECURITY.md",
-        "ThirdPartyNoticeText.txt",
-        "!**/.gitattributes"
+        "index.d.ts"
     ],
     "devDependencies": {
         "@dprint/formatter": "^0.4.1",
