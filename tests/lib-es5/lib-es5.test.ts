@@ -44,6 +44,42 @@ ruleTester.run(
         errors: [{
           messageId: 'missingThrowsTag'
         }],
+      },
+      {
+        code: `
+          function foo(text: string): any {
+            return JSON.parse(\`\${text}\`);
+          }
+        `,
+        output: `
+          /**
+           * @throws {SyntaxError}
+           */
+          function foo(text: string): any {
+            return JSON.parse(\`\${text}\`);
+          }
+        `,
+        errors: [{
+          messageId: 'missingThrowsTag'
+        }],
+      },
+      {
+        code: `
+          function foo(code: string): any {
+            return eval(code);
+          }
+        `,
+        output: `
+          /**
+           * @throws {SyntaxError}
+           */
+          function foo(code: string): any {
+            return eval(code);
+          }
+        `,
+        errors: [{
+          messageId: 'missingThrowsTag'
+        }],
       }
     ],
   }

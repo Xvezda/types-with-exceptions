@@ -29,6 +29,7 @@ declare var Infinity: number;
 /**
  * Evaluates JavaScript code and executes it.
  * @param x A String value that contains valid JavaScript code.
+ * @throws {SyntaxError} If the code is not valid JavaScript.
  */
 declare function eval(x: string): any;
 
