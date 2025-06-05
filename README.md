@@ -4,7 +4,24 @@ This project is designed to enable the JSDoc `@throws` type-checking and documen
 
 ## Usage
 
-WIP
+```sh
+# For @types/*, i.e. @types/node
+npm install --save-dev @types-with-exceptions/node
+# For built-in lib replacement
+npm install --save-dev @types-with-exceptions/lib
+```
+`tsconfig.json`
+```diff
+ {
+    // ...
++   "typeRoots": [
++     "node_modules/@types",
++     "node_modules/@types-with-exceptions"
++   ],
++   "libReplacement": true,
+    // ...
+ }
+```
 
 ## Contributing
 
