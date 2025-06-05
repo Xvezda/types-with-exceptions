@@ -58,10 +58,12 @@ async function diff(name) {
 
   const typeDir = path.join('types', name);
   const patchFile = path.join('patches', `${name}.patch`);
+
   if (!fs.existsSync(cacheDir)) {
     console.error(`Cache directory for ${name} does not exist.`);
     return;
   }
+
   const diffProcess = spawn('diff', ['-ruN', cacheDir, typeDir], {
     stdio: ['pipe', 'pipe', 'inherit'],
   });
@@ -112,24 +114,25 @@ async function sync() {
     }
 
     const patchFile = path.join('patches', `${name}.patch`);
-    const stream = fs.createReadStream(patchFile);
+    if (fs.existsSync(patchFile)) {
+      const stream = fs.createReadStream(patchFile);
 
-    const patchProcess = spawn('patch', ['-d', cacheDir], {
-      stdio: ['pipe', 'inherit', 'inherit'],
-    });
-
-    stream.pipe(patchProcess.stdin);
-
-    await new Promise((resolve, reject) => {
-      patchProcess.on('close', (code) => {
-        if (code !== 0) {
-          reject(new Error(`Patch process exited with code ${code}`));
-        } else {
-          resolve();
-        }
+      const patchProcess = spawn('patch', ['-d', cacheDir], {
+        stdio: ['pipe', 'inherit', 'inherit'],
       });
-    });
 
+      stream.pipe(patchProcess.stdin);
+
+      await new Promise((resolve, reject) => {
+        patchProcess.on('close', (code) => {
+          if (code !== 0) {
+            reject(new Error(`Patch process exited with code ${code}`));
+          } else {
+            resolve();
+          }
+        });
+      });
+    }
     await fsPromises.rm(typesDir, { recursive: true, force: true });
     await fsPromises.mkdir(typesDir, { recursive: true });
 
