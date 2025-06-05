@@ -1,6 +1,6 @@
 diff -ruN .cache/lib-es5/index.d.ts types/lib-es5/index.d.ts
---- .cache/lib-es5/index.d.ts	2025-06-05 20:56:18.823716175 +0000
-+++ types/lib-es5/index.d.ts	2025-06-05 20:56:18.229712095 +0000
+--- .cache/lib-es5/index.d.ts	2025-06-05 21:05:02.707191996 +0000
++++ types/lib-es5/index.d.ts	2025-06-05 21:05:02.154193471 +0000
 @@ -29,6 +29,7 @@
  /**
   * Evaluates JavaScript code and executes it.
@@ -25,8 +25,8 @@ diff -ruN .cache/lib-es5/index.d.ts types/lib-es5/index.d.ts
      /**
       * Converts a JavaScript value to a JavaScript Object Notation (JSON) string.
 diff -ruN .cache/lib-es5/package.json types/lib-es5/package.json
---- .cache/lib-es5/package.json	2025-06-05 20:56:18.830716223 +0000
-+++ types/lib-es5/package.json	2025-06-05 20:56:18.229712095 +0000
+--- .cache/lib-es5/package.json	2025-06-05 21:05:02.713191980 +0000
++++ types/lib-es5/package.json	2025-06-05 21:05:02.154193471 +0000
 @@ -1,7 +1,7 @@
  {
 -    "name": "typescript",
