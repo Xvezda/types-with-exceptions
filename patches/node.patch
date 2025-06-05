@@ -1,6 +1,6 @@
 diff -ruN .cache/node/globals.d.ts types/node/globals.d.ts
---- .cache/node/globals.d.ts	2025-06-05 17:16:27.147757097 +0000
-+++ types/node/globals.d.ts	2025-06-05 17:16:25.792747550 +0000
+--- .cache/node/globals.d.ts	2025-06-05 17:21:46.640812392 +0000
++++ types/node/globals.d.ts	2025-06-05 17:21:45.530797310 +0000
 @@ -313,6 +313,16 @@
      // #region fetch
      interface RequestInit extends _RequestInit {}
@@ -19,8 +19,8 @@ diff -ruN .cache/node/globals.d.ts types/node/globals.d.ts
          input: string | URL | globalThis.Request,
          init?: RequestInit,
 diff -ruN .cache/node/package.json types/node/package.json
---- .cache/node/package.json	2025-06-05 17:16:27.169757252 +0000
-+++ types/node/package.json	2025-06-05 17:16:25.814747705 +0000
+--- .cache/node/package.json	2025-06-05 17:21:46.661812677 +0000
++++ types/node/package.json	2025-06-05 17:21:45.550797582 +0000
 @@ -1,8 +1,8 @@
  {
 -    "name": "@types/node",
