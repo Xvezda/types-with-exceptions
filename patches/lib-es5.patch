@@ -1,6 +1,6 @@
 diff -ruN .cache/lib-es5/index.d.ts types/lib-es5/index.d.ts
---- .cache/lib-es5/index.d.ts	2025-06-05 10:36:57.255480804 +0000
-+++ types/lib-es5/index.d.ts	2025-06-05 10:36:56.726481214 +0000
+--- .cache/lib-es5/index.d.ts	2025-06-05 10:39:45.986997328 +0000
++++ types/lib-es5/index.d.ts	2025-06-05 10:39:45.466994248 +0000
 @@ -1159,6 +1159,14 @@
       * @param reviver A function that transforms the results. This function is called for each member of the object.
       * If a member contains nested objects, the nested objects are transformed before the parent object is.
@@ -17,8 +17,8 @@ diff -ruN .cache/lib-es5/index.d.ts types/lib-es5/index.d.ts
      /**
       * Converts a JavaScript value to a JavaScript Object Notation (JSON) string.
 diff -ruN .cache/lib-es5/package.json types/lib-es5/package.json
---- .cache/lib-es5/package.json	2025-06-05 10:36:57.260480800 +0000
-+++ types/lib-es5/package.json	2025-06-05 10:36:56.726481214 +0000
+--- .cache/lib-es5/package.json	2025-06-05 10:39:45.992997363 +0000
++++ types/lib-es5/package.json	2025-06-05 10:39:45.466994248 +0000
 @@ -1,5 +1,5 @@
  {
 -    "name": "typescript",
