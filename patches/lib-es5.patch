@@ -1,6 +1,6 @@
 diff -ruN .cache/lib-es5/index.d.ts types/lib-es5/index.d.ts
---- .cache/lib-es5/index.d.ts	2025-06-05 19:39:36.876217782 +0000
-+++ types/lib-es5/index.d.ts	2025-06-05 19:39:36.344211207 +0000
+--- .cache/lib-es5/index.d.ts	2025-06-05 19:45:10.999924568 +0000
++++ types/lib-es5/index.d.ts	2025-06-05 19:45:10.468918901 +0000
 @@ -1159,6 +1159,14 @@
       * @param reviver A function that transforms the results. This function is called for each member of the object.
       * If a member contains nested objects, the nested objects are transformed before the parent object is.
@@ -17,8 +17,8 @@ diff -ruN .cache/lib-es5/index.d.ts types/lib-es5/index.d.ts
      /**
       * Converts a JavaScript value to a JavaScript Object Notation (JSON) string.
 diff -ruN .cache/lib-es5/package.json types/lib-es5/package.json
---- .cache/lib-es5/package.json	2025-06-05 19:39:36.881217844 +0000
-+++ types/lib-es5/package.json	2025-06-05 19:39:36.344211207 +0000
+--- .cache/lib-es5/package.json	2025-06-05 19:45:11.005924632 +0000
++++ types/lib-es5/package.json	2025-06-05 19:45:10.469918911 +0000
 @@ -1,7 +1,7 @@
  {
 -    "name": "typescript",
@@ -73,7 +73,7 @@ diff -ruN .cache/lib-es5/package.json types/lib-es5/package.json
          "@types/chai": "^4.3.20",
          "@types/diff": "^5.2.3",
          "@types/minimist": "^1.2.5",
-@@ -51,70 +38,7 @@
+@@ -51,70 +38,6 @@
          "@types/ms": "^0.7.34",
          "@types/node": "latest",
          "@types/source-map-support": "^0.5.10",
@@ -141,8 +141,8 @@ diff -ruN .cache/lib-es5/package.json types/lib-es5/package.json
 -    "volta": {
 -        "node": "20.1.0",
 -        "npm": "8.19.4"
-+        "@types/which": "^3.0.4"
-     },
+-    },
 -    "gitHead": "68cead182cc24afdc3f1ce7c8ff5853aba14b65a"
-+    "packageManager": "npm@8.19.4"
++        "@types/which": "^3.0.4"
++    }
  }
