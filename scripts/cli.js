@@ -105,8 +105,11 @@ async function sync() {
     const _extractPath = await npm(packageName);
 
     const cacheDir = await setupCache(name);
+    const typesDir = path.join('types', name);
 
-    await diff(name);
+    if (fs.existsSync(typesDir)) {
+      await diff(name);
+    }
 
     const patchFile = path.join('patches', `${name}.patch`);
     const stream = fs.createReadStream(patchFile);
@@ -127,12 +130,10 @@ async function sync() {
       });
     });
 
-    const dest = path.join('types', name);
+    await fsPromises.rm(typesDir, { recursive: true, force: true });
+    await fsPromises.mkdir(typesDir, { recursive: true });
 
-    await fsPromises.rm(dest, { recursive: true, force: true });
-    await fsPromises.mkdir(dest, { recursive: true });
-
-    await fsPromises.cp(cacheDir, dest, { recursive: true });
+    await fsPromises.cp(cacheDir, typesDir, { recursive: true });
   }
 }
 
