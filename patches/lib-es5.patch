@@ -1,7 +1,15 @@
 diff -ruN .cache/lib-es5/index.d.ts types/lib-es5/index.d.ts
---- .cache/lib-es5/index.d.ts	2025-06-05 19:49:53.312102485 +0000
-+++ types/lib-es5/index.d.ts	2025-06-05 19:49:52.774102885 +0000
-@@ -1159,6 +1159,14 @@
+--- .cache/lib-es5/index.d.ts	2025-06-05 20:56:18.823716175 +0000
++++ types/lib-es5/index.d.ts	2025-06-05 20:56:18.229712095 +0000
+@@ -29,6 +29,7 @@
+ /**
+  * Evaluates JavaScript code and executes it.
+  * @param x A String value that contains valid JavaScript code.
++ * @throws {SyntaxError} If the code is not valid JavaScript.
+  */
+ declare function eval(x: string): any;
+ 
+@@ -1159,6 +1160,14 @@
       * @param reviver A function that transforms the results. This function is called for each member of the object.
       * If a member contains nested objects, the nested objects are transformed before the parent object is.
       */
@@ -17,8 +25,8 @@ diff -ruN .cache/lib-es5/index.d.ts types/lib-es5/index.d.ts
      /**
       * Converts a JavaScript value to a JavaScript Object Notation (JSON) string.
 diff -ruN .cache/lib-es5/package.json types/lib-es5/package.json
---- .cache/lib-es5/package.json	2025-06-05 19:49:53.318102480 +0000
-+++ types/lib-es5/package.json	2025-06-05 19:49:52.774102885 +0000
+--- .cache/lib-es5/package.json	2025-06-05 20:56:18.830716223 +0000
++++ types/lib-es5/package.json	2025-06-05 20:56:18.229712095 +0000
 @@ -1,7 +1,7 @@
  {
 -    "name": "typescript",
