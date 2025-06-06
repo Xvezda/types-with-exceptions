@@ -28,7 +28,7 @@ jobs:
         pnpm run sync
         pnpm run diff
         if ! git diff --exit-code --quiet; then
-          pnpm test --run
+          pnpm test
           git add .
           git commit -m '🤖 Sync types'
           git push
