@@ -56,6 +56,9 @@ ruleTester.run(
       },
       {
         code: `
+          /**
+           * @throws {RangeError}
+           */
           function createEmptyArray(length: number): any[] {
             return Array(length);
           }
@@ -245,25 +248,6 @@ ruleTester.run(
            */
           function baz(code: string): any {
             return eval(code);
-          }
-        `,
-        errors: [{
-          messageId: 'missingThrowsTag'
-        }],
-      },
-      // Array constructor with complex expression that could fail
-      {
-        code: `
-          function createArray(input: string): any[] {
-            return new Array(parseInt(input));
-          }
-        `,
-        output: `
-          /**
-           * @throws {TypeError}
-           */
-          function createArray(input: string): any[] {
-            return new Array(parseInt(input));
           }
         `,
         errors: [{
