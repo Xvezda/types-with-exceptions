@@ -24,8 +24,8 @@ importers:
         specifier: ^9.28.0
         version: 9.28.0
       eslint-plugin-explicit-exceptions:
-        specifier: ^0.10.1
-        version: 0.10.1(eslint@9.28.0)(typescript@5.8.3)
+        specifier: ^0.11.0
+        version: 0.11.0(eslint@9.28.0)(typescript@5.8.3)
       gunzip-maybe:
         specifier: ^1.4.2
         version: 1.4.2
@@ -686,8 +686,8 @@ packages:
     resolution: {integrity: sha512-TtpcNJ3XAzx3Gq8sWRzJaVajRs0uVxA2YAkdb1jm2YkPz4G6egUFAyA3n5vtEIZefPk5Wa4UXbKuS5fKkJWdgA==}
     engines: {node: '>=10'}
 
-  eslint-plugin-explicit-exceptions@0.10.1:
-    resolution: {integrity: sha512-yUDTMmV2s4RKTixLkDmElBY7xPZkwtbeR0D+6NAz7/9iic9CD5TkP0fHKjanJ2+PDZxqCLXEuiExLUtBAkjW2Q==}
+  eslint-plugin-explicit-exceptions@0.11.0:
+    resolution: {integrity: sha512-15R3IJOKXHjgAQ0noxBcMUc2zWexU9E1aZXjxcI0O/z8LDKNiuHTR9t6RXWSVi+TjImpsIMxCjVUR14+FmQ9Ig==}
     peerDependencies:
       eslint: ^9.27.0
       typescript: ^5.8.3
@@ -1994,7 +1994,7 @@ snapshots:
 
   escape-string-regexp@4.0.0: {}
 
-  eslint-plugin-explicit-exceptions@0.10.1(eslint@9.28.0)(typescript@5.8.3):
+  eslint-plugin-explicit-exceptions@0.11.0(eslint@9.28.0)(typescript@5.8.3):
     dependencies:
       eslint: 9.28.0
       typescript: 5.8.3
