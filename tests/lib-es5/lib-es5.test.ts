@@ -45,10 +45,13 @@ ruleTester.run(
           }
         `,
       },
-      // Array constructor with number parameter - plugin doesn't require throws documentation
-      // for simple typed parameters as they're considered low-risk
+      // Array constructor with number parameter - plugin now requires throws documentation
+      // for variables as they could contain invalid values at runtime
       {
         code: `
+          /**
+           * @throws {RangeError}
+           */
           function createDynamicArray(size: number): any[] {
             return new Array(size);
           }
@@ -400,6 +403,44 @@ ruleTester.run(
            */
           function convertNumberBase(num: number, base: string): string {
             return num.toString(parseInt(base));
+          }
+        `,
+        errors: [{
+          messageId: 'missingThrowsTag'
+        }],
+      },
+      // String.fromCharCode with dynamic code units
+      {
+        code: `
+          function createStringFromCodes(codes: number[]): string {
+            return String.fromCharCode(...codes);
+          }
+        `,
+        output: `
+          /**
+           * @throws {RangeError}
+           */
+          function createStringFromCodes(codes: number[]): string {
+            return String.fromCharCode(...codes);
+          }
+        `,
+        errors: [{
+          messageId: 'missingThrowsTag'
+        }],
+      },
+      // Number.toExponential with dynamic fractionDigits
+      {
+        code: `
+          function formatNumberExp(num: number, digits: string): string {
+            return num.toExponential(parseInt(digits));
+          }
+        `,
+        output: `
+          /**
+           * @throws {RangeError}
+           */
+          function formatNumberExp(num: number, digits: string): string {
+            return num.toExponential(parseInt(digits));
           }
         `,
         errors: [{
