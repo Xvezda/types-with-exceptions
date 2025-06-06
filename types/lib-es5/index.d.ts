@@ -1586,19 +1586,15 @@ interface Array<T> {
 
 interface ArrayConstructor {
     /**
-     * Creates a new Array instance with the specified length.
-     * @param arrayLength The length of the array
-     * @throws {RangeError} Thrown when arrayLength is not a valid array length (negative or not an integer)
+     * Creates a new Array instance.
      * @see https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/Array
      */
-    new (arrayLength?: number): any[];
+    new (): any[];
     /**
-     * Creates a new Array instance with the specified length.
-     * @param arrayLength The length of the array
-     * @throws {RangeError} Thrown when arrayLength is not a valid array length (negative or not an integer)
+     * Creates a new Array instance with the given elements.
+     * @param items Elements to include in the array
      * @see https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/Array
      */
-    new <T>(arrayLength: number): T[];
     new <T>(...items: T[]): T[];
     /**
      * Creates a new Array instance with the specified length.
@@ -1606,7 +1602,32 @@ interface ArrayConstructor {
      * @throws {RangeError} Thrown when arrayLength is not a valid array length (negative or not an integer)
      * @see https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/Array
      */
-    (arrayLength?: number): any[];
+    new (arrayLength: number): any[];
+    /**
+     * Creates a new Array instance with the specified length.
+     * @param arrayLength The length of the array
+     * @throws {RangeError} Thrown when arrayLength is not a valid array length (negative or not an integer)
+     * @see https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/Array
+     */
+    new <T>(arrayLength: number): T[];
+    /**
+     * Creates a new Array instance.
+     * @see https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/Array
+     */
+    (): any[];
+    /**
+     * Creates a new Array instance with the given elements.
+     * @param items Elements to include in the array
+     * @see https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/Array
+     */
+    <T>(...items: T[]): T[];
+    /**
+     * Creates a new Array instance with the specified length.
+     * @param arrayLength The length of the array
+     * @throws {RangeError} Thrown when arrayLength is not a valid array length (negative or not an integer)
+     * @see https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/Array
+     */
+    (arrayLength: number): any[];
     /**
      * Creates a new Array instance with the specified length.
      * @param arrayLength The length of the array
@@ -1614,7 +1635,6 @@ interface ArrayConstructor {
      * @see https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/Array
      */
     <T>(arrayLength: number): T[];
-    <T>(...items: T[]): T[];
     isArray(arg: any): arg is any[];
     readonly prototype: any[];
 }
