@@ -7,7 +7,7 @@
     "sync": "node scripts/cli.js sync",
     "diff": "node scripts/cli.js diff",
     "clean": "node scripts/cli.js clean",
-    "test": "vitest"
+    "test": "vitest --run"
   },
   "keywords": [],
   "packageManager": "pnpm@10.10.0",
