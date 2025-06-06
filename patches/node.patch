@@ -1,6 +1,6 @@
 diff -ruN .cache/node/globals.d.ts types/node/globals.d.ts
---- .cache/node/globals.d.ts	2025-06-06 00:40:33.060189336 +0000
-+++ types/node/globals.d.ts	2025-06-06 00:40:31.970196077 +0000
+--- .cache/node/globals.d.ts	2025-06-06 01:38:42.086023450 +0000
++++ types/node/globals.d.ts	2025-06-06 01:38:41.035009400 +0000
 @@ -313,6 +313,16 @@
      // #region fetch
      interface RequestInit extends _RequestInit {}
@@ -19,8 +19,8 @@ diff -ruN .cache/node/globals.d.ts types/node/globals.d.ts
          input: string | URL | globalThis.Request,
          init?: RequestInit,
 diff -ruN .cache/node/http2.d.ts types/node/http2.d.ts
---- .cache/node/http2.d.ts	2025-06-06 00:40:33.064189311 +0000
-+++ types/node/http2.d.ts	2025-06-06 00:40:31.973196059 +0000
+--- .cache/node/http2.d.ts	2025-06-06 01:38:42.090023504 +0000
++++ types/node/http2.d.ts	2025-06-06 01:38:41.039009454 +0000
 @@ -1223,66 +1223,14 @@
      }
      // Http2Server
@@ -118,8 +118,8 @@ diff -ruN .cache/node/http2.d.ts types/node/http2.d.ts
      }
      export interface ServerSessionOptions<
 diff -ruN .cache/node/package.json types/node/package.json
---- .cache/node/package.json	2025-06-06 00:40:33.081189206 +0000
-+++ types/node/package.json	2025-06-06 00:40:31.992195941 +0000
+--- .cache/node/package.json	2025-06-06 01:38:42.107023731 +0000
++++ types/node/package.json	2025-06-06 01:38:41.055009668 +0000
 @@ -1,8 +1,8 @@
  {
 -    "name": "@types/node",
@@ -165,8 +165,8 @@ diff -ruN .cache/node/package.json types/node/package.json
 \ No newline at end of file
 +}
 diff -ruN .cache/node/util.d.ts types/node/util.d.ts
---- .cache/node/util.d.ts	2025-06-06 00:40:33.076189237 +0000
-+++ types/node/util.d.ts	2025-06-06 00:40:31.987195972 +0000
+--- .cache/node/util.d.ts	2025-06-06 01:38:42.103023678 +0000
++++ types/node/util.d.ts	2025-06-06 01:38:41.051009614 +0000
 @@ -1411,7 +1411,7 @@
       * @param content The raw contents of a `.env` file.
       * @since v20.12.0
