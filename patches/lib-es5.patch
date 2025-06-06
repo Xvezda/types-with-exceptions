@@ -1,6 +1,6 @@
 diff -ruN .cache/lib-es5/index.d.ts types/lib-es5/index.d.ts
---- .cache/lib-es5/index.d.ts	2025-06-06 00:24:55.726632871 +0000
-+++ types/lib-es5/index.d.ts	2025-06-06 00:24:55.194634925 +0000
+--- .cache/lib-es5/index.d.ts	2025-06-06 00:40:33.093189132 +0000
++++ types/lib-es5/index.d.ts	2025-06-06 00:40:32.546192515 +0000
 @@ -29,6 +29,7 @@
  /**
   * Evaluates JavaScript code and executes it.
@@ -9,24 +9,773 @@ diff -ruN .cache/lib-es5/index.d.ts types/lib-es5/index.d.ts
   */
  declare function eval(x: string): any;
  
-@@ -1159,6 +1160,14 @@
-      * @param reviver A function that transforms the results. This function is called for each member of the object.
-      * If a member contains nested objects, the nested objects are transformed before the parent object is.
+@@ -62,24 +63,32 @@
+ /**
+  * Gets the unencoded version of an encoded Uniform Resource Identifier (URI).
+  * @param encodedURI A value representing an encoded URI.
++ * @throws {URIError} Thrown when the URI contains invalid escape sequences
++ * @see https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/decodeURI
+  */
+ declare function decodeURI(encodedURI: string): string;
+ 
+ /**
+  * Gets the unencoded version of an encoded component of a Uniform Resource Identifier (URI).
+  * @param encodedURIComponent A value representing an encoded URI component.
++ * @throws {URIError} Thrown when the URI component contains invalid escape sequences
++ * @see https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/decodeURIComponent
+  */
+ declare function decodeURIComponent(encodedURIComponent: string): string;
+ 
+ /**
+  * Encodes a text string as a valid Uniform Resource Identifier (URI)
+  * @param uri A value representing an unencoded URI.
++ * @throws {URIError} Thrown when the URI contains unescapable characters
++ * @see https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/encodeURI
+  */
+ declare function encodeURI(uri: string): string;
+ 
+ /**
+  * Encodes a text string as a valid component of a Uniform Resource Identifier (URI).
+  * @param uriComponent A value representing an unencoded URI component.
++ * @throws {URIError} Thrown when the URI component contains unescapable characters
++ * @see https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/encodeURIComponent
+  */
+ declare function encodeURIComponent(uriComponent: string | number | boolean): string;
+ 
+@@ -191,6 +200,8 @@
+      * Creates an object that has the specified prototype, and that optionally contains specified properties.
+      * @param o Object to use as a prototype. May be null
+      * @param properties JavaScript object that contains one or more property descriptors.
++     * @throws {TypeError} Thrown when properties parameter is not null and not an object, or when property descriptors are invalid
++     * @see https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/create
       */
-+    parse<T extends string>(text: string extends T ? never : T, reviver?: (this: any, key: string, value: any) => any): any;
+     create(o: object | null, properties: PropertyDescriptorMap & ThisType<any>): any;
+ 
+@@ -199,6 +210,8 @@
+      * @param o Object on which to add or modify the property. This can be a native JavaScript object (that is, a user-defined object or a built in object) or a DOM object.
+      * @param p The property name.
+      * @param attributes Descriptor for the property. It can be for a data property or an accessor property.
++     * @throws {TypeError} Thrown when the object is not extensible or property cannot be configured
++     * @see https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/defineProperty
+      */
+     defineProperty<T>(o: T, p: PropertyKey, attributes: PropertyDescriptor & ThisType<any>): T;
+ 
+@@ -206,6 +219,8 @@
+      * Adds one or more properties to an object, and/or modifies attributes of existing properties.
+      * @param o Object on which to add or modify the properties. This can be a native JavaScript object or a DOM object.
+      * @param properties JavaScript object that contains one or more descriptor objects. Each descriptor object describes a data property or an accessor property.
++     * @throws {TypeError} Thrown when the object is not extensible or properties cannot be configured
++     * @see https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/defineProperties
+      */
+     defineProperties<T>(o: T, properties: PropertyDescriptorMap & ThisType<any>): T;
+ 
+@@ -310,8 +325,16 @@
+     /**
+      * Creates a new function.
+      * @param args A list of arguments the function accepts.
++     * @throws {SyntaxError} Thrown when the function body contains invalid JavaScript syntax
++     * @see https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function/Function
+      */
+     new (...args: string[]): Function;
 +    /**
-+     * Converts a JavaScript Object Notation (JSON) string into an object.
-+     * @param text A valid JSON string.
++     * Creates a new function.
++     * @param args A list of arguments the function accepts.
++     * @throws {SyntaxError} Thrown when the function body contains invalid JavaScript syntax
++     * @see https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function/Function
++     */
+     (...args: string[]): Function;
+     readonly prototype: Function;
+ }
+@@ -535,6 +558,12 @@
+     new (value?: any): String;
+     (value?: any): string;
+     readonly prototype: String;
++    /**
++     * Returns a string created from the specified sequence of UTF-16 code units.
++     * @param codes A sequence of numbers that are UTF-16 code units
++     * @throws {RangeError} Thrown when any code unit is outside the valid range (0-65535) or when the resulting string would be invalid
++     * @see https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/fromCharCode
++     */
+     fromCharCode(...codes: number[]): string;
+ }
+ 
+@@ -560,24 +589,32 @@
+     /**
+      * Returns a string representation of an object.
+      * @param radix Specifies a radix for converting numeric values to strings. This value is only used for numbers.
++     * @throws {RangeError} Thrown when radix is not between 2 and 36 (inclusive)
++     * @see https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number/toString
+      */
+     toString(radix?: number): string;
+ 
+     /**
+      * Returns a string representing a number in fixed-point notation.
+      * @param fractionDigits Number of digits after the decimal point. Must be in the range 0 - 20, inclusive.
++     * @throws {RangeError} Thrown when fractionDigits is not between 0 and 20 (inclusive)
++     * @see https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number/toFixed
+      */
+     toFixed(fractionDigits?: number): string;
+ 
+     /**
+      * Returns a string containing a number represented in exponential notation.
+      * @param fractionDigits Number of digits after the decimal point. Must be in the range 0 - 20, inclusive.
++     * @throws {RangeError} Thrown when fractionDigits is not between 0 and 20 (inclusive)
++     * @see https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number/toExponential
+      */
+     toExponential(fractionDigits?: number): string;
+ 
+     /**
+      * Returns a string containing a number represented either in exponential or fixed-point notation with a specified number of digits.
+      * @param precision Number of significant digits. Must be in the range 1 - 21, inclusive.
++     * @throws {RangeError} Thrown when precision is not between 1 and 21 (inclusive)
++     * @see https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number/toPrecision
+      */
+     toPrecision(precision?: number): string;
+ 
+@@ -916,7 +953,11 @@
+     setUTCFullYear(year: number, month?: number, date?: number): number;
+     /** Returns a date converted to a string using Universal Coordinated Time (UTC). */
+     toUTCString(): string;
+-    /** Returns a date as a string value in ISO format. */
++    /** 
++     * Returns a date as a string value in ISO format.
++     * @throws {RangeError} Thrown when the date is invalid (outside the representable range)
++     * @see https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/toISOString
++     */
+     toISOString(): string;
+     /** Used by the JSON.stringify method to enable the transformation of an object's data for JavaScript Object Notation (JSON) serialization. */
+     toJSON(key?: any): string;
+@@ -1023,9 +1064,35 @@
+ }
+ 
+ interface RegExpConstructor {
++    /**
++     * Creates a new RegExp object.
++     * @param pattern The text of the regular expression or another RegExp object
++     * @throws {SyntaxError} Thrown when the pattern contains invalid regular expression syntax
++     * @see https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RegExp/RegExp
++     */
+     new (pattern: RegExp | string): RegExp;
++    /**
++     * Creates a new RegExp object.
++     * @param pattern The text of the regular expression
++     * @param flags Regular expression flags (g, i, m, etc.)
++     * @throws {SyntaxError} Thrown when the pattern contains invalid regular expression syntax or flags are invalid
++     * @see https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RegExp/RegExp
++     */
+     new (pattern: string, flags?: string): RegExp;
++    /**
++     * Creates a new RegExp object.
++     * @param pattern The text of the regular expression or another RegExp object
++     * @throws {SyntaxError} Thrown when the pattern contains invalid regular expression syntax
++     * @see https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RegExp/RegExp
++     */
+     (pattern: RegExp | string): RegExp;
++    /**
++     * Creates a new RegExp object.
++     * @param pattern The text of the regular expression
++     * @param flags Regular expression flags (g, i, m, etc.)
++     * @throws {SyntaxError} Thrown when the pattern contains invalid regular expression syntax or flags are invalid
++     * @see https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RegExp/RegExp
++     */
+     (pattern: string, flags?: string): RegExp;
+     readonly "prototype": RegExp;
+ 
+@@ -1154,10 +1221,20 @@
+ 
+ interface JSON {
+     /**
++     * Converts a JavaScript Object Notation (JSON) string literal into an object.
++     * For string literals, syntax errors are typically caught at development time.
++     * @param text A valid JSON string literal.
 +     * @param reviver A function that transforms the results. This function is called for each member of the object.
 +     * If a member contains nested objects, the nested objects are transformed before the parent object is.
-+     * @throws {SyntaxError} If the input text is not valid JSON.
 +     */
++    parse<T extends string>(text: string extends T ? never : T, reviver?: (this: any, key: string, value: any) => any): any;
++    /**
+      * Converts a JavaScript Object Notation (JSON) string into an object.
+      * @param text A valid JSON string.
+      * @param reviver A function that transforms the results. This function is called for each member of the object.
+      * If a member contains nested objects, the nested objects are transformed before the parent object is.
++     * @throws {SyntaxError} Thrown when the input text is not valid JSON
++     * @see https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/parse
+      */
      parse(text: string, reviver?: (this: any, key: string, value: any) => any): any;
      /**
-      * Converts a JavaScript value to a JavaScript Object Notation (JSON) string.
+@@ -1165,6 +1242,8 @@
+      * @param value A JavaScript value, usually an object or array, to be converted.
+      * @param replacer A function that transforms the results.
+      * @param space Adds indentation, white space, and line break characters to the return-value JSON text to make it easier to read.
++     * @throws {TypeError} Thrown when the value contains circular references or BigInt values
++     * @see https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/stringify
+      */
+     stringify(value: any, replacer?: (this: any, key: string, value: any) => any, space?: string | number): string;
+     /**
+@@ -1172,6 +1251,8 @@
+      * @param value A JavaScript value, usually an object or array, to be converted.
+      * @param replacer An array of strings and numbers that acts as an approved list for selecting the object properties that will be stringified.
+      * @param space Adds indentation, white space, and line break characters to the return-value JSON text to make it easier to read.
++     * @throws {TypeError} Thrown when the value contains circular references or BigInt values
++     * @see https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/stringify
+      */
+     stringify(value: any, replacer?: (number | string)[] | null, space?: string | number): string;
+ }
+@@ -1504,10 +1585,34 @@
+ }
+ 
+ interface ArrayConstructor {
++    /**
++     * Creates a new Array instance with the specified length.
++     * @param arrayLength The length of the array
++     * @throws {RangeError} Thrown when arrayLength is not a valid array length (negative or not an integer)
++     * @see https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/Array
++     */
+     new (arrayLength?: number): any[];
++    /**
++     * Creates a new Array instance with the specified length.
++     * @param arrayLength The length of the array
++     * @throws {RangeError} Thrown when arrayLength is not a valid array length (negative or not an integer)
++     * @see https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/Array
++     */
+     new <T>(arrayLength: number): T[];
+     new <T>(...items: T[]): T[];
++    /**
++     * Creates a new Array instance with the specified length.
++     * @param arrayLength The length of the array
++     * @throws {RangeError} Thrown when arrayLength is not a valid array length (negative or not an integer)
++     * @see https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/Array
++     */
+     (arrayLength?: number): any[];
++    /**
++     * Creates a new Array instance with the specified length.
++     * @param arrayLength The length of the array
++     * @throws {RangeError} Thrown when arrayLength is not a valid array length (negative or not an integer)
++     * @see https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/Array
++     */
+     <T>(arrayLength: number): T[];
+     <T>(...items: T[]): T[];
+     isArray(arg: any): arg is any[];
+@@ -1714,6 +1819,12 @@
+ 
+ interface ArrayBufferConstructor {
+     readonly prototype: ArrayBuffer;
++    /**
++     * Creates a new ArrayBuffer with the specified byte length.
++     * @param byteLength The length in bytes of the buffer
++     * @throws {RangeError} Thrown when byteLength is negative or exceeds the maximum size
++     * @see https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/ArrayBuffer/ArrayBuffer
++     */
+     new (byteLength: number): ArrayBuffer;
+     isView(arg: any): arg is ArrayBufferView;
+ }
+@@ -1745,6 +1856,8 @@
+      * no alignment constraint; multi-byte values may be fetched from any offset.
+      * @param byteOffset The place in the buffer at which the value should be retrieved.
+      * @param littleEndian If false or undefined, a big-endian value should be read.
++     * @throws {RangeError} Thrown when byteOffset is out of bounds
++     * @see https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/DataView/getFloat32
+      */
+     getFloat32(byteOffset: number, littleEndian?: boolean): number;
+ 
+@@ -1753,6 +1866,8 @@
+      * no alignment constraint; multi-byte values may be fetched from any offset.
+      * @param byteOffset The place in the buffer at which the value should be retrieved.
+      * @param littleEndian If false or undefined, a big-endian value should be read.
++     * @throws {RangeError} Thrown when byteOffset is out of bounds
++     * @see https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/DataView/getFloat64
+      */
+     getFloat64(byteOffset: number, littleEndian?: boolean): number;
+ 
+@@ -1760,6 +1875,8 @@
+      * Gets the Int8 value at the specified byte offset from the start of the view. There is
+      * no alignment constraint; multi-byte values may be fetched from any offset.
+      * @param byteOffset The place in the buffer at which the value should be retrieved.
++     * @throws {RangeError} Thrown when byteOffset is out of bounds
++     * @see https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/DataView/getInt8
+      */
+     getInt8(byteOffset: number): number;
+ 
+@@ -1768,6 +1885,8 @@
+      * no alignment constraint; multi-byte values may be fetched from any offset.
+      * @param byteOffset The place in the buffer at which the value should be retrieved.
+      * @param littleEndian If false or undefined, a big-endian value should be read.
++     * @throws {RangeError} Thrown when byteOffset is out of bounds
++     * @see https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/DataView/getInt16
+      */
+     getInt16(byteOffset: number, littleEndian?: boolean): number;
+     /**
+@@ -1775,6 +1894,8 @@
+      * no alignment constraint; multi-byte values may be fetched from any offset.
+      * @param byteOffset The place in the buffer at which the value should be retrieved.
+      * @param littleEndian If false or undefined, a big-endian value should be read.
++     * @throws {RangeError} Thrown when byteOffset is out of bounds
++     * @see https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/DataView/getInt32
+      */
+     getInt32(byteOffset: number, littleEndian?: boolean): number;
+ 
+@@ -1782,6 +1903,8 @@
+      * Gets the Uint8 value at the specified byte offset from the start of the view. There is
+      * no alignment constraint; multi-byte values may be fetched from any offset.
+      * @param byteOffset The place in the buffer at which the value should be retrieved.
++     * @throws {RangeError} Thrown when byteOffset is out of bounds
++     * @see https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/DataView/getUint8
+      */
+     getUint8(byteOffset: number): number;
+ 
+@@ -1790,6 +1913,8 @@
+      * no alignment constraint; multi-byte values may be fetched from any offset.
+      * @param byteOffset The place in the buffer at which the value should be retrieved.
+      * @param littleEndian If false or undefined, a big-endian value should be read.
++     * @throws {RangeError} Thrown when byteOffset is out of bounds
++     * @see https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/DataView/getUint16
+      */
+     getUint16(byteOffset: number, littleEndian?: boolean): number;
+ 
+@@ -1798,6 +1923,8 @@
+      * no alignment constraint; multi-byte values may be fetched from any offset.
+      * @param byteOffset The place in the buffer at which the value should be retrieved.
+      * @param littleEndian If false or undefined, a big-endian value should be read.
++     * @throws {RangeError} Thrown when byteOffset is out of bounds
++     * @see https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/DataView/getUint32
+      */
+     getUint32(byteOffset: number, littleEndian?: boolean): number;
+ 
+@@ -1806,6 +1933,8 @@
+      * @param byteOffset The place in the buffer at which the value should be set.
+      * @param value The value to set.
+      * @param littleEndian If false or undefined, a big-endian value should be written.
++     * @throws {RangeError} Thrown when byteOffset is out of bounds
++     * @see https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/DataView/setFloat32
+      */
+     setFloat32(byteOffset: number, value: number, littleEndian?: boolean): void;
+ 
+@@ -1814,6 +1943,8 @@
+      * @param byteOffset The place in the buffer at which the value should be set.
+      * @param value The value to set.
+      * @param littleEndian If false or undefined, a big-endian value should be written.
++     * @throws {RangeError} Thrown when byteOffset is out of bounds
++     * @see https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/DataView/setFloat64
+      */
+     setFloat64(byteOffset: number, value: number, littleEndian?: boolean): void;
+ 
+@@ -1821,6 +1952,8 @@
+      * Stores an Int8 value at the specified byte offset from the start of the view.
+      * @param byteOffset The place in the buffer at which the value should be set.
+      * @param value The value to set.
++     * @throws {RangeError} Thrown when byteOffset is out of bounds
++     * @see https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/DataView/setInt8
+      */
+     setInt8(byteOffset: number, value: number): void;
+ 
+@@ -1829,6 +1962,8 @@
+      * @param byteOffset The place in the buffer at which the value should be set.
+      * @param value The value to set.
+      * @param littleEndian If false or undefined, a big-endian value should be written.
++     * @throws {RangeError} Thrown when byteOffset is out of bounds
++     * @see https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/DataView/setInt16
+      */
+     setInt16(byteOffset: number, value: number, littleEndian?: boolean): void;
+ 
+@@ -1837,6 +1972,8 @@
+      * @param byteOffset The place in the buffer at which the value should be set.
+      * @param value The value to set.
+      * @param littleEndian If false or undefined, a big-endian value should be written.
++     * @throws {RangeError} Thrown when byteOffset is out of bounds
++     * @see https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/DataView/setInt32
+      */
+     setInt32(byteOffset: number, value: number, littleEndian?: boolean): void;
+ 
+@@ -1844,6 +1981,8 @@
+      * Stores an Uint8 value at the specified byte offset from the start of the view.
+      * @param byteOffset The place in the buffer at which the value should be set.
+      * @param value The value to set.
++     * @throws {RangeError} Thrown when byteOffset is out of bounds
++     * @see https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/DataView/setUint8
+      */
+     setUint8(byteOffset: number, value: number): void;
+ 
+@@ -1852,6 +1991,8 @@
+      * @param byteOffset The place in the buffer at which the value should be set.
+      * @param value The value to set.
+      * @param littleEndian If false or undefined, a big-endian value should be written.
++     * @throws {RangeError} Thrown when byteOffset is out of bounds
++     * @see https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/DataView/setUint16
+      */
+     setUint16(byteOffset: number, value: number, littleEndian?: boolean): void;
+ 
+@@ -1860,11 +2001,21 @@
+      * @param byteOffset The place in the buffer at which the value should be set.
+      * @param value The value to set.
+      * @param littleEndian If false or undefined, a big-endian value should be written.
++     * @throws {RangeError} Thrown when byteOffset is out of bounds
++     * @see https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/DataView/setUint32
+      */
+     setUint32(byteOffset: number, value: number, littleEndian?: boolean): void;
+ }
+ interface DataViewConstructor {
+     readonly prototype: DataView<ArrayBufferLike>;
++    /**
++     * Creates a new DataView for the specified ArrayBuffer.
++     * @param buffer The ArrayBuffer to view
++     * @param byteOffset The byte offset to start the view at
++     * @param byteLength The number of bytes in the view
++     * @throws {RangeError} Thrown when byteOffset or byteLength are out of bounds
++     * @see https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/DataView/DataView
++     */
+     new <TArrayBuffer extends ArrayBufferLike & { BYTES_PER_ELEMENT?: never; }>(buffer: TArrayBuffer, byteOffset?: number, byteLength?: number): DataView<TArrayBuffer>;
+ }
+ declare var DataView: DataViewConstructor;
+@@ -2118,9 +2269,31 @@
+ }
+ interface Int8ArrayConstructor {
+     readonly prototype: Int8Array<ArrayBufferLike>;
++    /**
++     * Creates a new Int8Array with the specified length.
++     * @param length The length of the array
++     * @throws {RangeError} Thrown when length is negative or too large
++     * @see https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Int8Array/Int8Array
++     */
+     new (length: number): Int8Array<ArrayBuffer>;
+     new (array: ArrayLike<number>): Int8Array<ArrayBuffer>;
++    /**
++     * Creates a new Int8Array view of an ArrayBuffer.
++     * @param buffer The ArrayBuffer to view
++     * @param byteOffset The byte offset to start the view at
++     * @param length The number of elements in the view
++     * @throws {RangeError} Thrown when byteOffset or length are out of bounds
++     * @see https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Int8Array/Int8Array
++     */
+     new <TArrayBuffer extends ArrayBufferLike = ArrayBuffer>(buffer: TArrayBuffer, byteOffset?: number, length?: number): Int8Array<TArrayBuffer>;
++    /**
++     * Creates a new Int8Array view of an ArrayBuffer.
++     * @param buffer The ArrayBuffer to view
++     * @param byteOffset The byte offset to start the view at
++     * @param length The number of elements in the view
++     * @throws {RangeError} Thrown when byteOffset or length are out of bounds
++     * @see https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Int8Array/Int8Array
++     */
+     new (buffer: ArrayBuffer, byteOffset?: number, length?: number): Int8Array<ArrayBuffer>;
+     new (array: ArrayLike<number> | ArrayBuffer): Int8Array<ArrayBuffer>;
+ 
+@@ -2400,9 +2573,31 @@
+ }
+ interface Uint8ArrayConstructor {
+     readonly prototype: Uint8Array<ArrayBufferLike>;
++    /**
++     * Creates a new Uint8Array with the specified length.
++     * @param length The length of the array
++     * @throws {RangeError} Thrown when length is negative or too large
++     * @see https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Uint8Array/Uint8Array
++     */
+     new (length: number): Uint8Array<ArrayBuffer>;
+     new (array: ArrayLike<number>): Uint8Array<ArrayBuffer>;
++    /**
++     * Creates a new Uint8Array view of an ArrayBuffer.
++     * @param buffer The ArrayBuffer to view
++     * @param byteOffset The byte offset to start the view at
++     * @param length The number of elements in the view
++     * @throws {RangeError} Thrown when byteOffset or length are out of bounds
++     * @see https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Uint8Array/Uint8Array
++     */
+     new <TArrayBuffer extends ArrayBufferLike = ArrayBuffer>(buffer: TArrayBuffer, byteOffset?: number, length?: number): Uint8Array<TArrayBuffer>;
++    /**
++     * Creates a new Uint8Array view of an ArrayBuffer.
++     * @param buffer The ArrayBuffer to view
++     * @param byteOffset The byte offset to start the view at
++     * @param length The number of elements in the view
++     * @throws {RangeError} Thrown when byteOffset or length are out of bounds
++     * @see https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Uint8Array/Uint8Array
++     */
+     new (buffer: ArrayBuffer, byteOffset?: number, length?: number): Uint8Array<ArrayBuffer>;
+     new (array: ArrayLike<number> | ArrayBuffer): Uint8Array<ArrayBuffer>;
+ 
+@@ -2682,9 +2877,31 @@
+ }
+ interface Uint8ClampedArrayConstructor {
+     readonly prototype: Uint8ClampedArray<ArrayBufferLike>;
++    /**
++     * Creates a new Uint8ClampedArray with the specified length.
++     * @param length The length of the array
++     * @throws {RangeError} Thrown when length is negative or too large
++     * @see https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Uint8ClampedArray/Uint8ClampedArray
++     */
+     new (length: number): Uint8ClampedArray<ArrayBuffer>;
+     new (array: ArrayLike<number>): Uint8ClampedArray<ArrayBuffer>;
++    /**
++     * Creates a new Uint8ClampedArray view of an ArrayBuffer.
++     * @param buffer The ArrayBuffer to view
++     * @param byteOffset The byte offset to start the view at
++     * @param length The number of elements in the view
++     * @throws {RangeError} Thrown when byteOffset or length are out of bounds
++     * @see https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Uint8ClampedArray/Uint8ClampedArray
++     */
+     new <TArrayBuffer extends ArrayBufferLike = ArrayBuffer>(buffer: TArrayBuffer, byteOffset?: number, length?: number): Uint8ClampedArray<TArrayBuffer>;
++    /**
++     * Creates a new Uint8ClampedArray view of an ArrayBuffer.
++     * @param buffer The ArrayBuffer to view
++     * @param byteOffset The byte offset to start the view at
++     * @param length The number of elements in the view
++     * @throws {RangeError} Thrown when byteOffset or length are out of bounds
++     * @see https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Uint8ClampedArray/Uint8ClampedArray
++     */
+     new (buffer: ArrayBuffer, byteOffset?: number, length?: number): Uint8ClampedArray<ArrayBuffer>;
+     new (array: ArrayLike<number> | ArrayBuffer): Uint8ClampedArray<ArrayBuffer>;
+ 
+@@ -2963,9 +3180,31 @@
+ }
+ interface Int16ArrayConstructor {
+     readonly prototype: Int16Array<ArrayBufferLike>;
++    /**
++     * Creates a new Int16Array with the specified length.
++     * @param length The length of the array
++     * @throws {RangeError} Thrown when length is negative or too large
++     * @see https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Int16Array/Int16Array
++     */
+     new (length: number): Int16Array<ArrayBuffer>;
+     new (array: ArrayLike<number>): Int16Array<ArrayBuffer>;
++    /**
++     * Creates a new Int16Array view of an ArrayBuffer.
++     * @param buffer The ArrayBuffer to view
++     * @param byteOffset The byte offset to start the view at
++     * @param length The number of elements in the view
++     * @throws {RangeError} Thrown when byteOffset or length are out of bounds
++     * @see https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Int16Array/Int16Array
++     */
+     new <TArrayBuffer extends ArrayBufferLike = ArrayBuffer>(buffer: TArrayBuffer, byteOffset?: number, length?: number): Int16Array<TArrayBuffer>;
++    /**
++     * Creates a new Int16Array view of an ArrayBuffer.
++     * @param buffer The ArrayBuffer to view
++     * @param byteOffset The byte offset to start the view at
++     * @param length The number of elements in the view
++     * @throws {RangeError} Thrown when byteOffset or length are out of bounds
++     * @see https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Int16Array/Int16Array
++     */
+     new (buffer: ArrayBuffer, byteOffset?: number, length?: number): Int16Array<ArrayBuffer>;
+     new (array: ArrayLike<number> | ArrayBuffer): Int16Array<ArrayBuffer>;
+ 
+@@ -3245,9 +3484,31 @@
+ }
+ interface Uint16ArrayConstructor {
+     readonly prototype: Uint16Array<ArrayBufferLike>;
++    /**
++     * Creates a new Uint16Array with the specified length.
++     * @param length The length of the array
++     * @throws {RangeError} Thrown when length is negative or too large
++     * @see https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Uint16Array/Uint16Array
++     */
+     new (length: number): Uint16Array<ArrayBuffer>;
+     new (array: ArrayLike<number>): Uint16Array<ArrayBuffer>;
++    /**
++     * Creates a new Uint16Array view of an ArrayBuffer.
++     * @param buffer The ArrayBuffer to view
++     * @param byteOffset The byte offset to start the view at
++     * @param length The number of elements in the view
++     * @throws {RangeError} Thrown when byteOffset or length are out of bounds
++     * @see https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Uint16Array/Uint16Array
++     */
+     new <TArrayBuffer extends ArrayBufferLike = ArrayBuffer>(buffer: TArrayBuffer, byteOffset?: number, length?: number): Uint16Array<TArrayBuffer>;
++    /**
++     * Creates a new Uint16Array view of an ArrayBuffer.
++     * @param buffer The ArrayBuffer to view
++     * @param byteOffset The byte offset to start the view at
++     * @param length The number of elements in the view
++     * @throws {RangeError} Thrown when byteOffset or length are out of bounds
++     * @see https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Uint16Array/Uint16Array
++     */
+     new (buffer: ArrayBuffer, byteOffset?: number, length?: number): Uint16Array<ArrayBuffer>;
+     new (array: ArrayLike<number> | ArrayBuffer): Uint16Array<ArrayBuffer>;
+ 
+@@ -3526,9 +3787,31 @@
+ }
+ interface Int32ArrayConstructor {
+     readonly prototype: Int32Array<ArrayBufferLike>;
++    /**
++     * Creates a new Int32Array with the specified length.
++     * @param length The length of the array
++     * @throws {RangeError} Thrown when length is negative or too large
++     * @see https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Int32Array/Int32Array
++     */
+     new (length: number): Int32Array<ArrayBuffer>;
+     new (array: ArrayLike<number>): Int32Array<ArrayBuffer>;
++    /**
++     * Creates a new Int32Array view of an ArrayBuffer.
++     * @param buffer The ArrayBuffer to view
++     * @param byteOffset The byte offset to start the view at
++     * @param length The number of elements in the view
++     * @throws {RangeError} Thrown when byteOffset or length are out of bounds
++     * @see https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Int32Array/Int32Array
++     */
+     new <TArrayBuffer extends ArrayBufferLike = ArrayBuffer>(buffer: TArrayBuffer, byteOffset?: number, length?: number): Int32Array<TArrayBuffer>;
++    /**
++     * Creates a new Int32Array view of an ArrayBuffer.
++     * @param buffer The ArrayBuffer to view
++     * @param byteOffset The byte offset to start the view at
++     * @param length The number of elements in the view
++     * @throws {RangeError} Thrown when byteOffset or length are out of bounds
++     * @see https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Int32Array/Int32Array
++     */
+     new (buffer: ArrayBuffer, byteOffset?: number, length?: number): Int32Array<ArrayBuffer>;
+     new (array: ArrayLike<number> | ArrayBuffer): Int32Array<ArrayBuffer>;
+ 
+@@ -3807,9 +4090,31 @@
+ }
+ interface Uint32ArrayConstructor {
+     readonly prototype: Uint32Array<ArrayBufferLike>;
++    /**
++     * Creates a new Uint32Array with the specified length.
++     * @param length The length of the array
++     * @throws {RangeError} Thrown when length is negative or too large
++     * @see https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Uint32Array/Uint32Array
++     */
+     new (length: number): Uint32Array<ArrayBuffer>;
+     new (array: ArrayLike<number>): Uint32Array<ArrayBuffer>;
++    /**
++     * Creates a new Uint32Array view of an ArrayBuffer.
++     * @param buffer The ArrayBuffer to view
++     * @param byteOffset The byte offset to start the view at
++     * @param length The number of elements in the view
++     * @throws {RangeError} Thrown when byteOffset or length are out of bounds
++     * @see https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Uint32Array/Uint32Array
++     */
+     new <TArrayBuffer extends ArrayBufferLike = ArrayBuffer>(buffer: TArrayBuffer, byteOffset?: number, length?: number): Uint32Array<TArrayBuffer>;
++    /**
++     * Creates a new Uint32Array view of an ArrayBuffer.
++     * @param buffer The ArrayBuffer to view
++     * @param byteOffset The byte offset to start the view at
++     * @param length The number of elements in the view
++     * @throws {RangeError} Thrown when byteOffset or length are out of bounds
++     * @see https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Uint32Array/Uint32Array
++     */
+     new (buffer: ArrayBuffer, byteOffset?: number, length?: number): Uint32Array<ArrayBuffer>;
+     new (array: ArrayLike<number> | ArrayBuffer): Uint32Array<ArrayBuffer>;
+ 
+@@ -4089,9 +4394,31 @@
+ }
+ interface Float32ArrayConstructor {
+     readonly prototype: Float32Array<ArrayBufferLike>;
++    /**
++     * Creates a new Float32Array with the specified length.
++     * @param length The length of the array
++     * @throws {RangeError} Thrown when length is negative or too large
++     * @see https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Float32Array/Float32Array
++     */
+     new (length: number): Float32Array<ArrayBuffer>;
+     new (array: ArrayLike<number>): Float32Array<ArrayBuffer>;
++    /**
++     * Creates a new Float32Array view of an ArrayBuffer.
++     * @param buffer The ArrayBuffer to view
++     * @param byteOffset The byte offset to start the view at
++     * @param length The number of elements in the view
++     * @throws {RangeError} Thrown when byteOffset or length are out of bounds
++     * @see https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Float32Array/Float32Array
++     */
+     new <TArrayBuffer extends ArrayBufferLike = ArrayBuffer>(buffer: TArrayBuffer, byteOffset?: number, length?: number): Float32Array<TArrayBuffer>;
++    /**
++     * Creates a new Float32Array view of an ArrayBuffer.
++     * @param buffer The ArrayBuffer to view
++     * @param byteOffset The byte offset to start the view at
++     * @param length The number of elements in the view
++     * @throws {RangeError} Thrown when byteOffset or length are out of bounds
++     * @see https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Float32Array/Float32Array
++     */
+     new (buffer: ArrayBuffer, byteOffset?: number, length?: number): Float32Array<ArrayBuffer>;
+     new (array: ArrayLike<number> | ArrayBuffer): Float32Array<ArrayBuffer>;
+ 
+@@ -4371,9 +4698,31 @@
+ }
+ interface Float64ArrayConstructor {
+     readonly prototype: Float64Array<ArrayBufferLike>;
++    /**
++     * Creates a new Float64Array with the specified length.
++     * @param length The length of the array
++     * @throws {RangeError} Thrown when length is negative or too large
++     * @see https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Float64Array/Float64Array
++     */
+     new (length: number): Float64Array<ArrayBuffer>;
+     new (array: ArrayLike<number>): Float64Array<ArrayBuffer>;
++    /**
++     * Creates a new Float64Array view of an ArrayBuffer.
++     * @param buffer The ArrayBuffer to view
++     * @param byteOffset The byte offset to start the view at
++     * @param length The number of elements in the view
++     * @throws {RangeError} Thrown when byteOffset or length are out of bounds
++     * @see https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Float64Array/Float64Array
++     */
+     new <TArrayBuffer extends ArrayBufferLike = ArrayBuffer>(buffer: TArrayBuffer, byteOffset?: number, length?: number): Float64Array<TArrayBuffer>;
++    /**
++     * Creates a new Float64Array view of an ArrayBuffer.
++     * @param buffer The ArrayBuffer to view
++     * @param byteOffset The byte offset to start the view at
++     * @param length The number of elements in the view
++     * @throws {RangeError} Thrown when byteOffset or length are out of bounds
++     * @see https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Float64Array/Float64Array
++     */
+     new (buffer: ArrayBuffer, byteOffset?: number, length?: number): Float64Array<ArrayBuffer>;
+     new (array: ArrayLike<number> | ArrayBuffer): Float64Array<ArrayBuffer>;
+ 
+@@ -4435,7 +4784,21 @@
+     }
+ 
+     interface CollatorConstructor {
++        /**
++         * Creates a new Collator object.
++         * @param locales A locale string or array of locale strings
++         * @param options An object with collation options
++         * @throws {RangeError} Thrown when the locales or options contain invalid values
++         * @see https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/Collator/Collator
++         */
+         new (locales?: string | string[], options?: CollatorOptions): Collator;
++        /**
++         * Creates a new Collator object.
++         * @param locales A locale string or array of locale strings
++         * @param options An object with collation options
++         * @throws {RangeError} Thrown when the locales or options contain invalid values
++         * @see https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/Collator/Collator
++         */
+         (locales?: string | string[], options?: CollatorOptions): Collator;
+         supportedLocalesOf(locales: string | string[], options?: CollatorOptions): string[];
+     }
+@@ -4496,7 +4859,21 @@
+     }
+ 
+     interface NumberFormatConstructor {
++        /**
++         * Creates a new NumberFormat object.
++         * @param locales A locale string or array of locale strings
++         * @param options An object with number formatting options
++         * @throws {RangeError} Thrown when the locales or options contain invalid values
++         * @see https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/NumberFormat/NumberFormat
++         */
+         new (locales?: string | string[], options?: NumberFormatOptions): NumberFormat;
++        /**
++         * Creates a new NumberFormat object.
++         * @param locales A locale string or array of locale strings
++         * @param options An object with number formatting options
++         * @throws {RangeError} Thrown when the locales or options contain invalid values
++         * @see https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/NumberFormat/NumberFormat
++         */
+         (locales?: string | string[], options?: NumberFormatOptions): NumberFormat;
+         supportedLocalesOf(locales: string | string[], options?: NumberFormatOptions): string[];
+         readonly prototype: NumberFormat;
+@@ -4543,7 +4920,15 @@
+     }
+ 
+     interface DateTimeFormatConstructor {
++        /**
++         * @throws {RangeError} Thrown when the locales or options arguments are not valid.
++         * @see https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/DateTimeFormat/DateTimeFormat
++         */
+         new (locales?: string | string[], options?: DateTimeFormatOptions): DateTimeFormat;
++        /**
++         * @throws {RangeError} Thrown when the locales or options arguments are not valid.
++         * @see https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/DateTimeFormat/DateTimeFormat
++         */
+         (locales?: string | string[], options?: DateTimeFormatOptions): DateTimeFormat;
+         supportedLocalesOf(locales: string | string[], options?: DateTimeFormatOptions): string[];
+         readonly prototype: DateTimeFormat;
 diff -ruN .cache/lib-es5/package.json types/lib-es5/package.json
---- .cache/lib-es5/package.json	2025-06-06 00:24:55.732632848 +0000
-+++ types/lib-es5/package.json	2025-06-06 00:24:55.194634925 +0000
+--- .cache/lib-es5/package.json	2025-06-06 00:40:33.099189095 +0000
++++ types/lib-es5/package.json	2025-06-06 00:40:32.546192515 +0000
 @@ -1,7 +1,7 @@
  {
 -    "name": "typescript",
