@@ -1,6 +1,6 @@
 diff -ruN .cache/node/fs.d.ts types/node/fs.d.ts
---- .cache/node/fs.d.ts	2025-06-07 02:40:14.422074969 +0000
-+++ types/node/fs.d.ts	2025-06-07 02:40:13.213079059 +0000
+--- .cache/node/fs.d.ts	2025-06-07 06:07:06.697911263 +0000
++++ types/node/fs.d.ts	2025-06-07 06:07:05.610896902 +0000
 @@ -558,6 +558,7 @@
       *
       * See the POSIX [`rename(2)`](http://man7.org/linux/man-pages/man2/rename.2.html) documentation for more details.
@@ -428,8 +428,8 @@ diff -ruN .cache/node/fs.d.ts types/node/fs.d.ts
      export function globSync(pattern: string | string[]): string[];
      export function globSync(
 diff -ruN .cache/node/globals.d.ts types/node/globals.d.ts
---- .cache/node/globals.d.ts	2025-06-07 02:40:14.419074979 +0000
-+++ types/node/globals.d.ts	2025-06-07 02:40:13.211079065 +0000
+--- .cache/node/globals.d.ts	2025-06-07 06:07:06.695911237 +0000
++++ types/node/globals.d.ts	2025-06-07 06:07:05.608896875 +0000
 @@ -313,6 +313,16 @@
      // #region fetch
      interface RequestInit extends _RequestInit {}
@@ -448,8 +448,8 @@ diff -ruN .cache/node/globals.d.ts types/node/globals.d.ts
          input: string | URL | globalThis.Request,
          init?: RequestInit,
 diff -ruN .cache/node/http2.d.ts types/node/http2.d.ts
---- .cache/node/http2.d.ts	2025-06-07 02:40:14.423074966 +0000
-+++ types/node/http2.d.ts	2025-06-07 02:40:13.215079052 +0000
+--- .cache/node/http2.d.ts	2025-06-07 06:07:06.699911289 +0000
++++ types/node/http2.d.ts	2025-06-07 06:07:05.612896928 +0000
 @@ -1223,66 +1223,14 @@
      }
      // Http2Server
@@ -547,8 +547,8 @@ diff -ruN .cache/node/http2.d.ts types/node/http2.d.ts
      }
      export interface ServerSessionOptions<
 diff -ruN .cache/node/package.json types/node/package.json
---- .cache/node/package.json	2025-06-07 02:40:14.442074901 +0000
-+++ types/node/package.json	2025-06-07 02:40:13.233078991 +0000
+--- .cache/node/package.json	2025-06-07 06:07:06.716911514 +0000
++++ types/node/package.json	2025-06-07 06:07:05.629897153 +0000
 @@ -1,8 +1,8 @@
  {
 -    "name": "@types/node",
@@ -594,8 +594,8 @@ diff -ruN .cache/node/package.json types/node/package.json
 \ No newline at end of file
 +}
 diff -ruN .cache/node/util.d.ts types/node/util.d.ts
---- .cache/node/util.d.ts	2025-06-07 02:40:14.437074918 +0000
-+++ types/node/util.d.ts	2025-06-07 02:40:13.228079008 +0000
+--- .cache/node/util.d.ts	2025-06-07 06:07:06.712911461 +0000
++++ types/node/util.d.ts	2025-06-07 06:07:05.624897087 +0000
 @@ -1411,7 +1411,7 @@
       * @param content The raw contents of a `.env` file.
       * @since v20.12.0
