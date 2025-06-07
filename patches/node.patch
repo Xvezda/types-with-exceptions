@@ -1,6 +1,435 @@
+diff -ruN .cache/node/fs.d.ts types/node/fs.d.ts
+--- .cache/node/fs.d.ts	2025-06-07 02:40:14.422074969 +0000
++++ types/node/fs.d.ts	2025-06-07 02:40:13.213079059 +0000
+@@ -558,6 +558,7 @@
+      *
+      * See the POSIX [`rename(2)`](http://man7.org/linux/man-pages/man2/rename.2.html) documentation for more details.
+      * @since v0.1.21
++     * @throws {NodeJS.ErrnoException} When file operations fail (e.g., source not found, permission denied, cross-device link)
+      */
+     export function renameSync(oldPath: PathLike, newPath: PathLike): void;
+     /**
+@@ -603,6 +604,7 @@
+      * in the future.
+      * @since v0.8.6
+      * @param [len=0]
++     * @throws {NodeJS.ErrnoException} When file operations fail (e.g., file not found, permission denied, invalid path)
+      */
+     export function truncateSync(path: PathLike, len?: number): void;
+     /**
+@@ -669,6 +671,7 @@
+      * this API: {@link ftruncate}.
+      * @since v0.8.6
+      * @param [len=0]
++     * @throws {NodeJS.ErrnoException} When file descriptor operations fail (e.g., invalid file descriptor, I/O error)
+      */
+     export function ftruncateSync(fd: number, len?: number): void;
+     /**
+@@ -692,6 +695,7 @@
+      *
+      * See the POSIX [`chown(2)`](http://man7.org/linux/man-pages/man2/chown.2.html) documentation for more detail.
+      * @since v0.1.97
++     * @throws {NodeJS.ErrnoException} When file operations fail (e.g., file not found, permission denied, invalid user/group)
+      */
+     export function chownSync(path: PathLike, uid: number, gid: number): void;
+     /**
+@@ -716,6 +720,7 @@
+      * @since v0.4.7
+      * @param uid The file's new owner's user id.
+      * @param gid The file's new group's group id.
++     * @throws {NodeJS.ErrnoException} When file descriptor operations fail (e.g., invalid file descriptor, permission denied, invalid user/group)
+      */
+     export function fchownSync(fd: number, uid: number, gid: number): void;
+     /**
+@@ -738,6 +743,7 @@
+      * See the POSIX [`lchown(2)`](http://man7.org/linux/man-pages/man2/lchown.2.html) documentation for more details.
+      * @param uid The file's new owner's user id.
+      * @param gid The file's new group's group id.
++     * @throws {NodeJS.ErrnoException} When file operations fail (e.g., file not found, permission denied, invalid user/group)
+      */
+     export function lchownSync(path: PathLike, uid: number, gid: number): void;
+     /**
+@@ -766,6 +772,7 @@
+      * Returns `undefined`, or throws an exception when parameters are incorrect or
+      * the operation fails. This is the synchronous version of {@link lutimes}.
+      * @since v14.5.0, v12.19.0
++     * @throws {NodeJS.ErrnoException} When file operations fail (e.g., file not found, permission denied, invalid timestamps)
+      */
+     export function lutimesSync(path: PathLike, atime: TimeLike, mtime: TimeLike): void;
+     /**
+@@ -799,6 +806,7 @@
+      *
+      * See the POSIX [`chmod(2)`](http://man7.org/linux/man-pages/man2/chmod.2.html) documentation for more detail.
+      * @since v0.6.7
++     * @throws {NodeJS.ErrnoException} When file operations fail (e.g., file not found, permission denied, invalid mode)
+      */
+     export function chmodSync(path: PathLike, mode: Mode): void;
+     /**
+@@ -822,6 +830,7 @@
+      *
+      * See the POSIX [`fchmod(2)`](http://man7.org/linux/man-pages/man2/fchmod.2.html) documentation for more detail.
+      * @since v0.4.7
++     * @throws {NodeJS.ErrnoException} When file descriptor operations fail (e.g., invalid file descriptor, permission denied, invalid mode)
+      */
+     export function fchmodSync(fd: number, mode: Mode): void;
+     /**
+@@ -850,6 +859,7 @@
+      *
+      * See the POSIX [`lchmod(2)`](https://www.freebsd.org/cgi/man.cgi?query=lchmod&sektion=2) documentation for more detail.
+      * @deprecated Since v0.4.7
++     * @throws {NodeJS.ErrnoException} When file operations fail (e.g., file not found, permission denied, invalid mode)
+      */
+     export function lchmodSync(path: PathLike, mode: Mode): void;
+     /**
+@@ -1018,6 +1028,7 @@
+     /**
+      * Synchronous stat(2) - Get file status.
+      * @param path A path to a file. If a URL is provided, it must use the `file:` protocol.
++     * @throws {NodeJS.ErrnoException} When file operations fail (e.g., file not found, permission denied, invalid path)
+      */
+     export const statSync: StatSyncFn;
+     /**
+@@ -1072,6 +1083,7 @@
+      *
+      * See the POSIX [`fstat(2)`](http://man7.org/linux/man-pages/man2/fstat.2.html) documentation for more detail.
+      * @since v0.1.95
++     * @throws {NodeJS.ErrnoException} When file descriptor operations fail (e.g., invalid file descriptor, I/O error)
+      */
+     export function fstatSync(
+         fd: number,
+@@ -1191,6 +1203,7 @@
+      * In case of an error, the `err.code` will be one of `Common System Errors`.
+      * @since v19.6.0, v18.15.0
+      * @param path A path to an existing file or directory on the file system to be queried.
++     * @throws {NodeJS.ErrnoException} When file system operations fail (e.g., path not found, permission denied, invalid file system)
+      */
+     export function statfsSync(
+         path: PathLike,
+@@ -1208,6 +1221,7 @@
+     /**
+      * Synchronous lstat(2) - Get file status. Does not dereference symbolic links.
+      * @param path A path to a file. If a URL is provided, it must use the `file:` protocol.
++     * @throws {NodeJS.ErrnoException} When file operations fail (e.g., file not found, permission denied, invalid path)
+      */
+     export const lstatSync: StatSyncFn;
+     /**
+@@ -1228,6 +1242,7 @@
+     /**
+      * Creates a new link from the `existingPath` to the `newPath`. See the POSIX [`link(2)`](http://man7.org/linux/man-pages/man2/link.2.html) documentation for more detail. Returns `undefined`.
+      * @since v0.1.31
++     * @throws {NodeJS.ErrnoException} When link operations fail (e.g., source not found, permission denied, cross-device link)
+      */
+     export function linkSync(existingPath: PathLike, newPath: PathLike): void;
+     /**
+@@ -1293,6 +1308,7 @@
+      * this API: {@link symlink}.
+      * @since v0.1.31
+      * @param [type='null']
++     * @throws {NodeJS.ErrnoException} When symlink operations fail (e.g., permission denied, target not found, path already exists)
+      */
+     export function symlinkSync(target: PathLike, path: PathLike, type?: symlink.Type | null): void;
+     /**
+@@ -1370,18 +1386,21 @@
+      * the link path returned. If the `encoding` is set to `'buffer'`,
+      * the link path returned will be passed as a `Buffer` object.
+      * @since v0.1.31
++     * @throws {NodeJS.ErrnoException} When file operations fail (e.g., file not found, permission denied, not a symbolic link)
+      */
+     export function readlinkSync(path: PathLike, options?: EncodingOption): string;
+     /**
+      * Synchronous readlink(2) - read value of a symbolic link.
+      * @param path A path to a file. If a URL is provided, it must use the `file:` protocol.
+      * @param options The encoding (or an object specifying the encoding), used as the encoding of the result. If not provided, `'utf8'` is used.
++     * @throws {NodeJS.ErrnoException} When file operations fail (e.g., file not found, permission denied, not a symbolic link)
+      */
+     export function readlinkSync(path: PathLike, options: BufferEncodingOption): Buffer;
+     /**
+      * Synchronous readlink(2) - read value of a symbolic link.
+      * @param path A path to a file. If a URL is provided, it must use the `file:` protocol.
+      * @param options The encoding (or an object specifying the encoding), used as the encoding of the result. If not provided, `'utf8'` is used.
++     * @throws {NodeJS.ErrnoException} When file operations fail (e.g., file not found, permission denied, not a symbolic link)
+      */
+     export function readlinkSync(path: PathLike, options?: EncodingOption): string | Buffer;
+     /**
+@@ -1505,18 +1524,21 @@
+      * For detailed information, see the documentation of the asynchronous version of
+      * this API: {@link realpath}.
+      * @since v0.1.31
++     * @throws {NodeJS.ErrnoException} When file operations fail (e.g., file not found, permission denied, invalid path)
+      */
+     export function realpathSync(path: PathLike, options?: EncodingOption): string;
+     /**
+      * Synchronous realpath(3) - return the canonicalized absolute pathname.
+      * @param path A path to a file. If a URL is provided, it must use the `file:` protocol.
+      * @param options The encoding (or an object specifying the encoding), used as the encoding of the result. If not provided, `'utf8'` is used.
++     * @throws {NodeJS.ErrnoException} When file operations fail (e.g., file not found, permission denied, invalid path)
+      */
+     export function realpathSync(path: PathLike, options: BufferEncodingOption): Buffer;
+     /**
+      * Synchronous realpath(3) - return the canonicalized absolute pathname.
+      * @param path A path to a file. If a URL is provided, it must use the `file:` protocol.
+      * @param options The encoding (or an object specifying the encoding), used as the encoding of the result. If not provided, `'utf8'` is used.
++     * @throws {NodeJS.ErrnoException} When file operations fail (e.g., file not found, permission denied, invalid path)
+      */
+     export function realpathSync(path: PathLike, options?: EncodingOption): string | Buffer;
+     export namespace realpathSync {
+@@ -1554,6 +1576,7 @@
+     /**
+      * Synchronous [`unlink(2)`](http://man7.org/linux/man-pages/man2/unlink.2.html). Returns `undefined`.
+      * @since v0.1.21
++     * @throws {NodeJS.ErrnoException} When file operations fail (e.g., file not found, permission denied, file in use)
+      */
+     export function unlinkSync(path: PathLike): void;
+     export interface RmDirOptions {
+@@ -1610,6 +1633,7 @@
+      *
+      * To get a behavior similar to the `rm -rf` Unix command, use {@link rmSync} with options `{ recursive: true, force: true }`.
+      * @since v0.1.21
++     * @throws {NodeJS.ErrnoException} When directory operations fail (e.g., directory not found, permission denied, directory not empty)
+      */
+     export function rmdirSync(path: PathLike, options?: RmDirOptions): void;
+     export interface RmOptions {
+@@ -1656,6 +1680,7 @@
+     /**
+      * Synchronously removes files and directories (modeled on the standard POSIX `rm` utility). Returns `undefined`.
+      * @since v14.14.0
++     * @throws {NodeJS.ErrnoException} When file/directory operations fail (e.g., path not found, permission denied, path in use)
+      */
+     export function rmSync(path: PathLike, options?: RmOptions): void;
+     export interface MakeDirectoryOptions {
+@@ -1792,6 +1817,7 @@
+      *
+      * See the POSIX [`mkdir(2)`](http://man7.org/linux/man-pages/man2/mkdir.2.html) documentation for more details.
+      * @since v0.1.21
++     * @throws {NodeJS.ErrnoException} When directory operations fail (e.g., permission denied, path already exists, invalid path)
+      */
+     export function mkdirSync(
+         path: PathLike,
+@@ -1804,6 +1830,7 @@
+      * @param path A path to a file. If a URL is provided, it must use the `file:` protocol.
+      * @param options Either the file mode, or an object optionally specifying the file mode and whether parent folders
+      * should be created. If a string is passed, it is parsed as an octal integer. If not specified, defaults to `0o777`.
++     * @throws {NodeJS.ErrnoException} When directory operations fail (e.g., permission denied, path already exists, invalid path)
+      */
+     export function mkdirSync(
+         path: PathLike,
+@@ -1819,6 +1846,7 @@
+      * @param path A path to a file. If a URL is provided, it must use the `file:` protocol.
+      * @param options Either the file mode, or an object optionally specifying the file mode and whether parent folders
+      * should be created. If a string is passed, it is parsed as an octal integer. If not specified, defaults to `0o777`.
++     * @throws {NodeJS.ErrnoException} When directory operations fail (e.g., permission denied, path already exists, invalid path)
+      */
+     export function mkdirSync(path: PathLike, options?: Mode | MakeDirectoryOptions | null): string | undefined;
+     /**
+@@ -1946,18 +1974,21 @@
+      * The optional `options` argument can be a string specifying an encoding, or an
+      * object with an `encoding` property specifying the character encoding to use.
+      * @since v5.10.0
++     * @throws {NodeJS.ErrnoException} When directory creation fails (e.g., permission denied, invalid prefix, insufficient disk space)
+      */
+     export function mkdtempSync(prefix: string, options?: EncodingOption): string;
+     /**
+      * Synchronously creates a unique temporary directory.
+      * Generates six random characters to be appended behind a required prefix to create a unique temporary directory.
+      * @param options The encoding (or an object specifying the encoding), used as the encoding of the result. If not provided, `'utf8'` is used.
++     * @throws {NodeJS.ErrnoException} When directory creation fails (e.g., permission denied, invalid prefix, insufficient disk space)
+      */
+     export function mkdtempSync(prefix: string, options: BufferEncodingOption): Buffer;
+     /**
+      * Synchronously creates a unique temporary directory.
+      * Generates six random characters to be appended behind a required prefix to create a unique temporary directory.
+      * @param options The encoding (or an object specifying the encoding), used as the encoding of the result. If not provided, `'utf8'` is used.
++     * @throws {NodeJS.ErrnoException} When directory creation fails (e.g., permission denied, invalid prefix, insufficient disk space)
+      */
+     export function mkdtempSync(prefix: string, options?: EncodingOption): string | Buffer;
+     /**
+@@ -2139,6 +2170,7 @@
+      *
+      * If `options.withFileTypes` is set to `true`, the result will contain `fs.Dirent` objects.
+      * @since v0.1.21
++     * @throws {NodeJS.ErrnoException} When directory operations fail (e.g., directory not found, permission denied, not a directory)
+      */
+     export function readdirSync(
+         path: PathLike,
+@@ -2232,6 +2264,7 @@
+      *
+      * See the POSIX [`close(2)`](http://man7.org/linux/man-pages/man2/close.2.html) documentation for more detail.
+      * @since v0.1.21
++     * @throws {NodeJS.ErrnoException} When file descriptor operations fail (e.g., invalid file descriptor, I/O error)
+      */
+     export function closeSync(fd: number): void;
+     /**
+@@ -2288,6 +2321,7 @@
+      * @since v0.1.21
+      * @param [flags='r']
+      * @param [mode=0o666]
++     * @throws {NodeJS.ErrnoException} When file operations fail (e.g., file not found, permission denied, invalid flags)
+      */
+     export function openSync(path: PathLike, flags: OpenMode, mode?: Mode | null): number;
+     /**
+@@ -2315,6 +2349,7 @@
+      * For detailed information, see the documentation of the asynchronous version of
+      * this API: {@link utimes}.
+      * @since v0.4.2
++     * @throws {NodeJS.ErrnoException} When file operations fail (e.g., file not found, permission denied, invalid timestamps)
+      */
+     export function utimesSync(path: PathLike, atime: TimeLike, mtime: TimeLike): void;
+     /**
+@@ -2335,6 +2370,7 @@
+     /**
+      * Synchronous version of {@link futimes}. Returns `undefined`.
+      * @since v0.4.2
++     * @throws {NodeJS.ErrnoException} When file descriptor operations fail (e.g., invalid file descriptor, I/O error, invalid timestamps)
+      */
+     export function futimesSync(fd: number, atime: TimeLike, mtime: TimeLike): void;
+     /**
+@@ -2357,6 +2393,7 @@
+      * device. The specific implementation is operating system and device specific.
+      * Refer to the POSIX [`fsync(2)`](http://man7.org/linux/man-pages/man2/fsync.2.html) documentation for more detail. Returns `undefined`.
+      * @since v0.1.96
++     * @throws {NodeJS.ErrnoException} When file descriptor operations fail (e.g., invalid file descriptor, I/O error)
+      */
+     export function fsyncSync(fd: number): void;
+     export interface WriteOptions {
+@@ -2550,6 +2587,7 @@
+      * @param [length=buffer.byteLength - offset]
+      * @param [position='null']
+      * @return The number of bytes written.
++     * @throws {NodeJS.ErrnoException} When file descriptor operations fail (e.g., invalid file descriptor, I/O error, disk full)
+      */
+     export function writeSync(
+         fd: number,
+@@ -2564,6 +2602,7 @@
+      * @param string A string to write.
+      * @param position The offset from the beginning of the file where this data should be written. If not supplied, defaults to the current position.
+      * @param encoding The expected string encoding.
++     * @throws {NodeJS.ErrnoException} When file descriptor operations fail (e.g., invalid file descriptor, I/O error, disk full)
+      */
+     export function writeSync(
+         fd: number,
+@@ -2680,6 +2719,7 @@
+      * this API: {@link read}.
+      * @since v0.1.21
+      * @param [position='null']
++     * @throws {NodeJS.ErrnoException} When file descriptor operations fail (e.g., invalid file descriptor, I/O error)
+      */
+     export function readSync(
+         fd: number,
+@@ -2691,6 +2731,7 @@
+     /**
+      * Similar to the above `fs.readSync` function, this version takes an optional `options` object.
+      * If no `options` object is specified, it will default with the above values.
++     * @throws {NodeJS.ErrnoException} When file descriptor operations fail (e.g., invalid file descriptor, I/O error)
+      */
+     export function readSync(fd: number, buffer: NodeJS.ArrayBufferView, opts?: ReadSyncOptions): number;
+     /**
+@@ -2887,6 +2928,7 @@
+      * ```
+      * @since v0.1.8
+      * @param path filename or file descriptor
++     * @throws {NodeJS.ErrnoException} When file operations fail (e.g., file not found, permission denied, invalid path)
+      */
+     export function readFileSync(
+         path: PathOrFileDescriptor,
+@@ -2901,6 +2943,7 @@
+      * If a file descriptor is provided, the underlying file will _not_ be closed automatically.
+      * @param options Either the encoding for the result, or an object that contains the encoding and an optional flag.
+      * If a flag is not provided, it defaults to `'r'`.
++     * @throws {NodeJS.ErrnoException} When file operations fail (e.g., file not found, permission denied, invalid path)
+      */
+     export function readFileSync(
+         path: PathOrFileDescriptor,
+@@ -2917,6 +2960,7 @@
+      * If a file descriptor is provided, the underlying file will _not_ be closed automatically.
+      * @param options Either the encoding for the result, or an object that contains the encoding and an optional flag.
+      * If a flag is not provided, it defaults to `'r'`.
++     * @throws {NodeJS.ErrnoException} When file operations fail (e.g., file not found, permission denied, invalid path)
+      */
+     export function readFileSync(
+         path: PathOrFileDescriptor,
+@@ -3045,6 +3089,7 @@
+      * this API: {@link writeFile}.
+      * @since v0.1.29
+      * @param file filename or file descriptor
++     * @throws {NodeJS.ErrnoException} When file operations fail (e.g., permission denied, disk full, invalid path)
+      */
+     export function writeFileSync(
+         file: PathOrFileDescriptor,
+@@ -3182,6 +3227,7 @@
+      * ```
+      * @since v0.6.7
+      * @param path filename or file descriptor
++     * @throws {NodeJS.ErrnoException} When file operations fail (e.g., permission denied, disk full, invalid path)
+      */
+     export function appendFileSync(
+         path: PathOrFileDescriptor,
+@@ -3857,6 +3903,7 @@
+      * ```
+      * @since v0.11.15
+      * @param [mode=fs.constants.F_OK]
++     * @throws {NodeJS.ErrnoException} When access checks fail (e.g., file not found, permission denied)
+      */
+     export function accessSync(path: PathLike, mode?: number): void;
+     interface StreamOptions {
+@@ -3998,6 +4045,7 @@
+      * Forces all currently queued I/O operations associated with the file to the
+      * operating system's synchronized I/O completion state. Refer to the POSIX [`fdatasync(2)`](http://man7.org/linux/man-pages/man2/fdatasync.2.html) documentation for details. Returns `undefined`.
+      * @since v0.1.96
++     * @throws {NodeJS.ErrnoException} When file descriptor operations fail (e.g., invalid file descriptor, I/O error)
+      */
+     export function fdatasyncSync(fd: number): void;
+     /**
+@@ -4077,6 +4125,7 @@
+      * @param src source filename to copy
+      * @param dest destination filename of the copy operation
+      * @param [mode=0] modifiers for copy operation.
++     * @throws {NodeJS.ErrnoException} When copy operations fail (e.g., source not found, permission denied, disk full)
+      */
+     export function copyFileSync(src: PathLike, dest: PathLike, mode?: number): void;
+     /**
+@@ -4127,6 +4176,7 @@
+      * @since v12.9.0
+      * @param [position='null']
+      * @return The number of bytes written.
++     * @throws {NodeJS.ErrnoException} When file descriptor operations fail (e.g., invalid file descriptor, I/O error, disk full)
+      */
+     export function writevSync(fd: number, buffers: readonly NodeJS.ArrayBufferView[], position?: number): number;
+     /**
+@@ -4172,6 +4222,7 @@
+      * @since v13.13.0, v12.17.0
+      * @param [position='null']
+      * @return The number of bytes read.
++     * @throws {NodeJS.ErrnoException} When file descriptor operations fail (e.g., invalid file descriptor, I/O error)
+      */
+     export function readvSync(fd: number, buffers: readonly NodeJS.ArrayBufferView[], position?: number): number;
+ 
+@@ -4230,6 +4281,7 @@
+      * The `encoding` option sets the encoding for the `path` while opening the
+      * directory and subsequent read operations.
+      * @since v12.12.0
++     * @throws {NodeJS.ErrnoException} When directory operations fail (e.g., directory not found, permission denied, not a directory)
+      */
+     export function opendirSync(path: PathLike, options?: OpenDirOptions): Dir;
+     /**
+@@ -4353,6 +4405,7 @@
+      * @experimental
+      * @param src source path to copy.
+      * @param dest destination path to copy to.
++     * @throws {NodeJS.ErrnoException} When copy operations fail (e.g., source not found, permission denied, disk full)
+      */
+     export function cpSync(source: string | URL, destination: string | URL, opts?: CopySyncOptions): void;
+ 
+@@ -4417,6 +4470,7 @@
+     ): void;
+     /**
+      * Retrieves the files matching the specified pattern.
++     * @throws {NodeJS.ErrnoException} When file system operations fail (e.g., permission denied, invalid pattern, path not found)
+      */
+     export function globSync(pattern: string | string[]): string[];
+     export function globSync(
 diff -ruN .cache/node/globals.d.ts types/node/globals.d.ts
---- .cache/node/globals.d.ts	2025-06-06 01:38:42.086023450 +0000
-+++ types/node/globals.d.ts	2025-06-06 01:38:41.035009400 +0000
+--- .cache/node/globals.d.ts	2025-06-07 02:40:14.419074979 +0000
++++ types/node/globals.d.ts	2025-06-07 02:40:13.211079065 +0000
 @@ -313,6 +313,16 @@
      // #region fetch
      interface RequestInit extends _RequestInit {}
@@ -19,8 +448,8 @@ diff -ruN .cache/node/globals.d.ts types/node/globals.d.ts
          input: string | URL | globalThis.Request,
          init?: RequestInit,
 diff -ruN .cache/node/http2.d.ts types/node/http2.d.ts
---- .cache/node/http2.d.ts	2025-06-06 01:38:42.090023504 +0000
-+++ types/node/http2.d.ts	2025-06-06 01:38:41.039009454 +0000
+--- .cache/node/http2.d.ts	2025-06-07 02:40:14.423074966 +0000
++++ types/node/http2.d.ts	2025-06-07 02:40:13.215079052 +0000
 @@ -1223,66 +1223,14 @@
      }
      // Http2Server
@@ -118,8 +547,8 @@ diff -ruN .cache/node/http2.d.ts types/node/http2.d.ts
      }
      export interface ServerSessionOptions<
 diff -ruN .cache/node/package.json types/node/package.json
---- .cache/node/package.json	2025-06-06 01:38:42.107023731 +0000
-+++ types/node/package.json	2025-06-06 01:38:41.055009668 +0000
+--- .cache/node/package.json	2025-06-07 02:40:14.442074901 +0000
++++ types/node/package.json	2025-06-07 02:40:13.233078991 +0000
 @@ -1,8 +1,8 @@
  {
 -    "name": "@types/node",
@@ -165,8 +594,8 @@ diff -ruN .cache/node/package.json types/node/package.json
 \ No newline at end of file
 +}
 diff -ruN .cache/node/util.d.ts types/node/util.d.ts
---- .cache/node/util.d.ts	2025-06-06 01:38:42.103023678 +0000
-+++ types/node/util.d.ts	2025-06-06 01:38:41.051009614 +0000
+--- .cache/node/util.d.ts	2025-06-07 02:40:14.437074918 +0000
++++ types/node/util.d.ts	2025-06-07 02:40:13.228079008 +0000
 @@ -1411,7 +1411,7 @@
       * @param content The raw contents of a `.env` file.
       * @since v20.12.0
