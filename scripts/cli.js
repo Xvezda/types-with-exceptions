@@ -109,24 +109,21 @@ async function sync() {
     const cacheDir = await setupCache(name);
     const typesDir = path.join('types', name);
 
-    if (fs.existsSync(typesDir)) {
-      await diff(name);
-    }
+    await fsPromises.rm(typesDir, { recursive: true, force: true });
+    await fsPromises.mkdir(typesDir, { recursive: true });
+
+    await fsPromises.cp(cacheDir, typesDir, { recursive: true });
 
     const patchFile = path.join('patches', `${name}.patch`);
     if (fs.existsSync(patchFile)) {
       const stream = fs.createReadStream(patchFile);
 
-      const patchProcess = spawn('patch', ['-E', '-f', '-p0', '-d', cacheDir], {
+      const patchProcess = spawn('patch', ['-E', '-d', typesDir], {
         stdio: ['pipe', 'inherit', 'inherit'],
       });
 
       stream.pipe(patchProcess.stdin);
     }
-    await fsPromises.rm(typesDir, { recursive: true, force: true });
-    await fsPromises.mkdir(typesDir, { recursive: true });
-
-    await fsPromises.cp(cacheDir, typesDir, { recursive: true });
   }
 }
 
