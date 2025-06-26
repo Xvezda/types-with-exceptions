@@ -161,6 +161,7 @@ async function setupCache(name) {
   const requiredFiles = [
     ...fs.globSync('package.json', { cwd: packagePath }),
     ...fs.globSync(['NOTICE*', 'Notice*', 'notice*'], { cwd: packagePath }),
+    ...fs.globSync(['COPYING*', 'Copying*', 'copying*'], { cwd: packagePath }),
     ...fs.globSync(['LICEN[SC]E*', 'Licen[sc]e*', 'licen[sc]e*'], { cwd: packagePath }),
   ];
   for (const filename of requiredFiles) {
@@ -222,6 +223,7 @@ async function npm(packageName) {
           !path.basename(name).endsWith('.d.ts') &&
           !/LICEN[CS]E/i.test(path.basename(name)) &&
           !/NOTICE/i.test(path.basename(name)) &&
+          !/COPYING/i.test(path.basename(name)) &&
           path.basename(name) !== 'package.json'
         );
       },
