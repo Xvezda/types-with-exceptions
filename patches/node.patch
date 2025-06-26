@@ -1,6 +1,6 @@
 diff -ruN .cache/node/fs.d.ts types/node/fs.d.ts
---- .cache/node/fs.d.ts	2025-06-27 06:43:42
-+++ types/node/fs.d.ts	2025-06-27 06:42:01
+--- .cache/node/fs.d.ts	2025-06-26 21:45:46.982210630 +0000
++++ types/node/fs.d.ts	2025-06-26 21:45:45.734225835 +0000
 @@ -552,6 +552,7 @@
       *
       * See the POSIX [`rename(2)`](http://man7.org/linux/man-pages/man2/rename.2.html) documentation for more details.
@@ -428,8 +428,8 @@ diff -ruN .cache/node/fs.d.ts types/node/fs.d.ts
       * @returns paths of files that match the pattern.
       */
 diff -ruN .cache/node/fs.d.ts.orig types/node/fs.d.ts.orig
---- .cache/node/fs.d.ts.orig	1970-01-01 09:00:00
-+++ types/node/fs.d.ts.orig	2025-06-27 06:41:19
+--- .cache/node/fs.d.ts.orig	1970-01-01 00:00:00.000000000 +0000
++++ types/node/fs.d.ts.orig	2025-06-26 21:45:45.736225811 +0000
 @@ -0,0 +1,4446 @@
 +/**
 + * The `node:fs` module enables interacting with the file system in a
@@ -4878,8 +4878,8 @@ diff -ruN .cache/node/fs.d.ts.orig types/node/fs.d.ts.orig
 +    export * from "fs";
 +}
 diff -ruN .cache/node/fs.d.ts.rej types/node/fs.d.ts.rej
---- .cache/node/fs.d.ts.rej	1970-01-01 09:00:00
-+++ types/node/fs.d.ts.rej	2025-06-27 06:41:19
+--- .cache/node/fs.d.ts.rej	1970-01-01 00:00:00.000000000 +0000
++++ types/node/fs.d.ts.rej	2025-06-26 21:45:45.736225811 +0000
 @@ -0,0 +1,8 @@
 +@@ -4411,6 +4464,7 @@
 +     ): void;
@@ -4890,8 +4890,8 @@ diff -ruN .cache/node/fs.d.ts.rej types/node/fs.d.ts.rej
 +     export function globSync(pattern: string | string[]): string[];
 +     export function globSync(
 diff -ruN .cache/node/globals.d.ts types/node/globals.d.ts
---- .cache/node/globals.d.ts	2025-06-27 06:43:42
-+++ types/node/globals.d.ts	2025-06-27 06:41:19
+--- .cache/node/globals.d.ts	2025-06-26 21:45:46.983210618 +0000
++++ types/node/globals.d.ts	2025-06-26 21:45:45.736225811 +0000
 @@ -310,6 +310,16 @@
      // #region fetch
      interface RequestInit extends _RequestInit {}
@@ -4910,8 +4910,8 @@ diff -ruN .cache/node/globals.d.ts types/node/globals.d.ts
          input: string | URL | globalThis.Request,
          init?: RequestInit,
 diff -ruN .cache/node/globals.d.ts.orig types/node/globals.d.ts.orig
---- .cache/node/globals.d.ts.orig	1970-01-01 09:00:00
-+++ types/node/globals.d.ts.orig	2025-06-27 06:41:19
+--- .cache/node/globals.d.ts.orig	1970-01-01 00:00:00.000000000 +0000
++++ types/node/globals.d.ts.orig	2025-06-26 21:45:45.737225799 +0000
 @@ -0,0 +1,367 @@
 +export {}; // Make this a module
 +
@@ -5281,8 +5281,8 @@ diff -ruN .cache/node/globals.d.ts.orig types/node/globals.d.ts.orig
 +    // #endregion fetch
 +}
 diff -ruN .cache/node/http2.d.ts types/node/http2.d.ts
---- .cache/node/http2.d.ts	2025-06-27 06:43:42
-+++ types/node/http2.d.ts	2025-06-27 06:41:19
+--- .cache/node/http2.d.ts	2025-06-26 21:45:46.962210874 +0000
++++ types/node/http2.d.ts	2025-06-26 21:45:45.737225799 +0000
 @@ -1226,66 +1226,14 @@
      }
      // Http2Server
@@ -5380,8 +5380,8 @@ diff -ruN .cache/node/http2.d.ts types/node/http2.d.ts
      }
      export interface ServerSessionOptions<
 diff -ruN .cache/node/http2.d.ts.orig types/node/http2.d.ts.orig
---- .cache/node/http2.d.ts.orig	1970-01-01 09:00:00
-+++ types/node/http2.d.ts.orig	2025-06-27 06:41:19
+--- .cache/node/http2.d.ts.orig	1970-01-01 00:00:00.000000000 +0000
++++ types/node/http2.d.ts.orig	2025-06-26 21:45:45.738225787 +0000
 @@ -0,0 +1,2628 @@
 +/**
 + * The `node:http2` module provides an implementation of the [HTTP/2](https://tools.ietf.org/html/rfc7540) protocol.
@@ -8012,8 +8012,8 @@ diff -ruN .cache/node/http2.d.ts.orig types/node/http2.d.ts.orig
 +    export * from "http2";
 +}
 diff -ruN .cache/node/package.json types/node/package.json
---- .cache/node/package.json	2025-06-27 06:43:42
-+++ types/node/package.json	2025-06-27 06:42:01
+--- .cache/node/package.json	2025-06-26 21:45:46.975210715 +0000
++++ types/node/package.json	2025-06-26 21:45:45.738225787 +0000
 @@ -1,8 +1,8 @@
  {
 -    "name": "@types/node",
@@ -8055,8 +8055,8 @@ diff -ruN .cache/node/package.json types/node/package.json
 \ No newline at end of file
 +}
 diff -ruN .cache/node/package.json.orig types/node/package.json.orig
---- .cache/node/package.json.orig	1970-01-01 09:00:00
-+++ types/node/package.json.orig	2025-06-27 06:41:19
+--- .cache/node/package.json.orig	1970-01-01 00:00:00.000000000 +0000
++++ types/node/package.json.orig	2025-06-26 21:45:45.739225775 +0000
 @@ -0,0 +1,235 @@
 +{
 +    "name": "@types/node",
@@ -8295,8 +8295,8 @@ diff -ruN .cache/node/package.json.orig types/node/package.json.orig
 +}
 \ No newline at end of file
 diff -ruN .cache/node/package.json.rej types/node/package.json.rej
---- .cache/node/package.json.rej	1970-01-01 09:00:00
-+++ types/node/package.json.rej	2025-06-27 06:41:19
+--- .cache/node/package.json.rej	1970-01-01 00:00:00.000000000 +0000
++++ types/node/package.json.rej	2025-06-26 21:45:45.739225775 +0000
 @@ -0,0 +1,23 @@
 +@@ -1,8 +1,8 @@
 + {
@@ -8322,8 +8322,8 @@ diff -ruN .cache/node/package.json.rej types/node/package.json.rej
 +\ No newline at end of line
 ++}
 diff -ruN .cache/node/util.d.ts types/node/util.d.ts
---- .cache/node/util.d.ts	2025-06-27 06:43:42
-+++ types/node/util.d.ts	2025-06-27 06:41:19
+--- .cache/node/util.d.ts	2025-06-26 21:45:46.968210800 +0000
++++ types/node/util.d.ts	2025-06-26 21:45:45.739225775 +0000
 @@ -1121,7 +1121,7 @@
       * @param content The raw contents of a `.env` file.
       * @since v20.12.0
@@ -8334,8 +8334,8 @@ diff -ruN .cache/node/util.d.ts types/node/util.d.ts
      type ForegroundColors =
          | "black"
 diff -ruN .cache/node/util.d.ts.orig types/node/util.d.ts.orig
---- .cache/node/util.d.ts.orig	1970-01-01 09:00:00
-+++ types/node/util.d.ts.orig	2025-06-27 06:41:19
+--- .cache/node/util.d.ts.orig	1970-01-01 00:00:00.000000000 +0000
++++ types/node/util.d.ts.orig	2025-06-26 21:45:45.740225762 +0000
 @@ -0,0 +1,2305 @@
 +/**
 + * The `node:util` module supports the needs of Node.js internal APIs. Many of the
