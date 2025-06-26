@@ -117,21 +117,11 @@ async function sync() {
     if (fs.existsSync(patchFile)) {
       const stream = fs.createReadStream(patchFile);
 
-      const patchProcess = spawn('patch', ['-d', cacheDir], {
+      const patchProcess = spawn('patch', ['-E', '-f', '-p0', '-d', cacheDir], {
         stdio: ['pipe', 'inherit', 'inherit'],
       });
 
       stream.pipe(patchProcess.stdin);
-
-      await new Promise((resolve, reject) => {
-        patchProcess.on('close', (code) => {
-          if (code !== 0) {
-            reject(new Error(`Patch process exited with code ${code}`));
-          } else {
-            resolve();
-          }
-        });
-      });
     }
     await fsPromises.rm(typesDir, { recursive: true, force: true });
     await fsPromises.mkdir(typesDir, { recursive: true });
