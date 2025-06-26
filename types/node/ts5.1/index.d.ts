@@ -22,21 +22,23 @@
  * IN THE SOFTWARE.
  */
 
-// NOTE: These definitions support Node.js and TypeScript 5.2 through 5.6.
+// NOTE: These definitions support Node.js and TypeScript 5.1.
 
 // Reference required TypeScript libraries:
 /// <reference lib="es2020" />
-/// <reference lib="esnext.disposable" />
+
+// TypeScript library polyfills required for TypeScript <=5.1:
+/// <reference path="./compatibility/disposable.d.ts" />
 
 // TypeScript library polyfills required for TypeScript <=5.6:
-/// <reference path="./compatibility/float16array.d.ts" />
+/// <reference path="../ts5.6/compatibility/float16array.d.ts" />
 
 // Iterator definitions required for compatibility with TypeScript <5.6:
 /// <reference path="../compatibility/iterators.d.ts" />
 
 // Definitions for Node.js modules specific to TypeScript <=5.6:
-/// <reference path="./globals.typedarray.d.ts" />
-/// <reference path="./buffer.buffer.d.ts" />
+/// <reference path="../ts5.6/globals.typedarray.d.ts" />
+/// <reference path="../ts5.6/buffer.buffer.d.ts" />
 
 // Definitions for Node.js modules that are not specific to any version of TypeScript:
 /// <reference path="../globals.d.ts" />
