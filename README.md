@@ -56,9 +56,12 @@ node: 'npm:@types/node'
 # Advanced
 lib-es5:
   from: 'npm:typescript'
+  #     ^1
   copy:
     'index.d.ts': 'lib/lib.es5.d.ts'
-# You can copy files individually from the package using:
-# <destination file path>: <source file path>
+    # ^2          ^3
+# 1: Same as simplified version above
+# 2: Destination file name
+# 3: Source file name
 # And to comply with the license, README, LICENSE, etc. are copied by default without needing to specify them separately.
 ```
