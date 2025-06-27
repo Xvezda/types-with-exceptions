@@ -22,4 +22,5 @@ lib-es2015:
     'proxy.d.ts': 'lib/lib.es2015.proxy.d.ts'
     'reflect.d.ts': 'lib/lib.es2015.reflect.d.ts'
     'symbol.d.ts': 'lib/lib.es2015.symbol.d.ts'
-    'symbol.wellknown.d.ts': 'lib/lib.es2015.symbol.wellknown.d.ts'
+    # https://github.com/microsoft/TypeScript/pull/45771
+    'symbol-wellknown.d.ts': 'lib/lib.es2015.symbol.wellknown.d.ts'

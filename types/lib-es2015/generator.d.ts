@@ -22,6 +22,7 @@ interface Generator<T = unknown, TReturn = any, TNext = any> extends IteratorObj
     // NOTE: 'next' is defined using a tuple to ensure we report the correct assignability errors in all places.
     next(...[value]: [] | [TNext]): IteratorResult<T, TReturn>;
     return(value: TReturn): IteratorResult<T, TReturn>;
+    /** @throws {any} */
     throw(e: any): IteratorResult<T, TReturn>;
     [Symbol.iterator](): Generator<T, TReturn, TNext>;
 }
