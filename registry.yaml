@@ -104,6 +104,15 @@ lib-es2022:
     'regexp.d.ts': 'lib/lib.es2022.regexp.d.ts'
     'string.d.ts': 'lib/lib.es2022.string.d.ts'
 
+lib-es2023:
+  from: 'npm:typescript'
+  copy:
+    'index.d.ts': 'lib/lib.es2023.d.ts'
+    'array.d.ts': 'lib/lib.es2023.array.d.ts'
+    'collection.d.ts': 'lib/lib.es2023.collection.d.ts'
+    'full.d.ts': 'lib/lib.es2023.full.d.ts'
+    'intl.d.ts': 'lib/lib.es2023.intl.d.ts'
+
 lib-dom:
   from: 'npm:typescript'
   copy:
