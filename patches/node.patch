@@ -1,6 +1,6 @@
 diff -ruN .cache/node/fs.d.ts types/node/fs.d.ts
---- .cache/node/fs.d.ts	2025-06-27 18:07:45.280722083 +0000
-+++ types/node/fs.d.ts	2025-06-27 18:07:43.997686987 +0000
+--- .cache/node/fs.d.ts	2025-06-28 03:58:59
++++ types/node/fs.d.ts	2025-06-28 03:58:32
 @@ -552,6 +552,7 @@
       *
       * See the POSIX [`rename(2)`](http://man7.org/linux/man-pages/man2/rename.2.html) documentation for more details.
@@ -428,8 +428,8 @@ diff -ruN .cache/node/fs.d.ts types/node/fs.d.ts
       * @returns paths of files that match the pattern.
       */
 diff -ruN .cache/node/globals.d.ts types/node/globals.d.ts
---- .cache/node/globals.d.ts	2025-06-27 18:07:45.282722137 +0000
-+++ types/node/globals.d.ts	2025-06-27 18:07:43.998687015 +0000
+--- .cache/node/globals.d.ts	2025-06-28 03:58:59
++++ types/node/globals.d.ts	2025-06-28 03:58:32
 @@ -310,6 +310,16 @@
      // #region fetch
      interface RequestInit extends _RequestInit {}
@@ -448,8 +448,8 @@ diff -ruN .cache/node/globals.d.ts types/node/globals.d.ts
          input: string | URL | globalThis.Request,
          init?: RequestInit,
 diff -ruN .cache/node/http2.d.ts types/node/http2.d.ts
---- .cache/node/http2.d.ts	2025-06-27 18:07:45.259721508 +0000
-+++ types/node/http2.d.ts	2025-06-27 18:07:43.998687015 +0000
+--- .cache/node/http2.d.ts	2025-06-28 03:58:59
++++ types/node/http2.d.ts	2025-06-28 03:58:32
 @@ -1226,66 +1226,14 @@
      }
      // Http2Server
@@ -547,8 +547,8 @@ diff -ruN .cache/node/http2.d.ts types/node/http2.d.ts
      }
      export interface ServerSessionOptions<
 diff -ruN .cache/node/package.json types/node/package.json
---- .cache/node/package.json	2025-06-27 18:07:45.273721891 +0000
-+++ types/node/package.json	2025-06-27 18:07:43.998687015 +0000
+--- .cache/node/package.json	2025-06-28 03:58:59
++++ types/node/package.json	2025-06-28 03:58:32
 @@ -199,6 +199,11 @@
              "name": "René",
              "githubUsername": "Renegade334",
@@ -578,8 +578,8 @@ diff -ruN .cache/node/package.json types/node/package.json
 \ No newline at end of file
 +}
 diff -ruN .cache/node/package.json.orig types/node/package.json.orig
---- .cache/node/package.json.orig	1970-01-01 00:00:00.000000000 +0000
-+++ types/node/package.json.orig	2025-06-27 18:07:43.976686413 +0000
+--- .cache/node/package.json.orig	1970-01-01 09:00:00
++++ types/node/package.json.orig	2025-06-28 03:58:32
 @@ -0,0 +1,235 @@
 +{
 +    "name": "@types/node",
@@ -818,8 +818,8 @@ diff -ruN .cache/node/package.json.orig types/node/package.json.orig
 +}
 \ No newline at end of file
 diff -ruN .cache/node/package.json.rej types/node/package.json.rej
---- .cache/node/package.json.rej	1970-01-01 00:00:00.000000000 +0000
-+++ types/node/package.json.rej	2025-06-27 18:07:43.999687042 +0000
+--- .cache/node/package.json.rej	1970-01-01 09:00:00
++++ types/node/package.json.rej	2025-06-28 03:58:32
 @@ -0,0 +1,14 @@
 +--- package.json	2025-06-26 21:57:43.113486818 +0000
 ++++ package.json	2025-06-26 21:57:42.056482184 +0000
@@ -836,8 +836,8 @@ diff -ruN .cache/node/package.json.rej types/node/package.json.rej
 +     "contributors": [
 +         {
 diff -ruN .cache/node/util.d.ts types/node/util.d.ts
---- .cache/node/util.d.ts	2025-06-27 18:07:45.265721672 +0000
-+++ types/node/util.d.ts	2025-06-27 18:07:43.999687042 +0000
+--- .cache/node/util.d.ts	2025-06-28 03:58:59
++++ types/node/util.d.ts	2025-06-28 03:58:32
 @@ -1121,7 +1121,7 @@
       * @param content The raw contents of a `.env` file.
       * @since v20.12.0
