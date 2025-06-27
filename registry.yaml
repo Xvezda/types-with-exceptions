@@ -140,6 +140,12 @@ lib-esnext:
     'iterator.d.ts': 'lib/lib.esnext.iterator.d.ts'
     'promise.d.ts': 'lib/lib.esnext.promise.d.ts'
 
+lib-decorators:
+  from: 'npm:typescript'
+  copy:
+    'index.d.ts': 'lib/lib.decorators.d.ts'
+    'legacy.d.ts': 'lib/lib.decorators.legacy.d.ts'
+
 lib-dom:
   from: 'npm:typescript'
   copy:
