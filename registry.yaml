@@ -4,3 +4,8 @@ lib-es5:
   from: 'npm:typescript'
   copy:
     'index.d.ts': 'lib/lib.es5.d.ts'
+
+lib-es6:
+  from: 'npm:typescript'
+  copy:
+    'index.d.ts': 'lib/lib.es6.d.ts'
