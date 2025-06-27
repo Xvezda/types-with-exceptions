@@ -41,7 +41,7 @@ Follow the steps below.
 1. (Optional) Add tests in the `tests` directory. Refer to [rule-tester](https://typescript-eslint.io/packages/rule-tester).
 1. [Create a PR](https://github.com/Xvezda/types-with-exceptions/compare).
 
-### `/registry.yaml`
+### [`/registry.yaml`](https://github.com/Xvezda/types-with-exceptions/blob/main/registry.yaml)
 
 ```yaml
 # Simplified
