@@ -146,3 +146,8 @@ lib-dom:
     'index.d.ts': 'lib/lib.dom.d.ts'
     'asynciterable.d.ts': 'lib/lib.dom.asynciterable.d.ts'
     'iterable.d.ts': 'lib/lib.dom.iterable.d.ts'
+
+lib-scripthost:
+  from: 'npm:typescript'
+  copy:
+    'index.d.ts': 'lib/lib.scripthost.d.ts'
