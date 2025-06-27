@@ -1,19 +1,25 @@
 diff -ruN .cache/lib-es6/package.json types/lib-es6/package.json
---- .cache/lib-es6/package.json	2025-06-27 20:57:13.139442485 +0000
-+++ types/lib-es6/package.json	2025-06-27 20:57:12.128450168 +0000
-@@ -1,7 +1,7 @@
+--- .cache/lib-es6/package.json	2025-06-28 08:11:16
++++ types/lib-es6/package.json	2025-06-28 08:07:49
+@@ -1,120 +1,18 @@
  {
 -    "name": "typescript",
 +    "name": "@types-with-exceptions/lib-es6",
      "author": "Microsoft Corp.",
 -    "homepage": "https://www.typescriptlang.org/",
+-    "version": "5.8.3",
 +    "homepage": "https://github.com/Xvezda/types-with-exceptions/tree/main/types/lib-es6",
-     "version": "5.8.3",
++    "version": "0.0.0-dev.0",
      "license": "Apache-2.0",
-     "description": "TypeScript is a language for application scale JavaScript development",
-@@ -13,108 +13,13 @@
-         "javascript"
-     ],
+-    "description": "TypeScript is a language for application scale JavaScript development",
+-    "keywords": [
+-        "TypeScript",
+-        "Microsoft",
+-        "compiler",
+-        "language",
+-        "javascript"
+-    ],
++    "description": "TypeScript definitions with exceptions for native APIs",
      "bugs": {
 -        "url": "https://github.com/microsoft/TypeScript/issues"
 +        "url": "https://github.com/Xvezda/types-with-exceptions/issues"

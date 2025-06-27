@@ -1,6 +1,6 @@
 diff -ruN .cache/lib-es5/index.d.ts types/lib-es5/index.d.ts
---- .cache/lib-es5/index.d.ts	2025-06-27 20:57:13.126442584 +0000
-+++ types/lib-es5/index.d.ts	2025-06-27 20:57:11.618454044 +0000
+--- .cache/lib-es5/index.d.ts	2025-06-28 08:11:16
++++ types/lib-es5/index.d.ts	2025-06-28 07:42:00
 @@ -29,6 +29,7 @@
  /**
   * Evaluates JavaScript code and executes it.
@@ -800,21 +800,27 @@ diff -ruN .cache/lib-es5/index.d.ts types/lib-es5/index.d.ts
          supportedLocalesOf(locales: string | string[], options?: DateTimeFormatOptions): string[];
          readonly prototype: DateTimeFormat;
 diff -ruN .cache/lib-es5/package.json types/lib-es5/package.json
---- .cache/lib-es5/package.json	2025-06-27 20:57:13.132442538 +0000
-+++ types/lib-es5/package.json	2025-06-27 20:57:11.619454037 +0000
-@@ -1,7 +1,7 @@
+--- .cache/lib-es5/package.json	2025-06-28 08:11:16
++++ types/lib-es5/package.json	2025-06-28 08:08:10
+@@ -1,120 +1,18 @@
  {
 -    "name": "typescript",
 +    "name": "@types-with-exceptions/lib-es5",
      "author": "Microsoft Corp.",
 -    "homepage": "https://www.typescriptlang.org/",
+-    "version": "5.8.3",
 +    "homepage": "https://github.com/Xvezda/types-with-exceptions/tree/main/types/lib-es5",
-     "version": "5.8.3",
++    "version": "0.0.0-dev.0",
      "license": "Apache-2.0",
-     "description": "TypeScript is a language for application scale JavaScript development",
-@@ -13,37 +13,24 @@
-         "javascript"
-     ],
+-    "description": "TypeScript is a language for application scale JavaScript development",
+-    "keywords": [
+-        "TypeScript",
+-        "Microsoft",
+-        "compiler",
+-        "language",
+-        "javascript"
+-    ],
++    "description": "TypeScript definitions with exceptions for native APIs",
      "bugs": {
 -        "url": "https://github.com/microsoft/TypeScript/issues"
 +        "url": "https://github.com/Xvezda/types-with-exceptions/issues"
@@ -822,44 +828,41 @@ diff -ruN .cache/lib-es5/package.json types/lib-es5/package.json
      "repository": {
          "type": "git",
 -        "url": "https://github.com/microsoft/TypeScript.git"
--    },
++        "url": "https://github.com/Xvezda/types-with-exceptions.git",
++        "directory": "types/lib-es5"
+     },
 -    "main": "./lib/typescript.js",
 -    "typings": "./lib/typescript.d.ts",
 -    "bin": {
 -        "tsc": "./bin/tsc",
 -        "tsserver": "./bin/tsserver"
-+        "url": "https://github.com/Xvezda/types-with-exceptions.git",
-+        "directory": "types/lib-es5"
-     },
-+    "main": "./index.d.ts",
-+    "typings": "./index.d.ts",
-     "engines": {
-         "node": ">=14.17"
-     },
-     "files": [
+-    },
+-    "engines": {
+-        "node": ">=14.17"
+-    },
+-    "files": [
 -        "bin",
 -        "lib",
 -        "!lib/enu",
-         "LICENSE.txt",
-         "README.md",
+-        "LICENSE.txt",
+-        "README.md",
 -        "SECURITY.md",
 -        "ThirdPartyNoticeText.txt",
 -        "!**/.gitattributes"
-+        "index.d.ts"
-     ],
-     "devDependencies": {
+-    ],
+-    "devDependencies": {
 -        "@dprint/formatter": "^0.4.1",
 -        "@dprint/typescript": "0.93.3",
 -        "@esfx/canceltoken": "^1.0.0",
 -        "@eslint/js": "^9.17.0",
 -        "@octokit/rest": "^21.0.2",
-         "@types/chai": "^4.3.20",
-         "@types/diff": "^5.2.3",
-         "@types/minimist": "^1.2.5",
-@@ -51,70 +38,6 @@
-         "@types/ms": "^0.7.34",
-         "@types/node": "latest",
-         "@types/source-map-support": "^0.5.10",
+-        "@types/chai": "^4.3.20",
+-        "@types/diff": "^5.2.3",
+-        "@types/minimist": "^1.2.5",
+-        "@types/mocha": "^10.0.10",
+-        "@types/ms": "^0.7.34",
+-        "@types/node": "latest",
+-        "@types/source-map-support": "^0.5.10",
 -        "@types/which": "^3.0.4",
 -        "@typescript-eslint/rule-tester": "^8.18.1",
 -        "@typescript-eslint/type-utils": "^8.18.1",
@@ -926,6 +929,6 @@ diff -ruN .cache/lib-es5/package.json types/lib-es5/package.json
 -        "npm": "8.19.4"
 -    },
 -    "gitHead": "68cead182cc24afdc3f1ce7c8ff5853aba14b65a"
-+        "@types/which": "^3.0.4"
-+    }
++    "main": "./index.d.ts",
++    "typings": "./index.d.ts"
  }
