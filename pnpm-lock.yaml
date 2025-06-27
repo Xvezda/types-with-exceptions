@@ -14,6 +14,9 @@ importers:
       '@typescript-eslint/type-utils':
         specifier: ^8.33.1
         version: 8.33.1(eslint@9.28.0)(typescript@5.8.3)
+      '@typescript/lib-es2015':
+        specifier: file:./types/lib-es2015
+        version: '@types-with-exceptions/lib-es2015@file:types/lib-es2015'
       '@typescript/lib-es5':
         specifier: file:./types/lib-es5
         version: '@types-with-exceptions/lib-es5@file:types/lib-es5'
@@ -393,6 +396,9 @@ packages:
     resolution: {integrity: sha512-Wq2zpapRYLfi4aKxf2Xff0tN+7slj2d4R87WEzqw7ZLsVvO5zwYCIuEGSZYiK41+GlwUo1HiR+GdkLEJnCKTCw==}
     cpu: [x64]
     os: [win32]
+
+  '@types-with-exceptions/lib-es2015@file:types/lib-es2015':
+    resolution: {directory: types/lib-es2015, type: directory}
 
   '@types-with-exceptions/lib-es5@file:types/lib-es5':
     resolution: {directory: types/lib-es5, type: directory}
@@ -1656,6 +1662,8 @@ snapshots:
 
   '@rollup/rollup-win32-x64-msvc@4.41.1':
     optional: true
+
+  '@types-with-exceptions/lib-es2015@file:types/lib-es2015': {}
 
   '@types-with-exceptions/lib-es5@file:types/lib-es5': {}
 
