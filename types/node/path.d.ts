@@ -70,14 +70,12 @@ declare module "path" {
              * When multiple slashes are found, they're replaced by a single one; when the path contains a trailing slash, it is preserved. On Windows backslashes are used.
              *
              * @param path string path to normalize.
-             * @throws {TypeError} if `path` is not a string.
              */
             normalize(path: string): string;
             /**
              * Join all arguments together and normalize the resulting path.
              *
              * @param paths paths to join.
-             * @throws {TypeError} if any of the path segments is not a string.
              */
             join(...paths: string[]): string;
             /**
@@ -91,7 +89,6 @@ declare module "path" {
              * and trailing slashes are removed unless the path gets resolved to the root directory.
              *
              * @param paths A sequence of paths or path segments.
-             * @throws {TypeError} if any of the arguments is not a string.
              */
             resolve(...paths: string[]): string;
             /**
@@ -99,7 +96,6 @@ declare module "path" {
              * @param path The path to glob-match against.
              * @param pattern The glob to check the path against.
              * @returns Whether or not the `path` matched the `pattern`.
-             * @throws {TypeError} if `path` or `pattern` are not strings.
              * @since v22.5.0
              */
             matchesGlob(path: string, pattern: string): boolean;
@@ -109,21 +105,17 @@ declare module "path" {
              * If the given {path} is a zero-length string, `false` will be returned.
              *
              * @param path path to test.
-             * @throws {TypeError} if `path` is not a string.
              */
             isAbsolute(path: string): boolean;
             /**
              * Solve the relative path from {from} to {to} based on the current working directory.
              * At times we have two absolute paths, and we need to derive the relative path from one to the other. This is actually the reverse transform of path.resolve.
-             *
-             * @throws {TypeError} if either `from` or `to` is not a string.
              */
             relative(from: string, to: string): string;
             /**
              * Return the directory name of a path. Similar to the Unix dirname command.
              *
              * @param path the path to evaluate.
-             * @throws {TypeError} if `path` is not a string.
              */
             dirname(path: string): string;
             /**
@@ -132,7 +124,6 @@ declare module "path" {
              *
              * @param path the path to evaluate.
              * @param suffix optionally, an extension to remove from the result.
-             * @throws {TypeError} if `path` is not a string or if `ext` is given and is not a string.
              */
             basename(path: string, suffix?: string): string;
             /**
@@ -140,7 +131,6 @@ declare module "path" {
              * If there is no '.' in the last portion of the path or the first character of it is '.', then it returns an empty string.
              *
              * @param path the path to evaluate.
-             * @throws {TypeError} if `path` is not a string.
              */
             extname(path: string): string;
             /**
@@ -155,7 +145,6 @@ declare module "path" {
              * Returns an object from a path string - the opposite of format().
              *
              * @param path path to evaluate.
-             * @throws {TypeError} if `path` is not a string.
              */
             parse(path: string): ParsedPath;
             /**
