@@ -82,6 +82,16 @@ lib-es2020:
     'string.d.ts': 'lib/lib.es2020.string.d.ts'
     'symbol-wellknown.d.ts': 'lib/lib.es2020.symbol.wellknown.d.ts'
 
+lib-es2021:
+  from: 'npm:typescript'
+  copy:
+    'index.d.ts': 'lib/lib.es2021.d.ts'
+    'full.d.ts': 'lib/lib.es2021.full.d.ts'
+    'intl.d.ts': 'lib/lib.es2021.intl.d.ts'
+    'promise.d.ts': 'lib/lib.es2021.promise.d.ts'
+    'string.d.ts': 'lib/lib.es2021.string.d.ts'
+    'weakref.d.ts': 'lib/lib.es2021.weakref.d.ts'
+
 lib-dom:
   from: 'npm:typescript'
   copy:
