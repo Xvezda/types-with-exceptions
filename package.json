@@ -14,8 +14,7 @@
   "devDependencies": {
     "@typescript-eslint/rule-tester": "^8.33.1",
     "@typescript-eslint/type-utils": "^8.33.1",
-    "@typescript/lib-es5": "file:./types/lib-es5",
-    "@typescript/lib-es2015": "file:./types/lib-es2015",
+    "@types-with-exceptions/lib": "workspace:*",
     "commander": "^14.0.0",
     "eslint": "^9.28.0",
     "eslint-plugin-explicit-exceptions": "^0.13.3",

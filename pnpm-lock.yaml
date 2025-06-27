@@ -8,18 +8,15 @@ importers:
 
   .:
     devDependencies:
+      '@types-with-exceptions/lib':
+        specifier: workspace:*
+        version: link:types/lib
       '@typescript-eslint/rule-tester':
         specifier: ^8.33.1
         version: 8.33.1(eslint@9.28.0)(typescript@5.8.3)
       '@typescript-eslint/type-utils':
         specifier: ^8.33.1
         version: 8.33.1(eslint@9.28.0)(typescript@5.8.3)
-      '@typescript/lib-es2015':
-        specifier: file:./types/lib-es2015
-        version: link:types/lib-es2015
-      '@typescript/lib-es5':
-        specifier: file:./types/lib-es5
-        version: link:types/lib-es5
       commander:
         specifier: ^14.0.0
         version: 14.0.0
