@@ -113,6 +113,19 @@ lib-es2023:
     'full.d.ts': 'lib/lib.es2023.full.d.ts'
     'intl.d.ts': 'lib/lib.es2023.intl.d.ts'
 
+lib-es2024:
+  from: 'npm:typescript'
+  copy:
+    'index.d.ts': 'lib/lib.es2024.d.ts'
+    'arraybuffer.d.ts': 'lib/lib.es2024.arraybuffer.d.ts'
+    'collection.d.ts': 'lib/lib.es2024.collection.d.ts'
+    'full.d.ts': 'lib/lib.es2024.full.d.ts'
+    'object.d.ts': 'lib/lib.es2024.object.d.ts'
+    'promise.d.ts': 'lib/lib.es2024.promise.d.ts'
+    'regexp.d.ts': 'lib/lib.es2024.regexp.d.ts'
+    'sharedmemory.d.ts': 'lib/lib.es2024.sharedmemory.d.ts'
+    'string.d.ts': 'lib/lib.es2024.string.d.ts'
+
 lib-dom:
   from: 'npm:typescript'
   copy:
