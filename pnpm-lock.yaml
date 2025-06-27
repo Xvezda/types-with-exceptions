@@ -16,10 +16,10 @@ importers:
         version: 8.33.1(eslint@9.28.0)(typescript@5.8.3)
       '@typescript/lib-es2015':
         specifier: file:./types/lib-es2015
-        version: '@types-with-exceptions/lib-es2015@file:types/lib-es2015'
+        version: link:types/lib-es2015
       '@typescript/lib-es5':
         specifier: file:./types/lib-es5
-        version: '@types-with-exceptions/lib-es5@file:types/lib-es5'
+        version: link:types/lib-es5
       commander:
         specifier: ^14.0.0
         version: 14.0.0
@@ -47,6 +47,46 @@ importers:
       yaml:
         specifier: ^2.8.0
         version: 2.8.0
+
+  types/lib-decorators: {}
+
+  types/lib-dom: {}
+
+  types/lib-es2015: {}
+
+  types/lib-es2016: {}
+
+  types/lib-es2017: {}
+
+  types/lib-es2018: {}
+
+  types/lib-es2019: {}
+
+  types/lib-es2020: {}
+
+  types/lib-es2021: {}
+
+  types/lib-es2022: {}
+
+  types/lib-es2023: {}
+
+  types/lib-es2024: {}
+
+  types/lib-es5: {}
+
+  types/lib-es6: {}
+
+  types/lib-esnext: {}
+
+  types/lib-scripthost: {}
+
+  types/lib-webworker: {}
+
+  types/node:
+    dependencies:
+      undici-types:
+        specifier: ~7.8.0
+        version: 7.8.0
 
 packages:
 
@@ -396,13 +436,6 @@ packages:
     resolution: {integrity: sha512-Wq2zpapRYLfi4aKxf2Xff0tN+7slj2d4R87WEzqw7ZLsVvO5zwYCIuEGSZYiK41+GlwUo1HiR+GdkLEJnCKTCw==}
     cpu: [x64]
     os: [win32]
-
-  '@types-with-exceptions/lib-es2015@file:types/lib-es2015':
-    resolution: {directory: types/lib-es2015, type: directory}
-
-  '@types-with-exceptions/lib-es5@file:types/lib-es5':
-    resolution: {directory: types/lib-es5, type: directory}
-    engines: {node: '>=14.17'}
 
   '@types/chai@5.2.2':
     resolution: {integrity: sha512-8kB30R7Hwqf40JPiKhVzodJs2Qc1ZJ5zuT3uzw5Hq/dhNCl3G3l83jfpdI1e20BP348+fV7VIL/+FxaXkqBmWg==}
@@ -1287,6 +1320,9 @@ packages:
     engines: {node: '>=14.17'}
     hasBin: true
 
+  undici-types@7.8.0:
+    resolution: {integrity: sha512-9UJ2xGDvQ43tYyVMpuHlsgApydB8ZKfVYTsLDhXkFL/6gfkp+U8xTGdh8pMJv1SpZna0zxG1DwsKZsreLbXBxw==}
+
   unique-filename@4.0.0:
     resolution: {integrity: sha512-XSnEewXmQ+veP7xX2dS5Q4yZAvO40cBN2MWkJ7D/6sW4Dg6wYBNwM1Vrnz1FhH5AdeLIlUXRI9e28z1YZi71NQ==}
     engines: {node: ^18.17.0 || >=20.5.0}
@@ -1662,10 +1698,6 @@ snapshots:
 
   '@rollup/rollup-win32-x64-msvc@4.41.1':
     optional: true
-
-  '@types-with-exceptions/lib-es2015@file:types/lib-es2015': {}
-
-  '@types-with-exceptions/lib-es5@file:types/lib-es5': {}
 
   '@types/chai@5.2.2':
     dependencies:
@@ -2647,6 +2679,8 @@ snapshots:
       prelude-ls: 1.2.1
 
   typescript@5.8.3: {}
+
+  undici-types@7.8.0: {}
 
   unique-filename@4.0.0:
     dependencies:
