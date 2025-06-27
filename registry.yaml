@@ -46,6 +46,17 @@ lib-es2017:
     'string.d.ts': 'lib/lib.es2017.string.d.ts'
     'typedarrays.d.ts': 'lib/lib.es2017.typedarrays.d.ts'
 
+lib-es2018:
+  from: 'npm:typescript'
+  copy:
+    'index.d.ts': 'lib/lib.es2018.d.ts'
+    'asyncgenerator.d.ts': 'lib/lib.es2018.asyncgenerator.d.ts'
+    'asynciterable.d.ts': 'lib/lib.es2018.asynciterable.d.ts'
+    'full.d.ts': 'lib/lib.es2018.full.d.ts'
+    'intl.d.ts': 'lib/lib.es2018.intl.d.ts'
+    'promise.d.ts': 'lib/lib.es2018.promise.d.ts'
+    'regexp.d.ts': 'lib/lib.es2018.regexp.d.ts'
+
 lib-dom:
   from: 'npm:typescript'
   copy:
