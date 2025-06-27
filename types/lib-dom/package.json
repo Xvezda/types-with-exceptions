@@ -1,0 +1,25 @@
+{
+    "name": "@types-with-exceptions/lib-dom",
+    "author": "Microsoft Corp.",
+    "homepage": "https://github.com/Xvezda/types-with-exceptions/tree/main/types/lib-dom",
+    "version": "5.8.3",
+    "license": "Apache-2.0",
+    "description": "TypeScript is a language for application scale JavaScript development",
+    "keywords": [
+        "TypeScript",
+        "Microsoft",
+        "compiler",
+        "language",
+        "javascript"
+    ],
+    "bugs": {
+        "url": "https://github.com/Xvezda/types-with-exceptions/issues"
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/Xvezda/types-with-exceptions.git",
+        "directory": "types/lib-dom"
+    },
+    "main": "./index.d.ts",
+    "typings": "./index.d.ts"
+}

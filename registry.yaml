@@ -24,3 +24,10 @@ lib-es2015:
     'symbol.d.ts': 'lib/lib.es2015.symbol.d.ts'
     # https://github.com/microsoft/TypeScript/pull/45771
     'symbol-wellknown.d.ts': 'lib/lib.es2015.symbol.wellknown.d.ts'
+
+lib-dom:
+  from: 'npm:typescript'
+  copy:
+    'index.d.ts': 'lib/lib.dom.d.ts'
+    'asynciterable.d.ts': 'lib/lib.dom.asynciterable.d.ts'
+    'iterable.d.ts': 'lib/lib.dom.iterable.d.ts'
