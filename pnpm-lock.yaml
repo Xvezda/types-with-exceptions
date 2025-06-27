@@ -48,6 +48,60 @@ importers:
         specifier: ^2.8.0
         version: 2.8.0
 
+  types/lib:
+    devDependencies:
+      '@typescript/lib-decorators':
+        specifier: npm:@types-with-exceptions/lib-decorators
+        version: '@types-with-exceptions/lib-decorators@0.0.0-dev.0'
+      '@typescript/lib-dom':
+        specifier: npm:@types-with-exceptions/lib-dom@0.0.0-dev.0
+        version: '@types-with-exceptions/lib-dom@0.0.0-dev.0'
+      '@typescript/lib-es2015':
+        specifier: npm:@types-with-exceptions/lib-es2015@0.0.0-dev.0
+        version: '@types-with-exceptions/lib-es2015@0.0.0-dev.0'
+      '@typescript/lib-es2016':
+        specifier: npm:@types-with-exceptions/lib-es2016@0.0.0-dev.0
+        version: '@types-with-exceptions/lib-es2016@0.0.0-dev.0'
+      '@typescript/lib-es2017':
+        specifier: npm:@types-with-exceptions/lib-es2017@0.0.0-dev.0
+        version: '@types-with-exceptions/lib-es2017@0.0.0-dev.0'
+      '@typescript/lib-es2018':
+        specifier: npm:@types-with-exceptions/lib-es2018@0.0.0-dev.0
+        version: '@types-with-exceptions/lib-es2018@0.0.0-dev.0'
+      '@typescript/lib-es2019':
+        specifier: npm:@types-with-exceptions/lib-es2019@0.0.0-dev.0
+        version: '@types-with-exceptions/lib-es2019@0.0.0-dev.0'
+      '@typescript/lib-es2020':
+        specifier: npm:@types-with-exceptions/lib-es2020@0.0.0-dev.0
+        version: '@types-with-exceptions/lib-es2020@0.0.0-dev.0'
+      '@typescript/lib-es2021':
+        specifier: npm:@types-with-exceptions/lib-es2021@0.0.0-dev.0
+        version: '@types-with-exceptions/lib-es2021@0.0.0-dev.0'
+      '@typescript/lib-es2022':
+        specifier: npm:@types-with-exceptions/lib-es2022@0.0.0-dev.0
+        version: '@types-with-exceptions/lib-es2022@0.0.0-dev.0'
+      '@typescript/lib-es2023':
+        specifier: npm:@types-with-exceptions/lib-es2023@0.0.0-dev.0
+        version: '@types-with-exceptions/lib-es2023@0.0.0-dev.0'
+      '@typescript/lib-es2024':
+        specifier: npm:@types-with-exceptions/lib-es2024@0.0.0-dev.0
+        version: '@types-with-exceptions/lib-es2024@0.0.0-dev.0'
+      '@typescript/lib-es5':
+        specifier: npm:@types-with-exceptions/lib-es5@0.0.0-dev.0
+        version: '@types-with-exceptions/lib-es5@0.0.0-dev.0'
+      '@typescript/lib-es6':
+        specifier: npm:@types-with-exceptions/lib-es6@0.0.0-dev.0
+        version: '@types-with-exceptions/lib-es6@0.0.0-dev.0'
+      '@typescript/lib-esnext':
+        specifier: npm:@types-with-exceptions/lib-esnext@0.0.0-dev.0
+        version: '@types-with-exceptions/lib-esnext@0.0.0-dev.0'
+      '@typescript/lib-scripthost':
+        specifier: npm:@types-with-exceptions/lib-scripthost@0.0.0-dev.0
+        version: '@types-with-exceptions/lib-scripthost@0.0.0-dev.0'
+      '@typescript/lib-webworker':
+        specifier: npm:@types-with-exceptions/lib-webworker@0.0.0-dev.0
+        version: '@types-with-exceptions/lib-webworker@0.0.0-dev.0'
+
   types/lib-decorators: {}
 
   types/lib-dom: {}
@@ -436,6 +490,57 @@ packages:
     resolution: {integrity: sha512-Wq2zpapRYLfi4aKxf2Xff0tN+7slj2d4R87WEzqw7ZLsVvO5zwYCIuEGSZYiK41+GlwUo1HiR+GdkLEJnCKTCw==}
     cpu: [x64]
     os: [win32]
+
+  '@types-with-exceptions/lib-decorators@0.0.0-dev.0':
+    resolution: {integrity: sha512-+SpcZdzxjptrkF0+AdsdMAt29K/UlhLFbOott4cg1FtgNT/tpaCdvz6tw4gFgtJBIDore0Yq1d8FgdZoFYgIGg==}
+
+  '@types-with-exceptions/lib-dom@0.0.0-dev.0':
+    resolution: {integrity: sha512-Ye3ZG/s3xqA+8D8Na7dM1gDGc3uF8ts4wIeLeNeNzjSVfaP+BS6ZokJ4/cpCnRjXYAQ2il0GwDbDJDxTPX0CwQ==}
+
+  '@types-with-exceptions/lib-es2015@0.0.0-dev.0':
+    resolution: {integrity: sha512-AitTN0GW5nBha+MlB8mfTNmsTQLgC/vywVl7yTBQwDJDOein4az8SMsEvMPIFQhD/qITW0mhVKpWSHEQGnpaKw==}
+
+  '@types-with-exceptions/lib-es2016@0.0.0-dev.0':
+    resolution: {integrity: sha512-qA8OPV9cl/zS4n8sr5iX0Y7rl08Ie+4Mvr1/bwrFRWLIUvUgjfmAg0Mia/1o/oI4m72xN5BlI4/RNvXeQturuA==}
+
+  '@types-with-exceptions/lib-es2017@0.0.0-dev.0':
+    resolution: {integrity: sha512-FgbUNBSU6smdx8MWrZ36/7Oe1k79RLTQ1XrHwBJnecW4EevaSXq18KE6d4wzaDnzVoqoHKFZlZ5RGqVRl4RPdg==}
+
+  '@types-with-exceptions/lib-es2018@0.0.0-dev.0':
+    resolution: {integrity: sha512-3F5NrmZuSGlfJpr0D4BISHJo9+azuzOdCRj1y6tXXDbWkqaMOoDkv0RULMa66hS6EiO2I4MOYwPBznZoqfn7OQ==}
+
+  '@types-with-exceptions/lib-es2019@0.0.0-dev.0':
+    resolution: {integrity: sha512-Y/4FiNeUPkTeWaa0lT6U7meQlRr6Ev9s3y5tmZr66mSa4H7umq6jVUWvhpQVZuIF7NCQQz9N2FgrXDhnPREU9g==}
+
+  '@types-with-exceptions/lib-es2020@0.0.0-dev.0':
+    resolution: {integrity: sha512-246rWW6Uigyf7KCWHe1N+5Bee532UeTw4DpYwL4DeYmCYHKx7etY9b/hmWs2J2bcQCLF50g2TyczF3fLQ88FIw==}
+
+  '@types-with-exceptions/lib-es2021@0.0.0-dev.0':
+    resolution: {integrity: sha512-TxlboDTciVeYA942M+evwklwaG2JqEJoGlm+x8ZK2Ng0VsFH+K5kWXiJ6dQd9XDLrb226Ua+FYVvjzKKda+9FA==}
+
+  '@types-with-exceptions/lib-es2022@0.0.0-dev.0':
+    resolution: {integrity: sha512-NrxUQsNyg+QhHwGLD2FurkpWm0tIOU5QcfqW2Eu44OKhmqd1Yk9zvmTE1FsmlMDTzVqJqeOgHQoasaAgXLQ/uQ==}
+
+  '@types-with-exceptions/lib-es2023@0.0.0-dev.0':
+    resolution: {integrity: sha512-aGvwgYkM2ywTunLMROMq84gJR6ZIXO2PnVKzSGlvdSXKaAK+wxsJyBgrT1/sh9ATonFLzBxn38CmyiOeuhwuug==}
+
+  '@types-with-exceptions/lib-es2024@0.0.0-dev.0':
+    resolution: {integrity: sha512-S8a8TKPpsBwY/Lij0ytthjfAxVLlc7JcbjrgeKBnh3fmNLy6Cv++kcou9qpNA0Ni1MutxKR1jrpNDZLkA/SA5Q==}
+
+  '@types-with-exceptions/lib-es5@0.0.0-dev.0':
+    resolution: {integrity: sha512-johquCIfYmceDiotqOKdcp06DLlobaolTVQTKIN092Urpmbqk4D2Tu8VBCrj9ZBABl/Ca3rgDAmgtPni0sb9pA==}
+
+  '@types-with-exceptions/lib-es6@0.0.0-dev.0':
+    resolution: {integrity: sha512-kaDWYw8b6fwk/ESCEnG8lYlrTBMOAHQa/yPbnoziTGnh7J21FH/kHOhHNKhKobijut4FfcaRfDiRjhiUlsv8nw==}
+
+  '@types-with-exceptions/lib-esnext@0.0.0-dev.0':
+    resolution: {integrity: sha512-ezc5v/jZvr2axvH2bUO7Jwe6SlRhLAgg6mLw97+wB+VVfgsSfd5WaacxQuuFoBii4eqt1EkuosSx+TOY8bfXCg==}
+
+  '@types-with-exceptions/lib-scripthost@0.0.0-dev.0':
+    resolution: {integrity: sha512-tmLsjROv0ZFEEsdQi58gTYPs4DhSeETES7NndmEYfzb0niy5xv7MiQCAGh/Le9nsPfeDtUPonpFs+qqlpCuUQg==}
+
+  '@types-with-exceptions/lib-webworker@0.0.0-dev.0':
+    resolution: {integrity: sha512-bE0Oqsv4IHL6aKOua4GBhrAqkrIB4nOUVah/1LgpJXmqk5K1LS5ekP07SFb+kJ2OQv6wZlQ7QiGKMHh/yhd/kQ==}
 
   '@types/chai@5.2.2':
     resolution: {integrity: sha512-8kB30R7Hwqf40JPiKhVzodJs2Qc1ZJ5zuT3uzw5Hq/dhNCl3G3l83jfpdI1e20BP348+fV7VIL/+FxaXkqBmWg==}
@@ -1698,6 +1803,40 @@ snapshots:
 
   '@rollup/rollup-win32-x64-msvc@4.41.1':
     optional: true
+
+  '@types-with-exceptions/lib-decorators@0.0.0-dev.0': {}
+
+  '@types-with-exceptions/lib-dom@0.0.0-dev.0': {}
+
+  '@types-with-exceptions/lib-es2015@0.0.0-dev.0': {}
+
+  '@types-with-exceptions/lib-es2016@0.0.0-dev.0': {}
+
+  '@types-with-exceptions/lib-es2017@0.0.0-dev.0': {}
+
+  '@types-with-exceptions/lib-es2018@0.0.0-dev.0': {}
+
+  '@types-with-exceptions/lib-es2019@0.0.0-dev.0': {}
+
+  '@types-with-exceptions/lib-es2020@0.0.0-dev.0': {}
+
+  '@types-with-exceptions/lib-es2021@0.0.0-dev.0': {}
+
+  '@types-with-exceptions/lib-es2022@0.0.0-dev.0': {}
+
+  '@types-with-exceptions/lib-es2023@0.0.0-dev.0': {}
+
+  '@types-with-exceptions/lib-es2024@0.0.0-dev.0': {}
+
+  '@types-with-exceptions/lib-es5@0.0.0-dev.0': {}
+
+  '@types-with-exceptions/lib-es6@0.0.0-dev.0': {}
+
+  '@types-with-exceptions/lib-esnext@0.0.0-dev.0': {}
+
+  '@types-with-exceptions/lib-scripthost@0.0.0-dev.0': {}
+
+  '@types-with-exceptions/lib-webworker@0.0.0-dev.0': {}
 
   '@types/chai@5.2.2':
     dependencies:
