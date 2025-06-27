@@ -1,8 +1,8 @@
 {
-    "name": "@types-with-exceptions/node",
+    "name": "@types/node",
     "version": "24.0.5",
-    "description": "TypeScript definitions with exceptions for node",
-    "homepage": "https://github.com/Xvezda/types-with-exceptions/tree/main/types/node",
+    "description": "TypeScript definitions for node",
+    "homepage": "https://github.com/DefinitelyTyped/DefinitelyTyped/tree/master/types/node",
     "license": "MIT",
     "contributors": [
         {
