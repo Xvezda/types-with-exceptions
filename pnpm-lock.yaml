@@ -51,7 +51,7 @@ importers:
   types/lib:
     devDependencies:
       '@typescript/lib-decorators':
-        specifier: npm:@types-with-exceptions/lib-decorators
+        specifier: npm:@types-with-exceptions/lib-decorators@0.0.0-dev.0
         version: '@types-with-exceptions/lib-decorators@0.0.0-dev.0'
       '@typescript/lib-dom':
         specifier: npm:@types-with-exceptions/lib-dom@0.0.0-dev.0

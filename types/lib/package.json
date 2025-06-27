@@ -10,7 +10,7 @@
   "license": "MIT",
   "packageManager": "pnpm@10.10.0",
   "devDependencies": {
-    "@typescript/lib-decorators": "npm:@types-with-exceptions/lib-decorators",
+    "@typescript/lib-decorators": "npm:@types-with-exceptions/lib-decorators@0.0.0-dev.0",
     "@typescript/lib-dom": "npm:@types-with-exceptions/lib-dom@0.0.0-dev.0",
     "@typescript/lib-es2015": "npm:@types-with-exceptions/lib-es2015@0.0.0-dev.0",
     "@typescript/lib-es2016": "npm:@types-with-exceptions/lib-es2016@0.0.0-dev.0",
