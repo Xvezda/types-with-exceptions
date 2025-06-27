@@ -92,6 +92,18 @@ lib-es2021:
     'string.d.ts': 'lib/lib.es2021.string.d.ts'
     'weakref.d.ts': 'lib/lib.es2021.weakref.d.ts'
 
+lib-es2022:
+  from: 'npm:typescript'
+  copy:
+    'index.d.ts': 'lib/lib.es2022.d.ts'
+    'array.d.ts': 'lib/lib.es2022.array.d.ts'
+    'error.d.ts': 'lib/lib.es2022.error.d.ts'
+    'full.d.ts': 'lib/lib.es2022.full.d.ts'
+    'intl.d.ts': 'lib/lib.es2022.intl.d.ts'
+    'object.d.ts': 'lib/lib.es2022.object.d.ts'
+    'regexp.d.ts': 'lib/lib.es2022.regexp.d.ts'
+    'string.d.ts': 'lib/lib.es2022.string.d.ts'
+
 lib-dom:
   from: 'npm:typescript'
   copy:
