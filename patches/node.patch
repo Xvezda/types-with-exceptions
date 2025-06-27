@@ -1,6 +1,6 @@
 diff -ruN .cache/node/fs.d.ts types/node/fs.d.ts
---- .cache/node/fs.d.ts	2025-06-27 19:07:01.121805543 +0000
-+++ types/node/fs.d.ts	2025-06-27 19:06:59.801799942 +0000
+--- .cache/node/fs.d.ts	2025-06-28 04:17:57
++++ types/node/fs.d.ts	2025-06-28 04:15:33
 @@ -552,6 +552,7 @@
       *
       * See the POSIX [`rename(2)`](http://man7.org/linux/man-pages/man2/rename.2.html) documentation for more details.
@@ -428,8 +428,8 @@ diff -ruN .cache/node/fs.d.ts types/node/fs.d.ts
       * @returns paths of files that match the pattern.
       */
 diff -ruN .cache/node/globals.d.ts types/node/globals.d.ts
---- .cache/node/globals.d.ts	2025-06-27 19:07:01.123805551 +0000
-+++ types/node/globals.d.ts	2025-06-27 19:06:59.801799942 +0000
+--- .cache/node/globals.d.ts	2025-06-28 04:17:57
++++ types/node/globals.d.ts	2025-06-28 04:15:33
 @@ -310,6 +310,16 @@
      // #region fetch
      interface RequestInit extends _RequestInit {}
@@ -448,8 +448,8 @@ diff -ruN .cache/node/globals.d.ts types/node/globals.d.ts
          input: string | URL | globalThis.Request,
          init?: RequestInit,
 diff -ruN .cache/node/http2.d.ts types/node/http2.d.ts
---- .cache/node/http2.d.ts	2025-06-27 19:07:01.100805454 +0000
-+++ types/node/http2.d.ts	2025-06-27 19:06:59.802799946 +0000
+--- .cache/node/http2.d.ts	2025-06-28 04:17:57
++++ types/node/http2.d.ts	2025-06-28 04:15:33
 @@ -1226,66 +1226,14 @@
      }
      // Http2Server
@@ -547,9 +547,33 @@ diff -ruN .cache/node/http2.d.ts types/node/http2.d.ts
      }
      export interface ServerSessionOptions<
 diff -ruN .cache/node/package.json types/node/package.json
---- .cache/node/package.json	2025-06-27 19:07:01.114805513 +0000
-+++ types/node/package.json	2025-06-27 19:06:59.802799946 +0000
-@@ -227,7 +227,7 @@
+--- .cache/node/package.json	2025-06-28 04:17:57
++++ types/node/package.json	2025-06-28 04:17:13
+@@ -1,8 +1,8 @@
+ {
+-    "name": "@types/node",
++    "name": "@types-with-exceptions/node",
+     "version": "24.0.6",
+-    "description": "TypeScript definitions for node",
+-    "homepage": "https://github.com/DefinitelyTyped/DefinitelyTyped/tree/master/types/node",
++    "description": "TypeScript definitions with exceptions for node",
++    "homepage": "https://github.com/Xvezda/types-with-exceptions/tree/main/types/node",
+     "license": "MIT",
+     "contributors": [
+         {
+@@ -204,6 +204,11 @@
+             "name": "Yagiz Nizipli",
+             "githubUsername": "anonrig",
+             "url": "https://github.com/anonrig"
++        },
++        {
++            "name": "Xvezda",
++            "githubUsername": "Xvezda",
++            "url": "https://github.com/Xvezda"
+         }
+     ],
+     "main": "",
+@@ -227,7 +232,7 @@
      },
      "repository": {
          "type": "git",
@@ -558,279 +582,16 @@ diff -ruN .cache/node/package.json types/node/package.json
          "directory": "types/node"
      },
      "scripts": {},
-@@ -237,4 +237,4 @@
+@@ -237,4 +242,4 @@
      "peerDependencies": {},
      "typesPublisherContentHash": "c4b5e82af42726f32f67b7010b8c47b79f961e50fd62db2d1c9ca1b40c3d455b",
      "typeScriptVersion": "5.1"
 -}
 \ No newline at end of file
 +}
-diff -ruN .cache/node/package.json.orig types/node/package.json.orig
---- .cache/node/package.json.orig	1970-01-01 00:00:00.000000000 +0000
-+++ types/node/package.json.orig	2025-06-27 19:06:59.756799751 +0000
-@@ -0,0 +1,240 @@
-+{
-+    "name": "@types/node",
-+    "version": "24.0.6",
-+    "description": "TypeScript definitions for node",
-+    "homepage": "https://github.com/DefinitelyTyped/DefinitelyTyped/tree/master/types/node",
-+    "license": "MIT",
-+    "contributors": [
-+        {
-+            "name": "Microsoft TypeScript",
-+            "githubUsername": "Microsoft",
-+            "url": "https://github.com/Microsoft"
-+        },
-+        {
-+            "name": "Alberto Schiabel",
-+            "githubUsername": "jkomyno",
-+            "url": "https://github.com/jkomyno"
-+        },
-+        {
-+            "name": "Alvis HT Tang",
-+            "githubUsername": "alvis",
-+            "url": "https://github.com/alvis"
-+        },
-+        {
-+            "name": "Andrew Makarov",
-+            "githubUsername": "r3nya",
-+            "url": "https://github.com/r3nya"
-+        },
-+        {
-+            "name": "Benjamin Toueg",
-+            "githubUsername": "btoueg",
-+            "url": "https://github.com/btoueg"
-+        },
-+        {
-+            "name": "Chigozirim C.",
-+            "githubUsername": "smac89",
-+            "url": "https://github.com/smac89"
-+        },
-+        {
-+            "name": "David Junger",
-+            "githubUsername": "touffy",
-+            "url": "https://github.com/touffy"
-+        },
-+        {
-+            "name": "Deividas Bakanas",
-+            "githubUsername": "DeividasBakanas",
-+            "url": "https://github.com/DeividasBakanas"
-+        },
-+        {
-+            "name": "Eugene Y. Q. Shen",
-+            "githubUsername": "eyqs",
-+            "url": "https://github.com/eyqs"
-+        },
-+        {
-+            "name": "Hannes Magnusson",
-+            "githubUsername": "Hannes-Magnusson-CK",
-+            "url": "https://github.com/Hannes-Magnusson-CK"
-+        },
-+        {
-+            "name": "Huw",
-+            "githubUsername": "hoo29",
-+            "url": "https://github.com/hoo29"
-+        },
-+        {
-+            "name": "Kelvin Jin",
-+            "githubUsername": "kjin",
-+            "url": "https://github.com/kjin"
-+        },
-+        {
-+            "name": "Klaus Meinhardt",
-+            "githubUsername": "ajafff",
-+            "url": "https://github.com/ajafff"
-+        },
-+        {
-+            "name": "Lishude",
-+            "githubUsername": "islishude",
-+            "url": "https://github.com/islishude"
-+        },
-+        {
-+            "name": "Mariusz Wiktorczyk",
-+            "githubUsername": "mwiktorczyk",
-+            "url": "https://github.com/mwiktorczyk"
-+        },
-+        {
-+            "name": "Mohsen Azimi",
-+            "githubUsername": "mohsen1",
-+            "url": "https://github.com/mohsen1"
-+        },
-+        {
-+            "name": "Nikita Galkin",
-+            "githubUsername": "galkin",
-+            "url": "https://github.com/galkin"
-+        },
-+        {
-+            "name": "Parambir Singh",
-+            "githubUsername": "parambirs",
-+            "url": "https://github.com/parambirs"
-+        },
-+        {
-+            "name": "Sebastian Silbermann",
-+            "githubUsername": "eps1lon",
-+            "url": "https://github.com/eps1lon"
-+        },
-+        {
-+            "name": "Thomas den Hollander",
-+            "githubUsername": "ThomasdenH",
-+            "url": "https://github.com/ThomasdenH"
-+        },
-+        {
-+            "name": "Wilco Bakker",
-+            "githubUsername": "WilcoBakker",
-+            "url": "https://github.com/WilcoBakker"
-+        },
-+        {
-+            "name": "wwwy3y3",
-+            "githubUsername": "wwwy3y3",
-+            "url": "https://github.com/wwwy3y3"
-+        },
-+        {
-+            "name": "Samuel Ainsworth",
-+            "githubUsername": "samuela",
-+            "url": "https://github.com/samuela"
-+        },
-+        {
-+            "name": "Kyle Uehlein",
-+            "githubUsername": "kuehlein",
-+            "url": "https://github.com/kuehlein"
-+        },
-+        {
-+            "name": "Thanik Bhongbhibhat",
-+            "githubUsername": "bhongy",
-+            "url": "https://github.com/bhongy"
-+        },
-+        {
-+            "name": "Marcin Kopacz",
-+            "githubUsername": "chyzwar",
-+            "url": "https://github.com/chyzwar"
-+        },
-+        {
-+            "name": "Trivikram Kamat",
-+            "githubUsername": "trivikr",
-+            "url": "https://github.com/trivikr"
-+        },
-+        {
-+            "name": "Junxiao Shi",
-+            "githubUsername": "yoursunny",
-+            "url": "https://github.com/yoursunny"
-+        },
-+        {
-+            "name": "Ilia Baryshnikov",
-+            "githubUsername": "qwelias",
-+            "url": "https://github.com/qwelias"
-+        },
-+        {
-+            "name": "ExE Boss",
-+            "githubUsername": "ExE-Boss",
-+            "url": "https://github.com/ExE-Boss"
-+        },
-+        {
-+            "name": "Piotr Błażejewicz",
-+            "githubUsername": "peterblazejewicz",
-+            "url": "https://github.com/peterblazejewicz"
-+        },
-+        {
-+            "name": "Anna Henningsen",
-+            "githubUsername": "addaleax",
-+            "url": "https://github.com/addaleax"
-+        },
-+        {
-+            "name": "Victor Perin",
-+            "githubUsername": "victorperin",
-+            "url": "https://github.com/victorperin"
-+        },
-+        {
-+            "name": "NodeJS Contributors",
-+            "githubUsername": "NodeJS",
-+            "url": "https://github.com/NodeJS"
-+        },
-+        {
-+            "name": "Linus Unnebäck",
-+            "githubUsername": "LinusU",
-+            "url": "https://github.com/LinusU"
-+        },
-+        {
-+            "name": "wafuwafu13",
-+            "githubUsername": "wafuwafu13",
-+            "url": "https://github.com/wafuwafu13"
-+        },
-+        {
-+            "name": "Matteo Collina",
-+            "githubUsername": "mcollina",
-+            "url": "https://github.com/mcollina"
-+        },
-+        {
-+            "name": "Dmitry Semigradsky",
-+            "githubUsername": "Semigradsky",
-+            "url": "https://github.com/Semigradsky"
-+        },
-+        {
-+            "name": "René",
-+            "githubUsername": "Renegade334",
-+            "url": "https://github.com/Renegade334"
-+        },
-+        {
-+            "name": "Yagiz Nizipli",
-+            "githubUsername": "anonrig",
-+            "url": "https://github.com/anonrig"
-+        }
-+    ],
-+    "main": "",
-+    "types": "index.d.ts",
-+    "typesVersions": {
-+        "<=5.1": {
-+            "*": [
-+                "ts5.1/*"
-+            ]
-+        },
-+        "<=5.6": {
-+            "*": [
-+                "ts5.6/*"
-+            ]
-+        },
-+        "<=5.7": {
-+            "*": [
-+                "ts5.7/*"
-+            ]
-+        }
-+    },
-+    "repository": {
-+        "type": "git",
-+        "url": "https://github.com/DefinitelyTyped/DefinitelyTyped.git",
-+        "directory": "types/node"
-+    },
-+    "scripts": {},
-+    "dependencies": {
-+        "undici-types": "~7.8.0"
-+    },
-+    "peerDependencies": {},
-+    "typesPublisherContentHash": "c4b5e82af42726f32f67b7010b8c47b79f961e50fd62db2d1c9ca1b40c3d455b",
-+    "typeScriptVersion": "5.1"
-+}
-\ No newline at end of file
-diff -ruN .cache/node/package.json.rej types/node/package.json.rej
---- .cache/node/package.json.rej	1970-01-01 00:00:00.000000000 +0000
-+++ types/node/package.json.rej	2025-06-27 19:06:59.802799946 +0000
-@@ -0,0 +1,14 @@
-+--- package.json	2025-06-28 04:06:19
-++++ package.json	2025-06-28 04:01:13
-+@@ -199,6 +199,11 @@
-+             "name": "René",
-+             "githubUsername": "Renegade334",
-+             "url": "https://github.com/Renegade334"
-++        },
-++        {
-++            "name": "Xvezda",
-++            "githubUsername": "Xvezda",
-++            "url": "https://github.com/Xvezda"
-+         }
-+     ],
-+     "main": "",
 diff -ruN .cache/node/path.d.ts types/node/path.d.ts
---- .cache/node/path.d.ts	2025-06-27 19:07:01.113805509 +0000
-+++ types/node/path.d.ts	2025-06-27 19:06:59.802799946 +0000
+--- .cache/node/path.d.ts	2025-06-28 04:17:57
++++ types/node/path.d.ts	2025-06-28 04:15:33
 @@ -70,14 +70,12 @@
               * When multiple slashes are found, they're replaced by a single one; when the path contains a trailing slash, it is preserved. On Windows backslashes are used.
               *
@@ -909,8 +670,8 @@ diff -ruN .cache/node/path.d.ts types/node/path.d.ts
              parse(path: string): ParsedPath;
              /**
 diff -ruN .cache/node/util.d.ts types/node/util.d.ts
---- .cache/node/util.d.ts	2025-06-27 19:07:01.106805479 +0000
-+++ types/node/util.d.ts	2025-06-27 19:06:59.803799951 +0000
+--- .cache/node/util.d.ts	2025-06-28 04:17:57
++++ types/node/util.d.ts	2025-06-28 04:15:33
 @@ -1121,7 +1121,7 @@
       * @param content The raw contents of a `.env` file.
       * @since v20.12.0

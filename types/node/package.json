@@ -1,8 +1,8 @@
 {
-    "name": "@types/node",
+    "name": "@types-with-exceptions/node",
     "version": "24.0.6",
-    "description": "TypeScript definitions for node",
-    "homepage": "https://github.com/DefinitelyTyped/DefinitelyTyped/tree/master/types/node",
+    "description": "TypeScript definitions with exceptions for node",
+    "homepage": "https://github.com/Xvezda/types-with-exceptions/tree/main/types/node",
     "license": "MIT",
     "contributors": [
         {
@@ -204,6 +204,11 @@
             "name": "Yagiz Nizipli",
             "githubUsername": "anonrig",
             "url": "https://github.com/anonrig"
+        },
+        {
+            "name": "Xvezda",
+            "githubUsername": "Xvezda",
+            "url": "https://github.com/Xvezda"
         }
     ],
     "main": "",
