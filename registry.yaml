@@ -25,6 +25,14 @@ lib-es2015:
     # https://github.com/microsoft/TypeScript/pull/45771
     'symbol-wellknown.d.ts': 'lib/lib.es2015.symbol.wellknown.d.ts'
 
+lib-es2016:
+  from: 'npm:typescript'
+  copy:
+    'index.d.ts': 'lib/lib.es2016.d.ts'
+    'array-include.d.ts': 'lib/lib.es2016.array.include.d.ts'
+    'full.d.ts': 'lib/lib.es2016.full.d.ts'
+    'intl.d.ts': 'lib/lib.es2016.intl.d.ts'
+
 lib-dom:
   from: 'npm:typescript'
   copy:
