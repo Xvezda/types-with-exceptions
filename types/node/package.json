@@ -1,6 +1,6 @@
 {
     "name": "@types-with-exceptions/node",
-    "version": "0.0.0-dev.0",
+    "version": "24.0.6",
     "description": "TypeScript definitions with exceptions for node",
     "homepage": "https://github.com/Xvezda/types-with-exceptions/tree/main/types/node",
     "license": "MIT",
