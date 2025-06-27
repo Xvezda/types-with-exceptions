@@ -33,6 +33,19 @@ lib-es2016:
     'full.d.ts': 'lib/lib.es2016.full.d.ts'
     'intl.d.ts': 'lib/lib.es2016.intl.d.ts'
 
+lib-es2017:
+  from: 'npm:typescript'
+  copy:
+    'index.d.ts': 'lib/lib.es2017.d.ts'
+    'arraybuffer.d.ts': 'lib/lib.es2017.arraybuffer.d.ts'
+    'date.d.ts': 'lib/lib.es2017.date.d.ts'
+    'full.d.ts': 'lib/lib.es2017.full.d.ts'
+    'intl.d.ts': 'lib/lib.es2017.intl.d.ts'
+    'object.d.ts': 'lib/lib.es2017.object.d.ts'
+    'sharedmemory.d.ts': 'lib/lib.es2017.sharedmemory.d.ts'
+    'string.d.ts': 'lib/lib.es2017.string.d.ts'
+    'typedarrays.d.ts': 'lib/lib.es2017.typedarrays.d.ts'
+
 lib-dom:
   from: 'npm:typescript'
   copy:
