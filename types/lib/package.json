@@ -1,0 +1,31 @@
+{
+  "name": "@types-with-exceptions/lib",
+  "version": "0.0.0-dev.0",
+  "author": "Xvezda <xvezda@naver.com>",
+  "homepage": "https://github.com/Xvezda/eslint-plugin-explicit-exceptions",
+  "bugs": {
+    "url": "https://github.com/Xvezda/eslint-plugin-explicit-exceptions/issues",
+    "email": "xvezda@naver.com"
+  },
+  "license": "MIT",
+  "packageManager": "pnpm@10.10.0",
+  "devDependencies": {
+    "@typescript/lib-decorators": "npm:@types-with-exceptions/lib-decorators",
+    "@typescript/lib-dom": "npm:@types-with-exceptions/lib-dom@0.0.0-dev.0",
+    "@typescript/lib-es2015": "npm:@types-with-exceptions/lib-es2015@0.0.0-dev.0",
+    "@typescript/lib-es2016": "npm:@types-with-exceptions/lib-es2016@0.0.0-dev.0",
+    "@typescript/lib-es2017": "npm:@types-with-exceptions/lib-es2017@0.0.0-dev.0",
+    "@typescript/lib-es2018": "npm:@types-with-exceptions/lib-es2018@0.0.0-dev.0",
+    "@typescript/lib-es2019": "npm:@types-with-exceptions/lib-es2019@0.0.0-dev.0",
+    "@typescript/lib-es2020": "npm:@types-with-exceptions/lib-es2020@0.0.0-dev.0",
+    "@typescript/lib-es2021": "npm:@types-with-exceptions/lib-es2021@0.0.0-dev.0",
+    "@typescript/lib-es2022": "npm:@types-with-exceptions/lib-es2022@0.0.0-dev.0",
+    "@typescript/lib-es2023": "npm:@types-with-exceptions/lib-es2023@0.0.0-dev.0",
+    "@typescript/lib-es2024": "npm:@types-with-exceptions/lib-es2024@0.0.0-dev.0",
+    "@typescript/lib-es5": "npm:@types-with-exceptions/lib-es5@0.0.0-dev.0",
+    "@typescript/lib-es6": "npm:@types-with-exceptions/lib-es6@0.0.0-dev.0",
+    "@typescript/lib-esnext": "npm:@types-with-exceptions/lib-esnext@0.0.0-dev.0",
+    "@typescript/lib-scripthost": "npm:@types-with-exceptions/lib-scripthost@0.0.0-dev.0",
+    "@typescript/lib-webworker": "npm:@types-with-exceptions/lib-webworker@0.0.0-dev.0"
+  }
+}
