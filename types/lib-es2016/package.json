@@ -2,16 +2,9 @@
     "name": "@types-with-exceptions/lib-es2016",
     "author": "Microsoft Corp.",
     "homepage": "https://github.com/Xvezda/types-with-exceptions/tree/main/types/lib-es2016",
-    "version": "5.8.3",
+    "version": "0.0.0-dev.0",
     "license": "Apache-2.0",
-    "description": "TypeScript is a language for application scale JavaScript development",
-    "keywords": [
-        "TypeScript",
-        "Microsoft",
-        "compiler",
-        "language",
-        "javascript"
-    ],
+    "description": "TypeScript definitions with exceptions for native APIs",
     "bugs": {
         "url": "https://github.com/Xvezda/types-with-exceptions/issues"
     },

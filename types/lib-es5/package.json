@@ -2,16 +2,9 @@
     "name": "@types-with-exceptions/lib-es5",
     "author": "Microsoft Corp.",
     "homepage": "https://github.com/Xvezda/types-with-exceptions/tree/main/types/lib-es5",
-    "version": "5.8.3",
+    "version": "0.0.0-dev.0",
     "license": "Apache-2.0",
-    "description": "TypeScript is a language for application scale JavaScript development",
-    "keywords": [
-        "TypeScript",
-        "Microsoft",
-        "compiler",
-        "language",
-        "javascript"
-    ],
+    "description": "TypeScript definitions with exceptions for native APIs",
     "bugs": {
         "url": "https://github.com/Xvezda/types-with-exceptions/issues"
     },
@@ -21,23 +14,5 @@
         "directory": "types/lib-es5"
     },
     "main": "./index.d.ts",
-    "typings": "./index.d.ts",
-    "engines": {
-        "node": ">=14.17"
-    },
-    "files": [
-        "LICENSE.txt",
-        "README.md",
-        "index.d.ts"
-    ],
-    "devDependencies": {
-        "@types/chai": "^4.3.20",
-        "@types/diff": "^5.2.3",
-        "@types/minimist": "^1.2.5",
-        "@types/mocha": "^10.0.10",
-        "@types/ms": "^0.7.34",
-        "@types/node": "latest",
-        "@types/source-map-support": "^0.5.10",
-        "@types/which": "^3.0.4"
-    }
+    "typings": "./index.d.ts"
 }
