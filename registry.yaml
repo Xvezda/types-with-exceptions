@@ -68,6 +68,20 @@ lib-es2019:
     'string.d.ts': 'lib/lib.es2019.string.d.ts'
     'symbol.d.ts': 'lib/lib.es2019.symbol.d.ts'
 
+lib-es2020:
+  from: 'npm:typescript'
+  copy:
+    'index.d.ts': 'lib/lib.es2020.d.ts'
+    'bigint.d.ts': 'lib/lib.es2020.bigint.d.ts'
+    'date.d.ts': 'lib/lib.es2020.date.d.ts'
+    'full.d.ts': 'lib/lib.es2020.full.d.ts'
+    'intl.d.ts': 'lib/lib.es2020.intl.d.ts'
+    'number.d.ts': 'lib/lib.es2020.number.d.ts'
+    'promise.d.ts': 'lib/lib.es2020.promise.d.ts'
+    'sharedmemory.d.ts': 'lib/lib.es2020.sharedmemory.d.ts'
+    'string.d.ts': 'lib/lib.es2020.string.d.ts'
+    'symbol-wellknown.d.ts': 'lib/lib.es2020.symbol.wellknown.d.ts'
+
 lib-dom:
   from: 'npm:typescript'
   copy:
