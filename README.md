@@ -2,6 +2,7 @@
 
 This project is designed to enable the JSDoc `@throws` type-checking and documentation-enforcement rules provided by [eslint-plugin-explicit-exceptions](https://github.com/Xvezda/eslint-plugin-explicit-exceptions) to be used with frequently used functions and libraries.
 
+
 ## Usage
 
 ```sh
@@ -10,6 +11,13 @@ npm install --save-dev @types-with-exceptions/node
 # For built-in lib replacement
 npm install --save-dev @types-with-exceptions/lib
 ```
+> [!WARNING]
+> pnpm requires following line to .npmrc file:
+> ```
+> public-hoist-pattern[]=@typescript/*
+> ```
+
+
 `tsconfig.json`
 ```diff
  {
