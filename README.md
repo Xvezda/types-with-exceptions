@@ -60,8 +60,10 @@ lib-es5:
   copy:
     'index.d.ts': 'lib/lib.es5.d.ts'
     # ^2          ^3
+
 # 1: Same as simplified version above
-# 2: Destination file name
-# 3: Source file name
+# 2: Destination file path
+# 3: Source file path
+
 # And to comply with the license, README, LICENSE, etc. are copied by default without needing to specify them separately.
 ```
