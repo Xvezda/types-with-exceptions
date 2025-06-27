@@ -151,3 +151,11 @@ lib-scripthost:
   from: 'npm:typescript'
   copy:
     'index.d.ts': 'lib/lib.scripthost.d.ts'
+
+lib-webworker:
+  from: 'npm:typescript'
+  copy:
+    'index.d.ts': 'lib/lib.webworker.d.ts'
+    'asynciterable.d.ts': 'lib/lib.webworker.asynciterable.d.ts'
+    'importscripts.d.ts': 'lib/lib.webworker.importscripts.d.ts'
+    'iterable.d.ts': 'lib/lib.webworker.iterable.d.ts'
