@@ -1,8 +1,8 @@
 {
-    "name": "@types-with-exceptions/node",
-    "version": "24.0.6",
-    "description": "TypeScript definitions with exceptions for node",
-    "homepage": "https://github.com/Xvezda/types-with-exceptions/tree/main/types/node",
+    "name": "@types/node",
+    "version": "24.0.7",
+    "description": "TypeScript definitions for node",
+    "homepage": "https://github.com/DefinitelyTyped/DefinitelyTyped/tree/master/types/node",
     "license": "MIT",
     "contributors": [
         {
@@ -240,6 +240,6 @@
         "undici-types": "~7.8.0"
     },
     "peerDependencies": {},
-    "typesPublisherContentHash": "c4b5e82af42726f32f67b7010b8c47b79f961e50fd62db2d1c9ca1b40c3d455b",
+    "typesPublisherContentHash": "9d4d0600f3777de66d31fc3650d20edf2918bca4267042e5be25f65fb4e92e06",
     "typeScriptVersion": "5.1"
 }
