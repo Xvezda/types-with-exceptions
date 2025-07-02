@@ -1,6 +1,6 @@
 diff -ruN .cache/lib-webworker/package.json types/lib-webworker/package.json
---- .cache/lib-webworker/package.json	2025-07-01 00:29:21.779696907 +0000
-+++ types/lib-webworker/package.json	2025-07-01 00:29:21.077694423 +0000
+--- .cache/lib-webworker/package.json	2025-07-02 00:25:40.748115333 +0000
++++ types/lib-webworker/package.json	2025-07-02 00:25:40.048114520 +0000
 @@ -1,120 +1,18 @@
  {
 -    "name": "typescript",

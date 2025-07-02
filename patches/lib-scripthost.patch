@@ -1,6 +1,6 @@
 diff -ruN .cache/lib-scripthost/package.json types/lib-scripthost/package.json
---- .cache/lib-scripthost/package.json	2025-07-01 00:29:21.772696882 +0000
-+++ types/lib-scripthost/package.json	2025-07-01 00:29:20.712693132 +0000
+--- .cache/lib-scripthost/package.json	2025-07-02 00:25:40.741115330 +0000
++++ types/lib-scripthost/package.json	2025-07-02 00:25:39.594113990 +0000
 @@ -1,120 +1,18 @@
  {
 -    "name": "typescript",
