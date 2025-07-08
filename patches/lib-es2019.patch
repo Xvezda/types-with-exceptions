@@ -1,6 +1,6 @@
 diff -ruN .cache/lib-es2019/package.json types/lib-es2019/package.json
---- .cache/lib-es2019/package.json	2025-07-02 00:25:40.654115229 +0000
-+++ types/lib-es2019/package.json	2025-07-02 00:25:35.066108697 +0000
+--- .cache/lib-es2019/package.json	2025-07-08 18:07:46.130265514 +0000
++++ types/lib-es2019/package.json	2025-07-08 18:07:40.924211472 +0000
 @@ -1,120 +1,18 @@
  {
 -    "name": "typescript",

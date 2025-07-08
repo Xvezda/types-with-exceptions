@@ -1,6 +1,6 @@
 diff -ruN .cache/lib-esnext/package.json types/lib-esnext/package.json
---- .cache/lib-esnext/package.json	2025-07-02 00:25:40.715115300 +0000
-+++ types/lib-esnext/package.json	2025-07-02 00:25:38.069112207 +0000
+--- .cache/lib-esnext/package.json	2025-07-08 18:07:46.194266182 +0000
++++ types/lib-esnext/package.json	2025-07-08 18:07:43.735240509 +0000
 @@ -1,120 +1,18 @@
  {
 -    "name": "typescript",

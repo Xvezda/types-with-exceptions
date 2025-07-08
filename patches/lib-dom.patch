@@ -1,6 +1,6 @@
 diff -ruN .cache/lib-dom/package.json types/lib-dom/package.json
---- .cache/lib-dom/package.json	2025-07-02 00:25:40.731115319 +0000
-+++ types/lib-dom/package.json	2025-07-02 00:25:39.067113373 +0000
+--- .cache/lib-dom/package.json	2025-07-08 18:07:46.208266328 +0000
++++ types/lib-dom/package.json	2025-07-08 18:07:44.672250292 +0000
 @@ -1,120 +1,18 @@
  {
 -    "name": "typescript",

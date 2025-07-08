@@ -1,6 +1,6 @@
 diff -ruN .cache/lib-es5/index.d.ts types/lib-es5/index.d.ts
---- .cache/lib-es5/index.d.ts	2025-07-02 00:25:40.592115156 +0000
-+++ types/lib-es5/index.d.ts	2025-07-02 00:25:31.618105834 +0000
+--- .cache/lib-es5/index.d.ts	2025-07-08 18:07:46.067264856 +0000
++++ types/lib-es5/index.d.ts	2025-07-08 18:07:37.957181181 +0000
 @@ -29,6 +29,7 @@
  /**
   * Evaluates JavaScript code and executes it.
@@ -800,8 +800,8 @@ diff -ruN .cache/lib-es5/index.d.ts types/lib-es5/index.d.ts
          supportedLocalesOf(locales: string | string[], options?: DateTimeFormatOptions): string[];
          readonly prototype: DateTimeFormat;
 diff -ruN .cache/lib-es5/package.json types/lib-es5/package.json
---- .cache/lib-es5/package.json	2025-07-02 00:25:40.598115164 +0000
-+++ types/lib-es5/package.json	2025-07-02 00:25:31.618105834 +0000
+--- .cache/lib-es5/package.json	2025-07-08 18:07:46.074264929 +0000
++++ types/lib-es5/package.json	2025-07-08 18:07:37.957181181 +0000
 @@ -1,120 +1,18 @@
  {
 -    "name": "typescript",
