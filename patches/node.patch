@@ -1,6 +1,6 @@
 diff -ruN .cache/node/fs.d.ts types/node/fs.d.ts
---- .cache/node/fs.d.ts	2025-07-08 18:07:46.038264554 +0000
-+++ types/node/fs.d.ts	2025-07-08 18:07:37.353175015 +0000
+--- .cache/node/fs.d.ts	2025-07-09 00:26:40.411949104 +0000
++++ types/node/fs.d.ts	2025-07-09 00:26:31.767951748 +0000
 @@ -552,6 +552,7 @@
       *
       * See the POSIX [`rename(2)`](http://man7.org/linux/man-pages/man2/rename.2.html) documentation for more details.
@@ -428,8 +428,8 @@ diff -ruN .cache/node/fs.d.ts types/node/fs.d.ts
       * @returns paths of files that match the pattern.
       */
 diff -ruN .cache/node/globals.d.ts types/node/globals.d.ts
---- .cache/node/globals.d.ts	2025-07-08 18:07:46.039264564 +0000
-+++ types/node/globals.d.ts	2025-07-08 18:07:37.353175015 +0000
+--- .cache/node/globals.d.ts	2025-07-09 00:26:40.413949104 +0000
++++ types/node/globals.d.ts	2025-07-09 00:26:31.767951748 +0000
 @@ -310,6 +310,16 @@
      // #region fetch
      interface RequestInit extends _RequestInit {}
@@ -448,8 +448,8 @@ diff -ruN .cache/node/globals.d.ts types/node/globals.d.ts
          input: string | URL | globalThis.Request,
          init?: RequestInit,
 diff -ruN .cache/node/http2.d.ts types/node/http2.d.ts
---- .cache/node/http2.d.ts	2025-07-08 18:07:46.018264345 +0000
-+++ types/node/http2.d.ts	2025-07-08 18:07:37.354175025 +0000
+--- .cache/node/http2.d.ts	2025-07-09 00:26:40.391949108 +0000
++++ types/node/http2.d.ts	2025-07-09 00:26:31.767951748 +0000
 @@ -1226,66 +1226,14 @@
      }
      // Http2Server
@@ -547,8 +547,8 @@ diff -ruN .cache/node/http2.d.ts types/node/http2.d.ts
      }
      export interface ServerSessionOptions<
 diff -ruN .cache/node/package.json types/node/package.json
---- .cache/node/package.json	2025-07-08 18:07:46.031264480 +0000
-+++ types/node/package.json	2025-07-08 18:07:37.354175025 +0000
+--- .cache/node/package.json	2025-07-09 00:26:40.404949106 +0000
++++ types/node/package.json	2025-07-09 00:26:31.768951747 +0000
 @@ -204,6 +204,11 @@
              "name": "Yagiz Nizipli",
              "githubUsername": "anonrig",
@@ -572,18 +572,18 @@ diff -ruN .cache/node/package.json types/node/package.json
      "scripts": {},
 @@ -237,4 +242,4 @@
      "peerDependencies": {},
-     "typesPublisherContentHash": "b6cb2fa372b34f255958f4657fb38cec137a56fa12dc189ce01545d497a5cfd8",
+     "typesPublisherContentHash": "8e4c85a4e3eaa197d6a1deb2bcccfbcd34ad8ba2f260d598e3576078dbf913d1",
      "typeScriptVersion": "5.1"
 -}
 \ No newline at end of file
 +}
 diff -ruN .cache/node/package.json.orig types/node/package.json.orig
 --- .cache/node/package.json.orig	1970-01-01 00:00:00.000000000 +0000
-+++ types/node/package.json.orig	2025-07-08 18:07:37.317174647 +0000
++++ types/node/package.json.orig	2025-07-09 00:26:31.699951773 +0000
 @@ -0,0 +1,240 @@
 +{
 +    "name": "@types/node",
-+    "version": "24.0.11",
++    "version": "24.0.12",
 +    "description": "TypeScript definitions for node",
 +    "homepage": "https://github.com/DefinitelyTyped/DefinitelyTyped/tree/master/types/node",
 +    "license": "MIT",
@@ -818,13 +818,13 @@ diff -ruN .cache/node/package.json.orig types/node/package.json.orig
 +        "undici-types": "~7.8.0"
 +    },
 +    "peerDependencies": {},
-+    "typesPublisherContentHash": "b6cb2fa372b34f255958f4657fb38cec137a56fa12dc189ce01545d497a5cfd8",
++    "typesPublisherContentHash": "8e4c85a4e3eaa197d6a1deb2bcccfbcd34ad8ba2f260d598e3576078dbf913d1",
 +    "typeScriptVersion": "5.1"
 +}
 \ No newline at end of file
 diff -ruN .cache/node/package.json.rej types/node/package.json.rej
 --- .cache/node/package.json.rej	1970-01-01 00:00:00.000000000 +0000
-+++ types/node/package.json.rej	2025-07-08 18:07:37.355175035 +0000
++++ types/node/package.json.rej	2025-07-09 00:26:31.768951747 +0000
 @@ -0,0 +1,14 @@
 +--- package.json	2025-06-27 23:29:28.405902278 +0000
 ++++ package.json	2025-06-27 23:29:20.389820609 +0000
@@ -841,8 +841,8 @@ diff -ruN .cache/node/package.json.rej types/node/package.json.rej
 +     "contributors": [
 +         {
 diff -ruN .cache/node/path.d.ts types/node/path.d.ts
---- .cache/node/path.d.ts	2025-07-08 18:07:46.030264470 +0000
-+++ types/node/path.d.ts	2025-07-08 18:07:37.355175035 +0000
+--- .cache/node/path.d.ts	2025-07-09 00:26:40.403949106 +0000
++++ types/node/path.d.ts	2025-07-09 00:26:31.768951747 +0000
 @@ -70,14 +70,12 @@
               * When multiple slashes are found, they're replaced by a single one; when the path contains a trailing slash, it is preserved. On Windows backslashes are used.
               *
@@ -921,8 +921,8 @@ diff -ruN .cache/node/path.d.ts types/node/path.d.ts
              parse(path: string): ParsedPath;
              /**
 diff -ruN .cache/node/util.d.ts types/node/util.d.ts
---- .cache/node/util.d.ts	2025-07-08 18:07:46.024264407 +0000
-+++ types/node/util.d.ts	2025-07-08 18:07:37.355175035 +0000
+--- .cache/node/util.d.ts	2025-07-09 00:26:40.397949107 +0000
++++ types/node/util.d.ts	2025-07-09 00:26:31.769951747 +0000
 @@ -1121,7 +1121,7 @@
       * @param content The raw contents of a `.env` file.
       * @since v20.12.0
