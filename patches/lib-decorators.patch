@@ -1,6 +1,6 @@
 diff -ruN .cache/lib-decorators/package.json types/lib-decorators/package.json
---- .cache/lib-decorators/package.json	2025-07-11 00:26:24.006925273 +0000
-+++ types/lib-decorators/package.json	2025-07-11 00:26:22.004916934 +0000
+--- .cache/lib-decorators/package.json	2025-07-15 12:10:52.856487921 +0000
++++ types/lib-decorators/package.json	2025-07-15 12:10:50.854438388 +0000
 @@ -1,120 +1,18 @@
  {
 -    "name": "typescript",

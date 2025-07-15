@@ -1,6 +1,6 @@
 diff -ruN .cache/node/fs.d.ts types/node/fs.d.ts
---- .cache/node/fs.d.ts	2025-07-11 00:26:23.860924665 +0000
-+++ types/node/fs.d.ts	2025-07-11 00:26:15.155893569 +0000
+--- .cache/node/fs.d.ts	2025-07-15 12:10:52.665483121 +0000
++++ types/node/fs.d.ts	2025-07-15 12:10:44.292278554 +0000
 @@ -552,6 +552,7 @@
       *
       * See the POSIX [`rename(2)`](http://man7.org/linux/man-pages/man2/rename.2.html) documentation for more details.
@@ -428,8 +428,8 @@ diff -ruN .cache/node/fs.d.ts types/node/fs.d.ts
       * @returns paths of files that match the pattern.
       */
 diff -ruN .cache/node/globals.d.ts types/node/globals.d.ts
---- .cache/node/globals.d.ts	2025-07-11 00:26:23.861924669 +0000
-+++ types/node/globals.d.ts	2025-07-11 00:26:15.155893569 +0000
+--- .cache/node/globals.d.ts	2025-07-15 12:10:52.667483172 +0000
++++ types/node/globals.d.ts	2025-07-15 12:10:44.293278578 +0000
 @@ -310,6 +310,16 @@
      // #region fetch
      interface RequestInit extends _RequestInit {}
@@ -448,8 +448,8 @@ diff -ruN .cache/node/globals.d.ts types/node/globals.d.ts
          input: string | URL | globalThis.Request,
          init?: RequestInit,
 diff -ruN .cache/node/http2.d.ts types/node/http2.d.ts
---- .cache/node/http2.d.ts	2025-07-11 00:26:23.839924577 +0000
-+++ types/node/http2.d.ts	2025-07-11 00:26:15.156893572 +0000
+--- .cache/node/http2.d.ts	2025-07-15 12:10:52.685483624 +0000
++++ types/node/http2.d.ts	2025-07-15 12:10:44.293278578 +0000
 @@ -1226,66 +1226,14 @@
      }
      // Http2Server
@@ -547,9 +547,9 @@ diff -ruN .cache/node/http2.d.ts types/node/http2.d.ts
      }
      export interface ServerSessionOptions<
 diff -ruN .cache/node/package.json types/node/package.json
---- .cache/node/package.json	2025-07-11 00:26:23.852924632 +0000
-+++ types/node/package.json	2025-07-11 00:26:15.156893572 +0000
-@@ -204,6 +204,11 @@
+--- .cache/node/package.json	2025-07-15 12:10:52.670483247 +0000
++++ types/node/package.json	2025-07-15 12:10:44.293278578 +0000
+@@ -124,6 +124,11 @@
              "name": "Yagiz Nizipli",
              "githubUsername": "anonrig",
              "url": "https://github.com/anonrig"
@@ -561,7 +561,7 @@ diff -ruN .cache/node/package.json types/node/package.json
          }
      ],
      "main": "",
-@@ -227,7 +232,7 @@
+@@ -147,7 +152,7 @@
      },
      "repository": {
          "type": "git",
@@ -570,20 +570,20 @@ diff -ruN .cache/node/package.json types/node/package.json
          "directory": "types/node"
      },
      "scripts": {},
-@@ -237,4 +242,4 @@
+@@ -157,4 +162,4 @@
      "peerDependencies": {},
-     "typesPublisherContentHash": "87f3760d7938b70e0ce621dcf56dd6a85be123eeda2c2c819a783a4b1b6b89d8",
+     "typesPublisherContentHash": "f2ab6ee3016c1a7d1baf5391d24e04e58c4d932ac8ba8267ea5acc2cf3259dbb",
      "typeScriptVersion": "5.1"
 -}
 \ No newline at end of file
 +}
 diff -ruN .cache/node/package.json.orig types/node/package.json.orig
 --- .cache/node/package.json.orig	1970-01-01 00:00:00.000000000 +0000
-+++ types/node/package.json.orig	2025-07-11 00:26:15.133893494 +0000
-@@ -0,0 +1,240 @@
++++ types/node/package.json.orig	2025-07-15 12:10:44.247277458 +0000
+@@ -0,0 +1,160 @@
 +{
 +    "name": "@types/node",
-+    "version": "24.0.13",
++    "version": "24.0.14",
 +    "description": "TypeScript definitions for node",
 +    "homepage": "https://github.com/DefinitelyTyped/DefinitelyTyped/tree/master/types/node",
 +    "license": "MIT",
@@ -599,11 +599,6 @@ diff -ruN .cache/node/package.json.orig types/node/package.json.orig
 +            "url": "https://github.com/jkomyno"
 +        },
 +        {
-+            "name": "Alvis HT Tang",
-+            "githubUsername": "alvis",
-+            "url": "https://github.com/alvis"
-+        },
-+        {
 +            "name": "Andrew Makarov",
 +            "githubUsername": "r3nya",
 +            "url": "https://github.com/r3nya"
@@ -614,54 +609,9 @@ diff -ruN .cache/node/package.json.orig types/node/package.json.orig
 +            "url": "https://github.com/btoueg"
 +        },
 +        {
-+            "name": "Chigozirim C.",
-+            "githubUsername": "smac89",
-+            "url": "https://github.com/smac89"
-+        },
-+        {
 +            "name": "David Junger",
 +            "githubUsername": "touffy",
 +            "url": "https://github.com/touffy"
-+        },
-+        {
-+            "name": "Deividas Bakanas",
-+            "githubUsername": "DeividasBakanas",
-+            "url": "https://github.com/DeividasBakanas"
-+        },
-+        {
-+            "name": "Eugene Y. Q. Shen",
-+            "githubUsername": "eyqs",
-+            "url": "https://github.com/eyqs"
-+        },
-+        {
-+            "name": "Hannes Magnusson",
-+            "githubUsername": "Hannes-Magnusson-CK",
-+            "url": "https://github.com/Hannes-Magnusson-CK"
-+        },
-+        {
-+            "name": "Huw",
-+            "githubUsername": "hoo29",
-+            "url": "https://github.com/hoo29"
-+        },
-+        {
-+            "name": "Kelvin Jin",
-+            "githubUsername": "kjin",
-+            "url": "https://github.com/kjin"
-+        },
-+        {
-+            "name": "Klaus Meinhardt",
-+            "githubUsername": "ajafff",
-+            "url": "https://github.com/ajafff"
-+        },
-+        {
-+            "name": "Lishude",
-+            "githubUsername": "islishude",
-+            "url": "https://github.com/islishude"
-+        },
-+        {
-+            "name": "Mariusz Wiktorczyk",
-+            "githubUsername": "mwiktorczyk",
-+            "url": "https://github.com/mwiktorczyk"
 +        },
 +        {
 +            "name": "Mohsen Azimi",
@@ -674,44 +624,14 @@ diff -ruN .cache/node/package.json.orig types/node/package.json.orig
 +            "url": "https://github.com/galkin"
 +        },
 +        {
-+            "name": "Parambir Singh",
-+            "githubUsername": "parambirs",
-+            "url": "https://github.com/parambirs"
-+        },
-+        {
 +            "name": "Sebastian Silbermann",
 +            "githubUsername": "eps1lon",
 +            "url": "https://github.com/eps1lon"
 +        },
 +        {
-+            "name": "Thomas den Hollander",
-+            "githubUsername": "ThomasdenH",
-+            "url": "https://github.com/ThomasdenH"
-+        },
-+        {
 +            "name": "Wilco Bakker",
 +            "githubUsername": "WilcoBakker",
 +            "url": "https://github.com/WilcoBakker"
-+        },
-+        {
-+            "name": "wwwy3y3",
-+            "githubUsername": "wwwy3y3",
-+            "url": "https://github.com/wwwy3y3"
-+        },
-+        {
-+            "name": "Samuel Ainsworth",
-+            "githubUsername": "samuela",
-+            "url": "https://github.com/samuela"
-+        },
-+        {
-+            "name": "Kyle Uehlein",
-+            "githubUsername": "kuehlein",
-+            "url": "https://github.com/kuehlein"
-+        },
-+        {
-+            "name": "Thanik Bhongbhibhat",
-+            "githubUsername": "bhongy",
-+            "url": "https://github.com/bhongy"
 +        },
 +        {
 +            "name": "Marcin Kopacz",
@@ -818,13 +738,13 @@ diff -ruN .cache/node/package.json.orig types/node/package.json.orig
 +        "undici-types": "~7.8.0"
 +    },
 +    "peerDependencies": {},
-+    "typesPublisherContentHash": "87f3760d7938b70e0ce621dcf56dd6a85be123eeda2c2c819a783a4b1b6b89d8",
++    "typesPublisherContentHash": "f2ab6ee3016c1a7d1baf5391d24e04e58c4d932ac8ba8267ea5acc2cf3259dbb",
 +    "typeScriptVersion": "5.1"
 +}
 \ No newline at end of file
 diff -ruN .cache/node/package.json.rej types/node/package.json.rej
 --- .cache/node/package.json.rej	1970-01-01 00:00:00.000000000 +0000
-+++ types/node/package.json.rej	2025-07-11 00:26:15.157893576 +0000
++++ types/node/package.json.rej	2025-07-15 12:10:44.294278603 +0000
 @@ -0,0 +1,14 @@
 +--- package.json	2025-06-27 23:29:28.405902278 +0000
 ++++ package.json	2025-06-27 23:29:20.389820609 +0000
@@ -841,8 +761,8 @@ diff -ruN .cache/node/package.json.rej types/node/package.json.rej
 +     "contributors": [
 +         {
 diff -ruN .cache/node/path.d.ts types/node/path.d.ts
---- .cache/node/path.d.ts	2025-07-11 00:26:23.851924627 +0000
-+++ types/node/path.d.ts	2025-07-11 00:26:15.157893576 +0000
+--- .cache/node/path.d.ts	2025-07-15 12:10:52.689483725 +0000
++++ types/node/path.d.ts	2025-07-15 12:10:44.294278603 +0000
 @@ -70,14 +70,12 @@
               * When multiple slashes are found, they're replaced by a single one; when the path contains a trailing slash, it is preserved. On Windows backslashes are used.
               *
@@ -921,8 +841,8 @@ diff -ruN .cache/node/path.d.ts types/node/path.d.ts
              parse(path: string): ParsedPath;
              /**
 diff -ruN .cache/node/util.d.ts types/node/util.d.ts
---- .cache/node/util.d.ts	2025-07-11 00:26:23.845924602 +0000
-+++ types/node/util.d.ts	2025-07-11 00:26:15.157893576 +0000
+--- .cache/node/util.d.ts	2025-07-15 12:10:52.675483373 +0000
++++ types/node/util.d.ts	2025-07-15 12:10:44.295278627 +0000
 @@ -1121,7 +1121,7 @@
       * @param content The raw contents of a `.env` file.
       * @since v20.12.0
