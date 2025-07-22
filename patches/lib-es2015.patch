@@ -1,6 +1,6 @@
 diff -ruN .cache/lib-es2015/generator.d.ts types/lib-es2015/generator.d.ts
---- .cache/lib-es2015/generator.d.ts	2025-07-19 06:08:01.838414386 +0000
-+++ types/lib-es2015/generator.d.ts	2025-07-19 06:07:54.110447736 +0000
+--- .cache/lib-es2015/generator.d.ts	2025-07-22 12:10:27.306332968 +0000
++++ types/lib-es2015/generator.d.ts	2025-07-22 12:10:20.594300771 +0000
 @@ -22,6 +22,7 @@
      // NOTE: 'next' is defined using a tuple to ensure we report the correct assignability errors in all places.
      next(...[value]: [] | [TNext]): IteratorResult<T, TReturn>;
@@ -10,8 +10,8 @@ diff -ruN .cache/lib-es2015/generator.d.ts types/lib-es2015/generator.d.ts
      [Symbol.iterator](): Generator<T, TReturn, TNext>;
  }
 diff -ruN .cache/lib-es2015/iterable.d.ts types/lib-es2015/iterable.d.ts
---- .cache/lib-es2015/iterable.d.ts	2025-07-19 06:08:01.839414384 +0000
-+++ types/lib-es2015/iterable.d.ts	2025-07-19 06:07:54.111447732 +0000
+--- .cache/lib-es2015/iterable.d.ts	2025-07-22 12:10:27.307332973 +0000
++++ types/lib-es2015/iterable.d.ts	2025-07-22 12:10:20.594300771 +0000
 @@ -42,6 +42,7 @@
      // NOTE: 'next' is defined using a tuple to ensure we report the correct assignability errors in all places.
      next(...[value]: [] | [TNext]): IteratorResult<T, TReturn>;
@@ -21,8 +21,8 @@ diff -ruN .cache/lib-es2015/iterable.d.ts types/lib-es2015/iterable.d.ts
  }
  
 diff -ruN .cache/lib-es2015/package.json types/lib-es2015/package.json
---- .cache/lib-es2015/package.json	2025-07-19 06:08:01.845414366 +0000
-+++ types/lib-es2015/package.json	2025-07-19 06:07:54.111447732 +0000
+--- .cache/lib-es2015/package.json	2025-07-22 12:10:27.312332998 +0000
++++ types/lib-es2015/package.json	2025-07-22 12:10:20.594300771 +0000
 @@ -1,120 +1,18 @@
  {
 -    "name": "typescript",
