@@ -1,6 +1,6 @@
 diff -ruN .cache/node/fs.d.ts types/node/fs.d.ts
---- .cache/node/fs.d.ts	2025-07-22 12:10:27.239332634 +0000
-+++ types/node/fs.d.ts	2025-07-22 12:10:18.974290443 +0000
+--- .cache/node/fs.d.ts	2025-07-31 18:08:35.834691707 +0000
++++ types/node/fs.d.ts	2025-07-31 18:08:26.784648000 +0000
 @@ -564,6 +564,7 @@
       *
       * See the POSIX [`rename(2)`](http://man7.org/linux/man-pages/man2/rename.2.html) documentation for more details.
@@ -429,7 +429,7 @@ diff -ruN .cache/node/fs.d.ts types/node/fs.d.ts
       */
 diff -ruN .cache/node/fs.d.ts.orig types/node/fs.d.ts.orig
 --- .cache/node/fs.d.ts.orig	1970-01-01 00:00:00.000000000 +0000
-+++ types/node/fs.d.ts.orig	2025-07-22 12:10:18.921290003 +0000
++++ types/node/fs.d.ts.orig	2025-07-31 18:08:26.786648010 +0000
 @@ -0,0 +1,4458 @@
 +/**
 + * The `node:fs` module enables interacting with the file system in a
@@ -4890,8 +4890,8 @@ diff -ruN .cache/node/fs.d.ts.orig types/node/fs.d.ts.orig
 +    export * from "fs";
 +}
 diff -ruN .cache/node/globals.d.ts types/node/globals.d.ts
---- .cache/node/globals.d.ts	2025-07-22 12:10:27.241332644 +0000
-+++ types/node/globals.d.ts	2025-07-22 12:10:18.974290443 +0000
+--- .cache/node/globals.d.ts	2025-07-31 18:08:35.836691717 +0000
++++ types/node/globals.d.ts	2025-07-31 18:08:26.786648010 +0000
 @@ -310,6 +310,16 @@
      // #region fetch
      interface RequestInit extends _RequestInit {}
@@ -4910,8 +4910,8 @@ diff -ruN .cache/node/globals.d.ts types/node/globals.d.ts
          input: string | URL | globalThis.Request,
          init?: RequestInit,
 diff -ruN .cache/node/http2.d.ts types/node/http2.d.ts
---- .cache/node/http2.d.ts	2025-07-22 12:10:27.257332723 +0000
-+++ types/node/http2.d.ts	2025-07-22 12:10:18.975290452 +0000
+--- .cache/node/http2.d.ts	2025-07-31 18:08:35.853691805 +0000
++++ types/node/http2.d.ts	2025-07-31 18:08:26.787648014 +0000
 @@ -1226,66 +1226,14 @@
      }
      // Http2Server
@@ -5009,8 +5009,8 @@ diff -ruN .cache/node/http2.d.ts types/node/http2.d.ts
      }
      export interface ServerSessionOptions<
 diff -ruN .cache/node/package.json types/node/package.json
---- .cache/node/package.json	2025-07-22 12:10:27.243332654 +0000
-+++ types/node/package.json	2025-07-22 12:10:18.975290452 +0000
+--- .cache/node/package.json	2025-07-31 18:08:35.838691728 +0000
++++ types/node/package.json	2025-07-31 18:08:26.787648014 +0000
 @@ -124,6 +124,11 @@
              "name": "Yagiz Nizipli",
              "githubUsername": "anonrig",
@@ -5041,7 +5041,7 @@ diff -ruN .cache/node/package.json types/node/package.json
 +}
 diff -ruN .cache/node/package.json.orig types/node/package.json.orig
 --- .cache/node/package.json.orig	1970-01-01 00:00:00.000000000 +0000
-+++ types/node/package.json.orig	2025-07-22 12:10:18.925290036 +0000
++++ types/node/package.json.orig	2025-07-31 18:08:26.787648014 +0000
 @@ -0,0 +1,160 @@
 +{
 +    "name": "@types/node",
@@ -5206,7 +5206,7 @@ diff -ruN .cache/node/package.json.orig types/node/package.json.orig
 \ No newline at end of file
 diff -ruN .cache/node/package.json.rej types/node/package.json.rej
 --- .cache/node/package.json.rej	1970-01-01 00:00:00.000000000 +0000
-+++ types/node/package.json.rej	2025-07-22 12:10:18.975290452 +0000
++++ types/node/package.json.rej	2025-07-31 18:08:26.787648014 +0000
 @@ -0,0 +1,14 @@
 +--- package.json	2025-06-27 23:29:28.405902278 +0000
 ++++ package.json	2025-06-27 23:29:20.389820609 +0000
@@ -5223,8 +5223,8 @@ diff -ruN .cache/node/package.json.rej types/node/package.json.rej
 +     "contributors": [
 +         {
 diff -ruN .cache/node/path.d.ts types/node/path.d.ts
---- .cache/node/path.d.ts	2025-07-22 12:10:27.261332743 +0000
-+++ types/node/path.d.ts	2025-07-22 12:10:18.976290460 +0000
+--- .cache/node/path.d.ts	2025-07-31 18:08:35.857691825 +0000
++++ types/node/path.d.ts	2025-07-31 18:08:26.788648019 +0000
 @@ -70,14 +70,12 @@
               * When multiple slashes are found, they're replaced by a single one; when the path contains a trailing slash, it is preserved. On Windows backslashes are used.
               *
@@ -5303,8 +5303,8 @@ diff -ruN .cache/node/path.d.ts types/node/path.d.ts
              parse(path: string): ParsedPath;
              /**
 diff -ruN .cache/node/util.d.ts types/node/util.d.ts
---- .cache/node/util.d.ts	2025-07-22 12:10:27.248332678 +0000
-+++ types/node/util.d.ts	2025-07-22 12:10:18.976290460 +0000
+--- .cache/node/util.d.ts	2025-07-31 18:08:35.843691753 +0000
++++ types/node/util.d.ts	2025-07-31 18:08:26.788648019 +0000
 @@ -1121,7 +1121,7 @@
       * @param content The raw contents of a `.env` file.
       * @since v20.12.0
