@@ -1,4 +1,6 @@
-onlyBuiltDependencies:
-  - esbuild
 packages:
-  - 'types/*'
+  - types/*
+onlyBuiltDependencies:
+  - dprint
+  - esbuild
+  - oxc-resolver

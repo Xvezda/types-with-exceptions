@@ -2397,8 +2397,8 @@ importers:
   types/node:
     dependencies:
       undici-types:
-        specifier: ~7.8.0
-        version: 7.8.0
+        specifier: ~7.10.0
+        version: 7.10.0
 
 packages:
 
@@ -4546,6 +4546,9 @@ packages:
 
   underscore@1.13.7:
     resolution: {integrity: sha512-GMXzWtsc57XAtguZgaQViUOzs0KTkk8ojr3/xAxXLITqf/3EMwxC0inyETfDFjH/Krbhuep0HNbbjI9i/q3F3g==}
+
+  undici-types@7.10.0:
+    resolution: {integrity: sha512-t5Fy/nfn+14LuOc2KNYg75vZqClpAiqscVvMygNnlsHBFpSXdJaYtXMcdNLpl/Qvc3P2cB3s6lOV51nqsFq4ag==}
 
   undici-types@7.8.0:
     resolution: {integrity: sha512-9UJ2xGDvQ43tYyVMpuHlsgApydB8ZKfVYTsLDhXkFL/6gfkp+U8xTGdh8pMJv1SpZna0zxG1DwsKZsreLbXBxw==}
@@ -6907,6 +6910,8 @@ snapshots:
   typical@5.2.0: {}
 
   underscore@1.13.7: {}
+
+  undici-types@7.10.0: {}
 
   undici-types@7.8.0: {}
 
