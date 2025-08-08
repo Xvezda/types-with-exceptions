@@ -1,6 +1,6 @@
 diff -ruN .cache/lib-es5/index.d.ts types/lib-es5/index.d.ts
---- .cache/lib-es5/index.d.ts	2025-08-04 12:11:05.655170387 +0000
-+++ types/lib-es5/index.d.ts	2025-08-04 12:10:58.372150468 +0000
+--- .cache/lib-es5/index.d.ts	2025-08-08 18:07:24.955681819 +0000
++++ types/lib-es5/index.d.ts	2025-08-08 18:07:16.660597469 +0000
 @@ -29,6 +29,7 @@
  /**
   * Evaluates JavaScript code and executes it.
@@ -762,7 +762,7 @@ diff -ruN .cache/lib-es5/index.d.ts types/lib-es5/index.d.ts
          readonly prototype: DateTimeFormat;
 diff -ruN .cache/lib-es5/index.d.ts.orig types/lib-es5/index.d.ts.orig
 --- .cache/lib-es5/index.d.ts.orig	1970-01-01 00:00:00.000000000 +0000
-+++ types/lib-es5/index.d.ts.orig	2025-08-04 12:10:58.374150470 +0000
++++ types/lib-es5/index.d.ts.orig	2025-08-08 18:07:16.662597489 +0000
 @@ -0,0 +1,4601 @@
 +/*! *****************************************************************************
 +Copyright (c) Microsoft Corporation. All rights reserved.
@@ -5367,7 +5367,7 @@ diff -ruN .cache/lib-es5/index.d.ts.orig types/lib-es5/index.d.ts.orig
 +}
 diff -ruN .cache/lib-es5/index.d.ts.rej types/lib-es5/index.d.ts.rej
 --- .cache/lib-es5/index.d.ts.rej	1970-01-01 00:00:00.000000000 +0000
-+++ types/lib-es5/index.d.ts.rej	2025-08-04 12:10:58.374150470 +0000
++++ types/lib-es5/index.d.ts.rej	2025-08-08 18:07:16.662597489 +0000
 @@ -0,0 +1,41 @@
 +--- index.d.ts	2025-07-22 12:10:27.285332863 +0000
 ++++ index.d.ts	2025-07-22 12:10:19.574295432 +0000
@@ -5412,7 +5412,7 @@ diff -ruN .cache/lib-es5/index.d.ts.rej types/lib-es5/index.d.ts.rej
 + }
 diff -ruN .cache/lib-es5/package.json.orig types/lib-es5/package.json.orig
 --- .cache/lib-es5/package.json.orig	1970-01-01 00:00:00.000000000 +0000
-+++ types/lib-es5/package.json.orig	2025-08-04 12:10:58.374150470 +0000
++++ types/lib-es5/package.json.orig	2025-08-08 18:07:16.662597489 +0000
 @@ -0,0 +1,120 @@
 +{
 +    "name": "typescript",
@@ -5536,7 +5536,7 @@ diff -ruN .cache/lib-es5/package.json.orig types/lib-es5/package.json.orig
 +}
 diff -ruN .cache/lib-es5/package.json.rej types/lib-es5/package.json.rej
 --- .cache/lib-es5/package.json.rej	1970-01-01 00:00:00.000000000 +0000
-+++ types/lib-es5/package.json.rej	2025-08-04 12:10:58.374150470 +0000
++++ types/lib-es5/package.json.rej	2025-08-08 18:07:16.662597489 +0000
 @@ -0,0 +1,132 @@
 +--- package.json	2025-07-22 12:10:27.292332898 +0000
 ++++ package.json	2025-07-22 12:10:19.574295432 +0000
