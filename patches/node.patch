@@ -1,7 +1,7 @@
 diff -ruN .cache/node/fs.d.ts types/node/fs.d.ts
---- .cache/node/fs.d.ts	2025-08-08 18:07:24.917681432 +0000
-+++ types/node/fs.d.ts	2025-08-08 18:07:15.879589539 +0000
-@@ -562,6 +562,7 @@
+--- .cache/node/fs.d.ts	2025-08-15 12:10:02.104877103 +0000
++++ types/node/fs.d.ts	2025-08-15 12:09:54.252742441 +0000
+@@ -564,6 +564,7 @@
       *
       * See the POSIX [`rename(2)`](http://man7.org/linux/man-pages/man2/rename.2.html) documentation for more details.
       * @since v0.1.21
@@ -9,7 +9,7 @@ diff -ruN .cache/node/fs.d.ts types/node/fs.d.ts
       */
      export function renameSync(oldPath: PathLike, newPath: PathLike): void;
      /**
-@@ -607,6 +608,7 @@
+@@ -609,6 +610,7 @@
       * in the future.
       * @since v0.8.6
       * @param [len=0]
@@ -17,7 +17,7 @@ diff -ruN .cache/node/fs.d.ts types/node/fs.d.ts
       */
      export function truncateSync(path: PathLike, len?: number): void;
      /**
-@@ -673,6 +675,7 @@
+@@ -675,6 +677,7 @@
       * this API: {@link ftruncate}.
       * @since v0.8.6
       * @param [len=0]
@@ -25,7 +25,7 @@ diff -ruN .cache/node/fs.d.ts types/node/fs.d.ts
       */
      export function ftruncateSync(fd: number, len?: number): void;
      /**
-@@ -696,6 +699,7 @@
+@@ -698,6 +701,7 @@
       *
       * See the POSIX [`chown(2)`](http://man7.org/linux/man-pages/man2/chown.2.html) documentation for more detail.
       * @since v0.1.97
@@ -33,7 +33,7 @@ diff -ruN .cache/node/fs.d.ts types/node/fs.d.ts
       */
      export function chownSync(path: PathLike, uid: number, gid: number): void;
      /**
-@@ -720,6 +724,7 @@
+@@ -722,6 +726,7 @@
       * @since v0.4.7
       * @param uid The file's new owner's user id.
       * @param gid The file's new group's group id.
@@ -41,7 +41,7 @@ diff -ruN .cache/node/fs.d.ts types/node/fs.d.ts
       */
      export function fchownSync(fd: number, uid: number, gid: number): void;
      /**
-@@ -742,6 +747,7 @@
+@@ -744,6 +749,7 @@
       * See the POSIX [`lchown(2)`](http://man7.org/linux/man-pages/man2/lchown.2.html) documentation for more details.
       * @param uid The file's new owner's user id.
       * @param gid The file's new group's group id.
@@ -49,7 +49,7 @@ diff -ruN .cache/node/fs.d.ts types/node/fs.d.ts
       */
      export function lchownSync(path: PathLike, uid: number, gid: number): void;
      /**
-@@ -770,6 +776,7 @@
+@@ -772,6 +778,7 @@
       * Returns `undefined`, or throws an exception when parameters are incorrect or
       * the operation fails. This is the synchronous version of {@link lutimes}.
       * @since v14.5.0, v12.19.0
@@ -57,7 +57,7 @@ diff -ruN .cache/node/fs.d.ts types/node/fs.d.ts
       */
      export function lutimesSync(path: PathLike, atime: TimeLike, mtime: TimeLike): void;
      /**
-@@ -803,6 +810,7 @@
+@@ -805,6 +812,7 @@
       *
       * See the POSIX [`chmod(2)`](http://man7.org/linux/man-pages/man2/chmod.2.html) documentation for more detail.
       * @since v0.6.7
@@ -65,7 +65,7 @@ diff -ruN .cache/node/fs.d.ts types/node/fs.d.ts
       */
      export function chmodSync(path: PathLike, mode: Mode): void;
      /**
-@@ -826,6 +834,7 @@
+@@ -828,6 +836,7 @@
       *
       * See the POSIX [`fchmod(2)`](http://man7.org/linux/man-pages/man2/fchmod.2.html) documentation for more detail.
       * @since v0.4.7
@@ -73,7 +73,7 @@ diff -ruN .cache/node/fs.d.ts types/node/fs.d.ts
       */
      export function fchmodSync(fd: number, mode: Mode): void;
      /**
-@@ -854,6 +863,7 @@
+@@ -856,6 +865,7 @@
       *
       * See the POSIX [`lchmod(2)`](https://www.freebsd.org/cgi/man.cgi?query=lchmod&sektion=2) documentation for more detail.
       * @deprecated Since v0.4.7
@@ -81,7 +81,7 @@ diff -ruN .cache/node/fs.d.ts types/node/fs.d.ts
       */
      export function lchmodSync(path: PathLike, mode: Mode): void;
      /**
-@@ -1022,6 +1032,7 @@
+@@ -1024,6 +1034,7 @@
      /**
       * Synchronous stat(2) - Get file status.
       * @param path A path to a file. If a URL is provided, it must use the `file:` protocol.
@@ -89,7 +89,7 @@ diff -ruN .cache/node/fs.d.ts types/node/fs.d.ts
       */
      export const statSync: StatSyncFn;
      /**
-@@ -1076,6 +1087,7 @@
+@@ -1078,6 +1089,7 @@
       *
       * See the POSIX [`fstat(2)`](http://man7.org/linux/man-pages/man2/fstat.2.html) documentation for more detail.
       * @since v0.1.95
@@ -97,7 +97,7 @@ diff -ruN .cache/node/fs.d.ts types/node/fs.d.ts
       */
      export function fstatSync(
          fd: number,
-@@ -1195,6 +1207,7 @@
+@@ -1197,6 +1209,7 @@
       * In case of an error, the `err.code` will be one of `Common System Errors`.
       * @since v19.6.0, v18.15.0
       * @param path A path to an existing file or directory on the file system to be queried.
@@ -105,7 +105,7 @@ diff -ruN .cache/node/fs.d.ts types/node/fs.d.ts
       */
      export function statfsSync(
          path: PathLike,
-@@ -1212,6 +1225,7 @@
+@@ -1214,6 +1227,7 @@
      /**
       * Synchronous lstat(2) - Get file status. Does not dereference symbolic links.
       * @param path A path to a file. If a URL is provided, it must use the `file:` protocol.
@@ -113,7 +113,7 @@ diff -ruN .cache/node/fs.d.ts types/node/fs.d.ts
       */
      export const lstatSync: StatSyncFn;
      /**
-@@ -1232,6 +1246,7 @@
+@@ -1234,6 +1248,7 @@
      /**
       * Creates a new link from the `existingPath` to the `newPath`. See the POSIX [`link(2)`](http://man7.org/linux/man-pages/man2/link.2.html) documentation for more detail. Returns `undefined`.
       * @since v0.1.31
@@ -121,7 +121,7 @@ diff -ruN .cache/node/fs.d.ts types/node/fs.d.ts
       */
      export function linkSync(existingPath: PathLike, newPath: PathLike): void;
      /**
-@@ -1297,6 +1312,7 @@
+@@ -1299,6 +1314,7 @@
       * this API: {@link symlink}.
       * @since v0.1.31
       * @param [type='null']
@@ -129,7 +129,7 @@ diff -ruN .cache/node/fs.d.ts types/node/fs.d.ts
       */
      export function symlinkSync(target: PathLike, path: PathLike, type?: symlink.Type | null): void;
      /**
-@@ -1374,18 +1390,21 @@
+@@ -1376,18 +1392,21 @@
       * the link path returned. If the `encoding` is set to `'buffer'`,
       * the link path returned will be passed as a `Buffer` object.
       * @since v0.1.31
@@ -151,7 +151,7 @@ diff -ruN .cache/node/fs.d.ts types/node/fs.d.ts
       */
      export function readlinkSync(path: PathLike, options?: EncodingOption): string | Buffer;
      /**
-@@ -1509,18 +1528,21 @@
+@@ -1511,18 +1530,21 @@
       * For detailed information, see the documentation of the asynchronous version of
       * this API: {@link realpath}.
       * @since v0.1.31
@@ -173,7 +173,7 @@ diff -ruN .cache/node/fs.d.ts types/node/fs.d.ts
       */
      export function realpathSync(path: PathLike, options?: EncodingOption): string | Buffer;
      export namespace realpathSync {
-@@ -1558,6 +1580,7 @@
+@@ -1560,6 +1582,7 @@
      /**
       * Synchronous [`unlink(2)`](http://man7.org/linux/man-pages/man2/unlink.2.html). Returns `undefined`.
       * @since v0.1.21
@@ -181,7 +181,7 @@ diff -ruN .cache/node/fs.d.ts types/node/fs.d.ts
       */
      export function unlinkSync(path: PathLike): void;
      export interface RmDirOptions {
-@@ -1614,6 +1637,7 @@
+@@ -1616,6 +1639,7 @@
       *
       * To get a behavior similar to the `rm -rf` Unix command, use {@link rmSync} with options `{ recursive: true, force: true }`.
       * @since v0.1.21
@@ -189,7 +189,7 @@ diff -ruN .cache/node/fs.d.ts types/node/fs.d.ts
       */
      export function rmdirSync(path: PathLike, options?: RmDirOptions): void;
      export interface RmOptions {
-@@ -1660,6 +1684,7 @@
+@@ -1662,6 +1686,7 @@
      /**
       * Synchronously removes files and directories (modeled on the standard POSIX `rm` utility). Returns `undefined`.
       * @since v14.14.0
@@ -197,7 +197,7 @@ diff -ruN .cache/node/fs.d.ts types/node/fs.d.ts
       */
      export function rmSync(path: PathLike, options?: RmOptions): void;
      export interface MakeDirectoryOptions {
-@@ -1796,6 +1821,7 @@
+@@ -1798,6 +1823,7 @@
       *
       * See the POSIX [`mkdir(2)`](http://man7.org/linux/man-pages/man2/mkdir.2.html) documentation for more details.
       * @since v0.1.21
@@ -205,7 +205,7 @@ diff -ruN .cache/node/fs.d.ts types/node/fs.d.ts
       */
      export function mkdirSync(
          path: PathLike,
-@@ -1808,6 +1834,7 @@
+@@ -1810,6 +1836,7 @@
       * @param path A path to a file. If a URL is provided, it must use the `file:` protocol.
       * @param options Either the file mode, or an object optionally specifying the file mode and whether parent folders
       * should be created. If a string is passed, it is parsed as an octal integer. If not specified, defaults to `0o777`.
@@ -213,7 +213,7 @@ diff -ruN .cache/node/fs.d.ts types/node/fs.d.ts
       */
      export function mkdirSync(
          path: PathLike,
-@@ -1823,6 +1850,7 @@
+@@ -1825,6 +1852,7 @@
       * @param path A path to a file. If a URL is provided, it must use the `file:` protocol.
       * @param options Either the file mode, or an object optionally specifying the file mode and whether parent folders
       * should be created. If a string is passed, it is parsed as an octal integer. If not specified, defaults to `0o777`.
@@ -221,7 +221,7 @@ diff -ruN .cache/node/fs.d.ts types/node/fs.d.ts
       */
      export function mkdirSync(path: PathLike, options?: Mode | MakeDirectoryOptions | null): string | undefined;
      /**
-@@ -1950,18 +1978,21 @@
+@@ -1952,18 +1980,21 @@
       * The optional `options` argument can be a string specifying an encoding, or an
       * object with an `encoding` property specifying the character encoding to use.
       * @since v5.10.0
@@ -243,7 +243,7 @@ diff -ruN .cache/node/fs.d.ts types/node/fs.d.ts
       */
      export function mkdtempSync(prefix: string, options?: EncodingOption): string | Buffer;
      /**
-@@ -2143,6 +2174,7 @@
+@@ -2145,6 +2176,7 @@
       *
       * If `options.withFileTypes` is set to `true`, the result will contain `fs.Dirent` objects.
       * @since v0.1.21
@@ -251,7 +251,7 @@ diff -ruN .cache/node/fs.d.ts types/node/fs.d.ts
       */
      export function readdirSync(
          path: PathLike,
-@@ -2236,6 +2268,7 @@
+@@ -2238,6 +2270,7 @@
       *
       * See the POSIX [`close(2)`](http://man7.org/linux/man-pages/man2/close.2.html) documentation for more detail.
       * @since v0.1.21
@@ -259,7 +259,7 @@ diff -ruN .cache/node/fs.d.ts types/node/fs.d.ts
       */
      export function closeSync(fd: number): void;
      /**
-@@ -2292,6 +2325,7 @@
+@@ -2294,6 +2327,7 @@
       * @since v0.1.21
       * @param [flags='r']
       * @param [mode=0o666]
@@ -267,7 +267,7 @@ diff -ruN .cache/node/fs.d.ts types/node/fs.d.ts
       */
      export function openSync(path: PathLike, flags: OpenMode, mode?: Mode | null): number;
      /**
-@@ -2319,6 +2353,7 @@
+@@ -2321,6 +2355,7 @@
       * For detailed information, see the documentation of the asynchronous version of
       * this API: {@link utimes}.
       * @since v0.4.2
@@ -275,7 +275,7 @@ diff -ruN .cache/node/fs.d.ts types/node/fs.d.ts
       */
      export function utimesSync(path: PathLike, atime: TimeLike, mtime: TimeLike): void;
      /**
-@@ -2339,6 +2374,7 @@
+@@ -2341,6 +2376,7 @@
      /**
       * Synchronous version of {@link futimes}. Returns `undefined`.
       * @since v0.4.2
@@ -283,7 +283,7 @@ diff -ruN .cache/node/fs.d.ts types/node/fs.d.ts
       */
      export function futimesSync(fd: number, atime: TimeLike, mtime: TimeLike): void;
      /**
-@@ -2361,6 +2397,7 @@
+@@ -2363,6 +2399,7 @@
       * device. The specific implementation is operating system and device specific.
       * Refer to the POSIX [`fsync(2)`](http://man7.org/linux/man-pages/man2/fsync.2.html) documentation for more detail. Returns `undefined`.
       * @since v0.1.96
@@ -291,7 +291,7 @@ diff -ruN .cache/node/fs.d.ts types/node/fs.d.ts
       */
      export function fsyncSync(fd: number): void;
      export interface WriteOptions {
-@@ -2554,6 +2591,7 @@
+@@ -2556,6 +2593,7 @@
       * @param [length=buffer.byteLength - offset]
       * @param [position='null']
       * @return The number of bytes written.
@@ -299,7 +299,7 @@ diff -ruN .cache/node/fs.d.ts types/node/fs.d.ts
       */
      export function writeSync(
          fd: number,
-@@ -2568,6 +2606,7 @@
+@@ -2570,6 +2608,7 @@
       * @param string A string to write.
       * @param position The offset from the beginning of the file where this data should be written. If not supplied, defaults to the current position.
       * @param encoding The expected string encoding.
@@ -307,7 +307,7 @@ diff -ruN .cache/node/fs.d.ts types/node/fs.d.ts
       */
      export function writeSync(
          fd: number,
-@@ -2684,6 +2723,7 @@
+@@ -2686,6 +2725,7 @@
       * this API: {@link read}.
       * @since v0.1.21
       * @param [position='null']
@@ -315,7 +315,7 @@ diff -ruN .cache/node/fs.d.ts types/node/fs.d.ts
       */
      export function readSync(
          fd: number,
-@@ -2695,6 +2735,7 @@
+@@ -2697,6 +2737,7 @@
      /**
       * Similar to the above `fs.readSync` function, this version takes an optional `options` object.
       * If no `options` object is specified, it will default with the above values.
@@ -323,7 +323,7 @@ diff -ruN .cache/node/fs.d.ts types/node/fs.d.ts
       */
      export function readSync(fd: number, buffer: NodeJS.ArrayBufferView, opts?: ReadSyncOptions): number;
      /**
-@@ -2891,6 +2932,7 @@
+@@ -2893,6 +2934,7 @@
       * ```
       * @since v0.1.8
       * @param path filename or file descriptor
@@ -331,7 +331,7 @@ diff -ruN .cache/node/fs.d.ts types/node/fs.d.ts
       */
      export function readFileSync(
          path: PathOrFileDescriptor,
-@@ -2905,6 +2947,7 @@
+@@ -2907,6 +2949,7 @@
       * If a file descriptor is provided, the underlying file will _not_ be closed automatically.
       * @param options Either the encoding for the result, or an object that contains the encoding and an optional flag.
       * If a flag is not provided, it defaults to `'r'`.
@@ -339,7 +339,7 @@ diff -ruN .cache/node/fs.d.ts types/node/fs.d.ts
       */
      export function readFileSync(
          path: PathOrFileDescriptor,
-@@ -2921,6 +2964,7 @@
+@@ -2923,6 +2966,7 @@
       * If a file descriptor is provided, the underlying file will _not_ be closed automatically.
       * @param options Either the encoding for the result, or an object that contains the encoding and an optional flag.
       * If a flag is not provided, it defaults to `'r'`.
@@ -347,7 +347,7 @@ diff -ruN .cache/node/fs.d.ts types/node/fs.d.ts
       */
      export function readFileSync(
          path: PathOrFileDescriptor,
-@@ -3049,6 +3093,7 @@
+@@ -3051,6 +3095,7 @@
       * this API: {@link writeFile}.
       * @since v0.1.29
       * @param file filename or file descriptor
@@ -355,7 +355,7 @@ diff -ruN .cache/node/fs.d.ts types/node/fs.d.ts
       */
      export function writeFileSync(
          file: PathOrFileDescriptor,
-@@ -3186,6 +3231,7 @@
+@@ -3188,6 +3233,7 @@
       * ```
       * @since v0.6.7
       * @param path filename or file descriptor
@@ -363,7 +363,7 @@ diff -ruN .cache/node/fs.d.ts types/node/fs.d.ts
       */
      export function appendFileSync(
          path: PathOrFileDescriptor,
-@@ -3861,6 +3907,7 @@
+@@ -3845,6 +3891,7 @@
       * ```
       * @since v0.11.15
       * @param [mode=fs.constants.F_OK]
@@ -371,7 +371,7 @@ diff -ruN .cache/node/fs.d.ts types/node/fs.d.ts
       */
      export function accessSync(path: PathLike, mode?: number): void;
      interface StreamOptions {
-@@ -4002,6 +4049,7 @@
+@@ -3986,6 +4033,7 @@
       * Forces all currently queued I/O operations associated with the file to the
       * operating system's synchronized I/O completion state. Refer to the POSIX [`fdatasync(2)`](http://man7.org/linux/man-pages/man2/fdatasync.2.html) documentation for details. Returns `undefined`.
       * @since v0.1.96
@@ -379,7 +379,7 @@ diff -ruN .cache/node/fs.d.ts types/node/fs.d.ts
       */
      export function fdatasyncSync(fd: number): void;
      /**
-@@ -4081,6 +4129,7 @@
+@@ -4065,6 +4113,7 @@
       * @param src source filename to copy
       * @param dest destination filename of the copy operation
       * @param [mode=0] modifiers for copy operation.
@@ -387,7 +387,7 @@ diff -ruN .cache/node/fs.d.ts types/node/fs.d.ts
       */
      export function copyFileSync(src: PathLike, dest: PathLike, mode?: number): void;
      /**
-@@ -4131,6 +4180,7 @@
+@@ -4115,6 +4164,7 @@
       * @since v12.9.0
       * @param [position='null']
       * @return The number of bytes written.
@@ -395,7 +395,7 @@ diff -ruN .cache/node/fs.d.ts types/node/fs.d.ts
       */
      export function writevSync(fd: number, buffers: readonly NodeJS.ArrayBufferView[], position?: number): number;
      /**
-@@ -4176,6 +4226,7 @@
+@@ -4160,6 +4210,7 @@
       * @since v13.13.0, v12.17.0
       * @param [position='null']
       * @return The number of bytes read.
@@ -403,7 +403,7 @@ diff -ruN .cache/node/fs.d.ts types/node/fs.d.ts
       */
      export function readvSync(fd: number, buffers: readonly NodeJS.ArrayBufferView[], position?: number): number;
  
-@@ -4233,6 +4284,7 @@
+@@ -4217,6 +4268,7 @@
       * The `encoding` option sets the encoding for the `path` while opening the
       * directory and subsequent read operations.
       * @since v12.12.0
@@ -411,7 +411,7 @@ diff -ruN .cache/node/fs.d.ts types/node/fs.d.ts
       */
      export function opendirSync(path: PathLike, options?: OpenDirOptions): Dir;
      /**
-@@ -4356,6 +4408,7 @@
+@@ -4340,6 +4392,7 @@
       * @experimental
       * @param src source path to copy.
       * @param dest destination path to copy to.
@@ -419,7 +419,7 @@ diff -ruN .cache/node/fs.d.ts types/node/fs.d.ts
       */
      export function cpSync(source: string | URL, destination: string | URL, opts?: CopySyncOptions): void;
  
-@@ -4434,6 +4487,7 @@
+@@ -4418,6 +4471,7 @@
       *
       * console.log(globSync('*.js'));
       * ```
@@ -429,8 +429,8 @@ diff -ruN .cache/node/fs.d.ts types/node/fs.d.ts
       */
 diff -ruN .cache/node/fs.d.ts.orig types/node/fs.d.ts.orig
 --- .cache/node/fs.d.ts.orig	1970-01-01 00:00:00.000000000 +0000
-+++ types/node/fs.d.ts.orig	2025-08-08 18:07:15.881589559 +0000
-@@ -0,0 +1,4456 @@
++++ types/node/fs.d.ts.orig	2025-08-15 12:09:54.222742087 +0000
+@@ -0,0 +1,4440 @@
 +/**
 + * The `node:fs` module enables interacting with the file system in a
 + * way modeled on standard POSIX functions.
@@ -756,15 +756,17 @@ diff -ruN .cache/node/fs.d.ts.orig types/node/fs.d.ts.orig
 +         */
 +        readSync(): Dirent | null;
 +        /**
-+         * An alias for `dir.close()`.
++         * Calls `dir.close()` if the directory handle is open, and returns a promise that
++         * fulfills when disposal is complete.
++         * @since v24.1.0
++         */
++        [Symbol.asyncDispose](): Promise<void>;
++        /**
++         * Calls `dir.closeSync()` if the directory handle is open, and returns
++         * `undefined`.
 +         * @since v24.1.0
 +         */
 +        [Symbol.dispose](): void;
-+        /**
-+         * An alias for `dir.closeSync()`.
-+         * @since v24.1.0
-+         */
-+        [Symbol.asyncDispose](): void;
 +    }
 +    /**
 +     * Class: fs.StatWatcher
@@ -3764,6 +3766,12 @@ diff -ruN .cache/node/fs.d.ts.orig types/node/fs.d.ts.orig
 +        persistent?: boolean | undefined;
 +        recursive?: boolean | undefined;
 +    }
++    export interface WatchOptionsWithBufferEncoding extends WatchOptions {
++        encoding: "buffer";
++    }
++    export interface WatchOptionsWithStringEncoding extends WatchOptions {
++        encoding?: BufferEncoding | undefined;
++    }
 +    export type WatchEventType = "rename" | "change";
 +    export type WatchListener<T> = (event: WatchEventType, filename: T | null) => void;
 +    export type StatsListener = (curr: Stats, prev: Stats) => void;
@@ -3790,44 +3798,20 @@ diff -ruN .cache/node/fs.d.ts.orig types/node/fs.d.ts.orig
 +     */
 +    export function watch(
 +        filename: PathLike,
-+        options:
-+            | (WatchOptions & {
-+                encoding: "buffer";
-+            })
-+            | "buffer",
-+        listener?: WatchListener<Buffer>,
-+    ): FSWatcher;
-+    /**
-+     * Watch for changes on `filename`, where `filename` is either a file or a directory, returning an `FSWatcher`.
-+     * @param filename A path to a file or directory. If a URL is provided, it must use the `file:` protocol.
-+     * @param options Either the encoding for the filename provided to the listener, or an object optionally specifying encoding, persistent, and recursive options.
-+     * If `encoding` is not supplied, the default of `'utf8'` is used.
-+     * If `persistent` is not supplied, the default of `true` is used.
-+     * If `recursive` is not supplied, the default of `false` is used.
-+     */
-+    export function watch(
-+        filename: PathLike,
-+        options?: WatchOptions | BufferEncoding | null,
++        options?: WatchOptionsWithStringEncoding | BufferEncoding | null,
 +        listener?: WatchListener<string>,
 +    ): FSWatcher;
-+    /**
-+     * Watch for changes on `filename`, where `filename` is either a file or a directory, returning an `FSWatcher`.
-+     * @param filename A path to a file or directory. If a URL is provided, it must use the `file:` protocol.
-+     * @param options Either the encoding for the filename provided to the listener, or an object optionally specifying encoding, persistent, and recursive options.
-+     * If `encoding` is not supplied, the default of `'utf8'` is used.
-+     * If `persistent` is not supplied, the default of `true` is used.
-+     * If `recursive` is not supplied, the default of `false` is used.
-+     */
 +    export function watch(
 +        filename: PathLike,
-+        options: WatchOptions | string,
-+        listener?: WatchListener<string | Buffer>,
++        options: WatchOptionsWithBufferEncoding | "buffer",
++        listener: WatchListener<Buffer>,
 +    ): FSWatcher;
-+    /**
-+     * Watch for changes on `filename`, where `filename` is either a file or a directory, returning an `FSWatcher`.
-+     * @param filename A path to a file or directory. If a URL is provided, it must use the `file:` protocol.
-+     */
-+    export function watch(filename: PathLike, listener?: WatchListener<string>): FSWatcher;
++    export function watch(
++        filename: PathLike,
++        options: WatchOptions | BufferEncoding | "buffer" | null,
++        listener: WatchListener<string | Buffer>,
++    ): FSWatcher;
++    export function watch(filename: PathLike, listener: WatchListener<string>): FSWatcher;
 +    /**
 +     * Test whether or not the given path exists by checking with the file system.
 +     * Then call the `callback` argument with either true or false:
@@ -4888,8 +4872,8 @@ diff -ruN .cache/node/fs.d.ts.orig types/node/fs.d.ts.orig
 +    export * from "fs";
 +}
 diff -ruN .cache/node/globals.d.ts types/node/globals.d.ts
---- .cache/node/globals.d.ts	2025-08-08 18:07:24.919681453 +0000
-+++ types/node/globals.d.ts	2025-08-08 18:07:15.881589559 +0000
+--- .cache/node/globals.d.ts	2025-08-15 12:10:02.087876902 +0000
++++ types/node/globals.d.ts	2025-08-15 12:09:54.254742465 +0000
 @@ -310,6 +310,16 @@
      // #region fetch
      interface RequestInit extends _RequestInit {}
@@ -4908,8 +4892,8 @@ diff -ruN .cache/node/globals.d.ts types/node/globals.d.ts
          input: string | URL | globalThis.Request,
          init?: RequestInit,
 diff -ruN .cache/node/http2.d.ts types/node/http2.d.ts
---- .cache/node/http2.d.ts	2025-08-08 18:07:24.935681615 +0000
-+++ types/node/http2.d.ts	2025-08-08 18:07:15.881589559 +0000
+--- .cache/node/http2.d.ts	2025-08-15 12:10:02.098877032 +0000
++++ types/node/http2.d.ts	2025-08-15 12:09:54.255742477 +0000
 @@ -1220,66 +1220,14 @@
      }
      // Http2Server
@@ -4979,7 +4963,7 @@ diff -ruN .cache/node/http2.d.ts types/node/http2.d.ts
           * Specifies a timeout in milliseconds that
 diff -ruN .cache/node/http2.d.ts.orig types/node/http2.d.ts.orig
 --- .cache/node/http2.d.ts.orig	1970-01-01 00:00:00.000000000 +0000
-+++ types/node/http2.d.ts.orig	2025-08-08 18:07:15.882589569 +0000
++++ types/node/http2.d.ts.orig	2025-08-15 12:09:54.256742489 +0000
 @@ -0,0 +1,2630 @@
 +/**
 + * The `node:http2` module provides an implementation of the [HTTP/2](https://tools.ietf.org/html/rfc7540) protocol.
@@ -7613,7 +7597,7 @@ diff -ruN .cache/node/http2.d.ts.orig types/node/http2.d.ts.orig
 +}
 diff -ruN .cache/node/http2.d.ts.rej types/node/http2.d.ts.rej
 --- .cache/node/http2.d.ts.rej	1970-01-01 00:00:00.000000000 +0000
-+++ types/node/http2.d.ts.rej	2025-08-08 18:07:15.883589580 +0000
++++ types/node/http2.d.ts.rej	2025-08-15 12:09:54.257742500 +0000
 @@ -0,0 +1,31 @@
 +--- http2.d.ts	2025-07-31 18:08:35.853691805 +0000
 ++++ http2.d.ts	2025-07-31 18:08:26.787648014 +0000
@@ -7647,8 +7631,8 @@ diff -ruN .cache/node/http2.d.ts.rej types/node/http2.d.ts.rej
 +     }
 +     export interface ServerSessionOptions<
 diff -ruN .cache/node/package.json types/node/package.json
---- .cache/node/package.json	2025-08-08 18:07:24.921681473 +0000
-+++ types/node/package.json	2025-08-08 18:07:15.883589580 +0000
+--- .cache/node/package.json	2025-08-15 12:10:02.093876973 +0000
++++ types/node/package.json	2025-08-15 12:09:54.257742500 +0000
 @@ -124,6 +124,11 @@
              "name": "Yagiz Nizipli",
              "githubUsername": "anonrig",
@@ -7672,7 +7656,7 @@ diff -ruN .cache/node/package.json types/node/package.json
      "scripts": {},
 diff -ruN .cache/node/package.json.orig types/node/package.json.orig
 --- .cache/node/package.json.orig	1970-01-01 00:00:00.000000000 +0000
-+++ types/node/package.json.orig	2025-08-08 18:07:15.788588615 +0000
++++ types/node/package.json.orig	2025-08-15 12:09:54.257742500 +0000
 @@ -0,0 +1,155 @@
 +{
 +    "name": "@types/node",
@@ -7832,7 +7816,7 @@ diff -ruN .cache/node/package.json.orig types/node/package.json.orig
 \ No newline at end of file
 diff -ruN .cache/node/package.json.rej types/node/package.json.rej
 --- .cache/node/package.json.rej	1970-01-01 00:00:00.000000000 +0000
-+++ types/node/package.json.rej	2025-08-08 18:07:15.883589580 +0000
++++ types/node/package.json.rej	2025-08-15 12:09:54.257742500 +0000
 @@ -0,0 +1,7 @@
 +--- package.json	2025-07-31 18:08:35.838691728 +0000
 ++++ package.json	2025-07-31 18:08:26.787648014 +0000
@@ -7842,8 +7826,8 @@ diff -ruN .cache/node/package.json.rej types/node/package.json.rej
 +     "typeScriptVersion": "5.1"
 +-}+}
 diff -ruN .cache/node/path.d.ts types/node/path.d.ts
---- .cache/node/path.d.ts	2025-08-08 18:07:24.939681656 +0000
-+++ types/node/path.d.ts	2025-08-08 18:07:15.883589580 +0000
+--- .cache/node/path.d.ts	2025-08-15 12:10:02.085876878 +0000
++++ types/node/path.d.ts	2025-08-15 12:09:54.257742500 +0000
 @@ -70,14 +70,12 @@
               * When multiple slashes are found, they're replaced by a single one; when the path contains a trailing slash, it is preserved. On Windows backslashes are used.
               *
@@ -7922,8 +7906,8 @@ diff -ruN .cache/node/path.d.ts types/node/path.d.ts
              parse(path: string): ParsedPath;
              /**
 diff -ruN .cache/node/util.d.ts types/node/util.d.ts
---- .cache/node/util.d.ts	2025-08-08 18:07:24.926681524 +0000
-+++ types/node/util.d.ts	2025-08-08 18:07:15.884589590 +0000
+--- .cache/node/util.d.ts	2025-08-15 12:10:02.088876914 +0000
++++ types/node/util.d.ts	2025-08-15 12:09:54.258742512 +0000
 @@ -1121,7 +1121,7 @@
       * @param content The raw contents of a `.env` file.
       * @since v20.12.0
