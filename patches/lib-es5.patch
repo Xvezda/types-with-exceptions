@@ -1,6 +1,6 @@
 diff -ruN .cache/lib-es5/index.d.ts types/lib-es5/index.d.ts
---- .cache/lib-es5/index.d.ts	2025-08-15 12:10:02.129877401 +0000
-+++ types/lib-es5/index.d.ts	2025-08-15 12:09:54.780748684 +0000
+--- .cache/lib-es5/index.d.ts	2025-09-05 04:27:11
++++ types/lib-es5/index.d.ts	2025-09-05 04:26:41
 @@ -29,6 +29,7 @@
  /**
   * Evaluates JavaScript code and executes it.
@@ -761,8 +761,8 @@ diff -ruN .cache/lib-es5/index.d.ts types/lib-es5/index.d.ts
          supportedLocalesOf(locales: string | string[], options?: DateTimeFormatOptions): string[];
          readonly prototype: DateTimeFormat;
 diff -ruN .cache/lib-es5/index.d.ts.orig types/lib-es5/index.d.ts.orig
---- .cache/lib-es5/index.d.ts.orig	1970-01-01 00:00:00.000000000 +0000
-+++ types/lib-es5/index.d.ts.orig	2025-08-15 12:09:54.782748708 +0000
+--- .cache/lib-es5/index.d.ts.orig	1970-01-01 09:00:00
++++ types/lib-es5/index.d.ts.orig	2025-09-05 04:26:41
 @@ -0,0 +1,4601 @@
 +/*! *****************************************************************************
 +Copyright (c) Microsoft Corporation. All rights reserved.
@@ -5366,8 +5366,8 @@ diff -ruN .cache/lib-es5/index.d.ts.orig types/lib-es5/index.d.ts.orig
 +    toLocaleTimeString(locales?: string | string[], options?: Intl.DateTimeFormatOptions): string;
 +}
 diff -ruN .cache/lib-es5/index.d.ts.rej types/lib-es5/index.d.ts.rej
---- .cache/lib-es5/index.d.ts.rej	1970-01-01 00:00:00.000000000 +0000
-+++ types/lib-es5/index.d.ts.rej	2025-08-15 12:09:54.782748708 +0000
+--- .cache/lib-es5/index.d.ts.rej	1970-01-01 09:00:00
++++ types/lib-es5/index.d.ts.rej	2025-09-05 04:26:41
 @@ -0,0 +1,41 @@
 +--- index.d.ts	2025-07-22 12:10:27.285332863 +0000
 ++++ index.d.ts	2025-07-22 12:10:19.574295432 +0000
@@ -5411,8 +5411,8 @@ diff -ruN .cache/lib-es5/index.d.ts.rej types/lib-es5/index.d.ts.rej
 +     stringify(value: any, replacer?: (number | string)[] | null, space?: string | number): string;
 + }
 diff -ruN .cache/lib-es5/package.json.orig types/lib-es5/package.json.orig
---- .cache/lib-es5/package.json.orig	1970-01-01 00:00:00.000000000 +0000
-+++ types/lib-es5/package.json.orig	2025-08-15 12:09:54.782748708 +0000
+--- .cache/lib-es5/package.json.orig	1970-01-01 09:00:00
++++ types/lib-es5/package.json.orig	2025-09-05 04:26:41
 @@ -0,0 +1,120 @@
 +{
 +    "name": "typescript",
@@ -5535,8 +5535,8 @@ diff -ruN .cache/lib-es5/package.json.orig types/lib-es5/package.json.orig
 +    "gitHead": "5be33469d551655d878876faa9e30aa3b49f8ee9"
 +}
 diff -ruN .cache/lib-es5/package.json.rej types/lib-es5/package.json.rej
---- .cache/lib-es5/package.json.rej	1970-01-01 00:00:00.000000000 +0000
-+++ types/lib-es5/package.json.rej	2025-08-15 12:09:54.782748708 +0000
+--- .cache/lib-es5/package.json.rej	1970-01-01 09:00:00
++++ types/lib-es5/package.json.rej	2025-09-05 04:26:41
 @@ -0,0 +1,132 @@
 +--- package.json	2025-07-22 12:10:27.292332898 +0000
 ++++ package.json	2025-07-22 12:10:19.574295432 +0000

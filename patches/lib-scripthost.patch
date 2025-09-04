@@ -1,6 +1,6 @@
 diff -ruN .cache/lib-scripthost/package.json.orig types/lib-scripthost/package.json.orig
---- .cache/lib-scripthost/package.json.orig	1970-01-01 00:00:00.000000000 +0000
-+++ types/lib-scripthost/package.json.orig	2025-08-15 12:10:01.062864724 +0000
+--- .cache/lib-scripthost/package.json.orig	1970-01-01 09:00:00
++++ types/lib-scripthost/package.json.orig	2025-09-05 04:26:45
 @@ -0,0 +1,120 @@
 +{
 +    "name": "typescript",
@@ -123,8 +123,8 @@ diff -ruN .cache/lib-scripthost/package.json.orig types/lib-scripthost/package.j
 +    "gitHead": "5be33469d551655d878876faa9e30aa3b49f8ee9"
 +}
 diff -ruN .cache/lib-scripthost/package.json.rej types/lib-scripthost/package.json.rej
---- .cache/lib-scripthost/package.json.rej	1970-01-01 00:00:00.000000000 +0000
-+++ types/lib-scripthost/package.json.rej	2025-08-15 12:10:01.062864724 +0000
+--- .cache/lib-scripthost/package.json.rej	1970-01-01 09:00:00
++++ types/lib-scripthost/package.json.rej	2025-09-05 04:26:45
 @@ -0,0 +1,132 @@
 +--- package.json	2025-07-22 12:10:27.431333591 +0000
 ++++ package.json	2025-07-22 12:10:26.344328172 +0000

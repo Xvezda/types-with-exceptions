@@ -118,7 +118,7 @@ async function sync() {
     if (fs.existsSync(patchFile)) {
       const stream = fs.createReadStream(patchFile);
 
-      const patchProcess = spawn('patch', ['-E', '-d', typesDir], {
+      const patchProcess = spawn('patch', ['-u', '-N', '-E', '-F', '3'], {
         stdio: ['pipe', 'inherit', 'inherit'],
       });
 
